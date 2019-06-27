@@ -1,0 +1,451 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <script type="text/javascript" src="test_2.json"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        function getH2Children($row) {
+          var children = [];
+          while ($row.next().hasClass("child_dataset")) {
+            children.push($row.next());
+            $row = $row.next();
+          }
+          return children;
+        }
+        function getH1Children($row) {
+          var children = [];
+          var turning_on = $row.next().is(":hidden");
+          while (
+            $row.next().hasClass("child_dataset") ||
+            $row.next().hasClass("child_variable")
+          ) {
+            if (turning_on) {
+              if (
+                $row.next().is(":hidden") &&
+                $row.next().hasClass("child_variable")
+              )
+                children.push($row.next());
+            } else {
+              if (!$row.next().is(":hidden")) children.push($row.next());
+            }
+            $row = $row.next();
+          }
+          return children;
+        }
+        $(".parent").on("click", function() {
+          var children = getH1Children($(this));
+          $.each(children, function() {
+            $(this).toggle();
+          });
+        });
+        $(".child_variable").on("click", function() {
+          var children = getH2Children($(this));
+          $.each(children, function() {
+            $(this).toggle();
+          });
+        });
+        $(".child_dataset").toggle();
+      });
+
+      function pageLoad() {
+        let tableSections = { header: 0 };
+        console.log("in pageLoad() entry point");
+        $("table").delegate("td", "mouseover mouseleave", function(e) {
+          var table = document.getElementById("scoresTable");
+          if (e.type == "mouseover") {
+            $(this)
+              .parent()
+              .addClass("hover");
+            table.rows[tableSections["header"]].cells[
+              $(this).index()
+            ].style.fontWeight = "bolder";
+            console.log("table rows on hover:", table.rows);
+            console.log("$this:", $(this).index());
+          } else {
+            $(this)
+              .parent()
+              .removeClass("hover");
+            table.rows[0].cells[$(this).index()].style.fontWeight = "normal";
+          }
+        });
+
+        colorTable();
+      }
+
+      function printRow(table, row, array, cmap) {
+        console.log("row:", row);
+        console.log("printRow array:", array);
+        if (typeof array == "undefined") {
+          console.log("array is undefined");
+          for (var i = 1, col; (col = table.rows[row].cells[i]); i++) {
+            col.style.backgroundColor = "#808080";
+          }
+          return;
+        }
+        var nc = cmap.length;
+        // Loop over every column in table
+        for (var col = 0; col < array.length; col++) {
+          var clr = "#808080";
+          if (array[col] > -900) {
+            var ae = Math.abs(array[col]);
+            var ind;
+            if (ae >= 0.25) {
+              ind = Math.round(2 * array[col] + 4);
+            } else {
+              ind = Math.round(4 * array[col] + 4);
+            }
+            //Calculated index for colormap
+            ind = Math.min(Math.max(ind, 0), nc - 1);
+            // console.log("color index:", ind);
+            clr = cmap[ind];
+            // console.log("clr:", clr);
+          }
+          table.rows[row].cells[col + 1].style.backgroundColor = clr;
+        }
+      }
+
+      function formatLink(h1, h2, h3) {
+        var link = h1.replace(/ /g, "") + "/";
+        link += h2.replace(/ /g, "") + "/";
+        link +=
+          h3.replace(/ /g, "") +
+          "/" +
+          h3.replace(/ /g, "") +
+          ".html#DataInformation";
+
+        return link;
+      }
+
+      function incrementRow(table, numOfRows, row) {
+        console.log("inside incrementRow");
+        console.log("table in incrementRow:", table);
+        console.log("numOfRows in incrementRow:", numOfRows);
+        console.log("row in incrementRow:", row);
+        if (row >= numOfRows - 1) {
+          console.log("inserting table row");
+          newRow = table.insertRow(-1);
+          for (let i = 0; i <= 23; i++) {
+            newRow.insertCell(-1);
+          }
+        }
+        return (row += 1);
+      }
+
+      function colorTable() {
+        var scalars = JSON.parse(data);
+        var scalar_option = document.getElementById("ScalarOption");
+        var region_option = document.getElementById("RegionOption");
+        console.log("scalar_option:", scalar_option.value);
+        var scalar_name = scalar_option.value + " " + region_option.value;
+
+        console.log("scalar name:", scalar_name);
+
+        //Colorblind colors
+        var PuOr = [
+          "#b35806",
+          "#e08214",
+          "#fdb863",
+          "#fee0b6",
+          "#f7f7f7",
+          "#d8daeb",
+          "#b2abd2",
+          "#8073ac",
+          "#542788"
+        ];
+        var GnRd = [
+          "#b2182b",
+          "#d6604d",
+          "#f4a582",
+          "#fddbc7",
+          "#f7f7f7",
+          "#d9f0d3",
+          "#a6dba0",
+          "#5aae61",
+          "#1b7837"
+        ];
+        var cmap = GnRd;
+        if (document.getElementById("colorblind").checked) cmap = PuOr;
+
+        var row = 1;
+        var indent = "";
+        var table = document.getElementById("scoresTable");
+        let numOfRows = table.rows.length;
+        console.log("scalars:", scalars);
+        console.log("numOfRows:", numOfRows);
+        for (let h1 in scalars) {
+          console.log("h1:", h1);
+          indent = "";
+          table.rows[row].cells[0].innerHTML = indent + h1;
+          printRow(table, row, scalars[h1][scalar_name], cmap);
+          row = incrementRow(table, numOfRows, row);
+          h1Children = scalars[h1]["children"];
+          console.log("h1Children:", h1Children);
+          for (let h2 in h1Children) {
+            console.log("h2:", h2);
+            indent = "&nbsp;&nbsp;&nbsp;&nbsp;";
+            //Print label to first column
+            table.rows[row].cells[0].innerHTML = indent + h2;
+            printRow(table, row, h1Children[h2][scalar_name], cmap);
+            row = incrementRow(table, numOfRows, row);
+            h2Children = h1Children[h2]["children"];
+            console.log("h2Children:", h2Children);
+            for (let h3 in h2Children) {
+              console.log("h3:", h3);
+              indent = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+              var link = formatLink(h1, h2, h3);
+              var s_name = scalar_name;
+              if (h1 == "Relationships") {
+                s_name =
+                  h3.substring(0, h3.indexOf("/")) +
+                  " RMSE Score " +
+                  region_option.options[region_option.selectedIndex].value;
+                table.rows[row].cells[0].innerHTML =
+                  "<a href='' target='_blank'>" + indent + h3 + "</a>";
+              } else {
+                console.log("row for h3:", row);
+                table.rows[row].cells[0].innerHTML =
+                  "<a href='" +
+                  link +
+                  "' target='_blank'>" +
+                  indent +
+                  h3 +
+                  "</a>";
+              }
+              printRow(table, row, h2Children[h3][s_name], cmap);
+              row = incrementRow(table, numOfRows, row);
+            }
+          }
+        }
+
+        table = document.getElementById("scoresLegend");
+        row = 0;
+        for (var col = 0; col < cmap.length; col++) {
+          table.rows[row].cells[col].style.backgroundColor = cmap[col];
+        }
+      }
+    </script>
+    <style type="text/css">
+      .parent {
+      }
+      .child_variable {
+      }
+      .child_dataset {
+      }
+      table.table-header-rotated {
+        border-collapse: collapse;
+      }
+      th.rotate {
+        height: 82px;
+        white-space: nowrap;
+        font-weight: normal;
+      }
+      th.rotate > div {
+        transform: translate(10px, 36px) rotate(-45deg);
+        width: 0px;
+      }
+      th.rotate > div > span {
+      }
+      td {
+        height: 25px;
+        width: 25px;
+        border: 1px solid;
+      }
+      td.row-label {
+        width: 325px;
+      }
+      a {
+        display: block;
+        text-decoration: none;
+      }
+      .hover {
+        font-weight: bold;
+        border: 2px solid;
+      }
+    </style>
+  </head>
+  <body onload="pageLoad()">
+    <div data-role="page" id="MeanState">
+      <div data-role="header" data-position="fixed" data-tap-toggle="false">
+        <h1>ILAMB Benchmarking</h1>
+      </div>
+
+      <select id="ScalarOption" onchange="colorTable()">
+        <option value="Spatial Distribution Score"
+          >Spatial Distribution Score</option
+        >
+        <option value="Bias Score">Bias Score</option>
+        <option value="Overall Score" selected="selected">Overall Score</option>
+        <option value="Seasonal Cycle Score">Seasonal Cycle Score</option>
+        <option value="Interannual Variability Score"
+          >Interannual Variability Score</option
+        >
+        <option value="RMSE Score">RMSE Score</option>
+        <option value="Amplitude Score">Amplitude Score</option>
+        <option value="Max Phase Score">Max Phase Score</option>
+        <option value="Min Phase Score">Min Phase Score</option>
+        <option value="Difference Score">Difference Score</option>
+        <option value="Temporal Distribution Score"
+          >Temporal Distribution Score</option
+        >
+        <option value="Precipitation RMSE Score"
+          >Precipitation RMSE Score</option
+        >
+        <option value="SurfaceAirTemperature RMSE Score"
+          >SurfaceAirTemperature RMSE Score</option
+        >
+        <option value="Evapotranspiration RMSE Score"
+          >Evapotranspiration RMSE Score</option
+        >
+        <option value="SurfaceDownwardSWRadiation RMSE Score"
+          >SurfaceDownwardSWRadiation RMSE Score</option
+        >
+        <option value="SurfaceNetSWRadiation RMSE Score"
+          >SurfaceNetSWRadiation RMSE Score</option
+        >
+      </select>
+      <select id="RegionOption" onchange="colorTable()">
+        <option value="global" selected="selected">Global - Land</option>
+        <option value="globe">Global - All</option>
+        <option value="southamericaamazon">South America - Amazon</option>
+      </select>
+
+      <form>
+        <fieldset
+          data-role="controlgroup"
+          data-type="horizontal"
+          data-mini="True"
+        >
+          <input
+            type="checkbox"
+            name="colorblind"
+            id="colorblind"
+            checked
+            onchange="colorTable()"
+          />
+          <label for="colorblind">Colorblind colors</label>
+        </fieldset>
+      </form>
+
+      <center>
+        <table class="table-header-rotated" id="scoresTable">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="rotate"><div>bcc-csm1-1</div></th>
+              <th class="rotate"><div>bcc-csm1-1-m</div></th>
+              <th class="rotate"><div>CESM1-BGC</div></th>
+              <th class="rotate"><div>GFDL-ESM2G</div></th>
+              <th class="rotate"><div>inmcm4</div></th>
+              <th class="rotate"><div>IPSL-CM5A-LR</div></th>
+              <th class="rotate"><div>MIROC-ESM</div></th>
+              <th class="rotate"><div>MPI-ESM-LR</div></th>
+              <th class="rotate"><div>NorESM1-ME</div></th>
+              <th class="rotate"><div>MeanCMIP5</div></th>
+              <th class="rotate"><div>BCC-CSM2-MR</div></th>
+              <th class="rotate"><div>BCC-ESM1</div></th>
+              <th class="rotate"><div>CESM2</div></th>
+              <th class="rotate"><div>CESM2-WACCM</div></th>
+              <th class="rotate"><div>CNRM-CM6-1</div></th>
+              <th class="rotate"><div>CNRM-ESM2-1</div></th>
+              <th class="rotate"><div>E3SMv1-CTC</div></th>
+              <th class="rotate"><div>GISS-E2-1-G</div></th>
+              <th class="rotate"><div>GISS-E2-1-H</div></th>
+              <th class="rotate"><div>IPSL-CM6A-LR</div></th>
+              <th class="rotate"><div>MIROC6</div></th>
+              <th class="rotate"><div>MRI-ESM2-0</div></th>
+              <th class="rotate"><div>MeanCMIP6</div></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="parent" bgcolor="#ECFFE6">
+              <td class="row-label"></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+
+            <tr class="child_variable" bgcolor="#ECFFE6">
+              <td class="row-label"></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr class="child_dataset" bgcolor="#ECFFE6">
+              <td class="row-label"></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </center>
+    </div>
+  </body>
+</html>

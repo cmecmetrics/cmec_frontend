@@ -1,6 +1,12 @@
-import React, { useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
+import * as d3 from "d3";
+import { json } from "d3-request";
+import styled, { createGlobalStyle } from "styled-components";
+import axios from "axios";
+import useAxios from "axios-hooks";
 import logo from "./logo.svg";
 import "./App.css";
+import { scaleOrdinal } from "d3-scale";
 import {
   Button,
   ButtonGroup,
@@ -16,6 +22,83 @@ import {
   DropdownMenu,
   DropdownItem
 } from "reactstrap";
+
+const width = 1000;
+const height = 600;
+const black = "#333333";
+const title = "My Data Visualization";
+const scalarColorScale = { "Ecosystem and Carbon Cycle": "#ECFFE6" };
+
+export const GlobalStyle = createGlobalStyle`
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,600&display=swap');
+
+body {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  color: ${black};
+  padding: 0;
+  margin: 0;
+}
+
+table.table-header-rotated {
+  border-collapse: collapse;
+}
+
+th.rotate {
+  height: 82px;
+  white-space: nowrap;
+  font-weight: normal;
+}
+th.rotate > div {
+  transform: translate(10px, 36px) rotate(-45deg);
+  width: 0px;
+}
+th.rotate > div > span {
+}
+`;
+
+export const Container = styled.div`
+  display: grid;
+  grid-template-rows: 30px 1fr;
+  align-items: center;
+  .title {
+    font-size: 25px;
+    font-weight: 600;
+    padding-left: 20px;
+  }
+`;
+
+export const Visualization = styled.div`
+  justify-self: center;
+  width: ${width}px;
+  height: ${height}px;
+  // 6
+`;
+
+const modelNames = [
+  "bcc-csm1-1",
+  "bcc-csm1-1-m",
+  "CESM1-BGC",
+  "GFDL-ESM2G",
+  "inmcm4",
+  "IPSL-CM5A-LR",
+  "MIROC-ESM",
+  "MPI-ESM-LR",
+  "NorESM1-ME",
+  "MeanCMIP5",
+  "BCC-CSM2-MR",
+  "BCC-ESM1",
+  "CESM2",
+  "CESM2-WACCM",
+  "CNRM-CM6-1",
+  "CNRM-ESM2-1",
+  "E3SMv1-CTC",
+  "GISS-E2-1-G",
+  "GISS-E2-1-H",
+  "IPSL-CM6A-LR",
+  "MIROC6",
+  "MRI-ESM2-0",
+  "MeanCMIP6"
+];
 
 const scalarOptions = [
   "Spatial Distribution Score",
@@ -70,29 +153,77 @@ var GnRd = [
 function App() {
   // Declare a new state variable, which we'll call "count"
   // const [scores, setScores] = useState(["Spatial Distribution Score"]);
+
+  const visualization = useRef(null);
+  const [{ data, loading, error }, refetch] = useAxios("test.json");
+
+  if (!loading) {
+    console.log("json data:", data);
+    console.log("data type:", typeof data);
+    for (let h1 in data) {
+      console.log("h1:", h1);
+    }
+  }
+
+  let dataKeys = d3.keys(data);
+  console.log("dataKeys:", dataKeys);
+
+  // d3.json("test.json", function(d) {
+  //   console.log("data d:", d);
+  // });
+
+  if (loading) return "loading...";
   return (
     <div className="App">
+      <GlobalStyle />
       <Navbar color="light" light expand="md">
         <NavbarBrand href="/">CMEC</NavbarBrand>
       </Navbar>
       <h2>Scalars</h2>
-      <div class="radio">
+      <div className="radio">
         {scalarOptions.map((scalar, i) => (
-          <label class="radio-inline scalarLabel">
-            <input type="radio" class="scalarRadio" name="optradio" />
+          <label key={scalar} className="radio-inline scalarLabel">
+            <input
+              key={scalar}
+              type="radio"
+              className="scalarRadio"
+              name="optradio"
+            />
             {scalar}
           </label>
         ))}
       </div>
       <h2>Regions</h2>
-      <div class="radio">
+      <div className="radio">
         {regionOptions.map((region, i) => (
-          <label class="radio-inline scalarLabel">
-            <input type="radio" class="scalarRadio" name="optradio" />
+          <label key={region} className="radio-inline scalarLabel">
+            <input type="radio" className="scalarRadio" name="optradio" />
             {region}
           </label>
         ))}
       </div>
+      <Container>
+        <div className="title">{title}</div>
+        <table className="table-header-rotated">
+          <thead>
+            <tr>
+              <th />
+              {modelNames.map((model, i) => (
+                <th key={model} className="rotate">
+                  <div>{model}</div>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {Object.keys(data).map((oneKey, i) => {
+              console.log("oneKey", oneKey);
+              // return <tr key={i}>{data[oneKey]}</tr>;
+            })}
+          </tbody>
+        </table>
+        {/*10*/}
+      </Container>
     </div>
   );
 }

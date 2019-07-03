@@ -159,60 +159,118 @@ var GnRd = [
   "#5aae61",
   "#1b7837"
 ];
-// var cmap = GnRd;
+
+var cmap = PuOr;
 // if (document.getElementById("colorblind").checked) cmap = PuOr;
+
+function mapToColor(value, cmap) {
+  var clr = "#808080";
+  var nc = cmap.length;
+  if (value > -900) {
+    var ae = Math.abs(value);
+    var ind;
+    if (ae >= 0.25) {
+      ind = Math.round(2 * value + 4);
+    } else {
+      ind = Math.round(4 * value + 4);
+    }
+  }
+  //Calculated index for colormap
+  ind = Math.min(Math.max(ind, 0), nc - 1);
+  console.log("color index:", ind);
+  clr = isNaN(ind) ? clr : cmap[ind];
+  // console.log("clr:", clr)
+  return clr;
+}
 
 function App() {
   // Declare a new state variable, which we'll call "count"
   // const [scores, setScores] = useState(["Spatial Distribution Score"]);
 
   const visualization = useRef(null);
-  const [{ data, loading, error }, refetch] = useAxios("test.json");
+  // const [{ data, loading, error }, refetch] = useAxios("test.json");
   const [scores, setScores] = useState("Overall Score");
   const [selectedRegion, setSelectedRegion] = useState({
     region: "Global - Land",
     value: "global"
   });
+  const [rows, setRows] = useState("");
 
-  if (!loading) {
-    console.log("json data:", data);
-    console.log("data type:", typeof data);
-    for (let h1 in data) {
-      console.log("h1:", h1);
-    }
-    let rows = Object.keys(data).map((row, i) => {
-      console.log("row:", row);
-      console.log("scores:", scores);
-      console.log("selectedRegion:", selectedRegion);
-      let scalar_name = `${scores} ${selectedRegion.value}`;
-      console.log("scalar_name:", scalar_name);
-      // let columns = data[row][scalar_name]
-      let columns = data[row][scalar_name].map(column => {
-        console.log("column:", column);
+  // if (!loading) {
+  //   console.log("json data:", data);
+  //   console.log("data type:", typeof data);
+  //   for (let h1 in data) {
+  //     console.log("h1:", h1);
+  //   }
+  //   let tableRows = Object.keys(data).map((row, i) => {
+  //     console.log("row:", row);
+  //     console.log("scores:", scores);
+  //     console.log("selectedRegion:", selectedRegion);
+  //     let scalar_name = `${scores} ${selectedRegion.value}`;
+  //     console.log("scalar_name:", scalar_name);
+  //     // let columns = data[row][scalar_name]
+  //     let columns = data[row][scalar_name];
+  //     return (
+  //       <tr
+  //         className="parent"
+  //         key={i}
+  //         style={{ backgroundColor: scalarColorScale[row] }}
+  //       >
+  //         <td className="row-label">{row}</td>
+  //         {columns.map((column, i) => {
+  //           console.log("column:", mapToColor(column, cmap));
+  //           return <td style={{ backgroundColor: mapToColor(column, cmap) }} />;
+  //         })}
+  //       </tr>
+  //     );
+  //   });
+
+  //   console.log("rows:", rows);
+  // }
+
+  useEffect(() => {
+    axios.get("test.json").then(response => {
+      console.log("data:", response.data);
+      let tableRows = Object.keys(response.data).map((row, i) => {
+        console.log("row:", row);
+        console.log("scores:", scores);
+        console.log("selectedRegion:", selectedRegion);
+        let scalar_name = `${scores} ${selectedRegion.value}`;
+        console.log("scalar_name:", scalar_name);
+        // let columns = data[row][scalar_name]
+        let columns = response.data[row][scalar_name];
+        let children = response.data[row].children;
+        console.log("children:", children);
+        // TODO: Break creating Table Rows into it's own component; Create list to hold the table rows returned from the function; Pass in parent row and loop over children rows passing them in to the function
         return (
           <tr
             className="parent"
             key={i}
             style={{ backgroundColor: scalarColorScale[row] }}
           >
-            <td>{comment.comment_id}</td>
-            <td>{comment.author}</td>
-            <td>{comment.body}</td>
-            <td>{post.title}</td>
+            <td className="row-label">{row}</td>
+            {columns.map((column, i) => {
+              console.log("column:", mapToColor(column, cmap));
+              return (
+                <td style={{ backgroundColor: mapToColor(column, cmap) }} />
+              );
+            })}
           </tr>
         );
       });
+      console.log("rows:", rows);
+      setRows(tableRows);
     });
-  }
+  }, []);
 
-  let dataKeys = d3.keys(data);
-  console.log("dataKeys:", dataKeys);
+  // let dataKeys = d3.keys(data);
+  // console.log("dataKeys:", dataKeys);
 
   // d3.json("test.json", function(d) {
   //   console.log("data d:", d);
   // });
 
-  if (loading) return "loading...";
+  // if (loading) return "loading...";
   return (
     <div className="App">
       <GlobalStyle />
@@ -266,23 +324,7 @@ function App() {
               ))}
             </tr>
           </thead>
-          <tbody>
-            {Object.keys(data).map((oneKey, i) => {
-              let scalar_name = `${scores} ${selectedRegion.value}`;
-
-              // <tr key={oneKey}>{oneKey}</tr>;n
-              console.log("data[oneKey]:", data[oneKey][scalar_name]);
-              return (
-                <tr
-                  className="parent"
-                  key={i}
-                  style={{ backgroundColor: scalarColorScale[oneKey] }}
-                >
-                  <td className="row-label">{oneKey}</td>
-                </tr>
-              );
-            })}
-          </tbody>
+          <tbody>{rows}</tbody>
         </table>
         {/*10*/}
       </Container>

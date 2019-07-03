@@ -193,7 +193,7 @@ function App() {
           <tr
             className="parent"
             key={i}
-            style={{ backgroundColor: scalarColorScale[oneKey] }}
+            style={{ backgroundColor: scalarColorScale[row] }}
           >
             <td>{comment.comment_id}</td>
             <td>{comment.author}</td>
@@ -270,7 +270,7 @@ function App() {
             {Object.keys(data).map((oneKey, i) => {
               let scalar_name = `${scores} ${selectedRegion.value}`;
 
-              // <tr key={oneKey}>{oneKey}</tr>;
+              // <tr key={oneKey}>{oneKey}</tr>;n
               console.log("data[oneKey]:", data[oneKey][scalar_name]);
               return (
                 <tr

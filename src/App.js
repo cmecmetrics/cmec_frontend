@@ -27,7 +27,11 @@ const width = 1000;
 const height = 600;
 const black = "#333333";
 const title = "My Data Visualization";
-const scalarColorScale = { "Ecosystem and Carbon Cycle": "#ECFFE6" };
+const scalarColorScale = {
+  "Ecosystem and Carbon Cycle": "#ECFFE6",
+  "Hydrology Cycle": "#E6F9FF",
+  "Radiation and Energy Cycle": "#FFECE6"
+};
 
 export const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,600&display=swap');
@@ -53,6 +57,14 @@ th.rotate > div {
   width: 0px;
 }
 th.rotate > div > span {
+}
+td {
+  height: 25px;
+  width: 25px;
+  border: 1px solid;
+}
+td.row-label {
+  width: 325px;
 }
 `;
 
@@ -119,11 +131,11 @@ const scalarOptions = [
   "SurfaceNetSWRadiation RMSE Score"
 ];
 
-const regionOptions = [
-  "Global - Land",
-  "Global - All",
-  "South America - Amazon"
-];
+const regionOptions = {
+  "Global - Land": "global",
+  "Global - All": "globe",
+  "South America - Amazon": "southamericaamazon"
+};
 
 var PuOr = [
   "#b35806",
@@ -156,6 +168,11 @@ function App() {
 
   const visualization = useRef(null);
   const [{ data, loading, error }, refetch] = useAxios("test.json");
+  const [scores, setScores] = useState("Overall Score");
+  const [selectedRegion, setSelectedRegion] = useState({
+    region: "Global - Land",
+    value: "global"
+  });
 
   if (!loading) {
     console.log("json data:", data);
@@ -163,6 +180,29 @@ function App() {
     for (let h1 in data) {
       console.log("h1:", h1);
     }
+    let rows = Object.keys(data).map((row, i) => {
+      console.log("row:", row);
+      console.log("scores:", scores);
+      console.log("selectedRegion:", selectedRegion);
+      let scalar_name = `${scores} ${selectedRegion.value}`;
+      console.log("scalar_name:", scalar_name);
+      // let columns = data[row][scalar_name]
+      let columns = data[row][scalar_name].map(column => {
+        console.log("column:", column);
+        return (
+          <tr
+            className="parent"
+            key={i}
+            style={{ backgroundColor: scalarColorScale[oneKey] }}
+          >
+            <td>{comment.comment_id}</td>
+            <td>{comment.author}</td>
+            <td>{comment.body}</td>
+            <td>{post.title}</td>
+          </tr>
+        );
+      });
+    });
   }
 
   let dataKeys = d3.keys(data);
@@ -186,8 +226,9 @@ function App() {
             <input
               key={scalar}
               type="radio"
-              className="scalarRadio"
-              name="optradio"
+              className="radioLabel"
+              name="scalarRadio"
+              checked={scores === scalar}
             />
             {scalar}
           </label>
@@ -195,12 +236,22 @@ function App() {
       </div>
       <h2>Regions</h2>
       <div className="radio">
-        {regionOptions.map((region, i) => (
-          <label key={region} className="radio-inline scalarLabel">
-            <input type="radio" className="scalarRadio" name="optradio" />
-            {region}
-          </label>
-        ))}
+        {Object.keys(regionOptions).map((region, i) => {
+          console.log("region:", region);
+          console.log("region value:", regionOptions[region]);
+          return (
+            <label key={region} className="radio-inline scalarLabel">
+              <input
+                type="radio"
+                className="radioLabel"
+                name="regionRadio"
+                value={regionOptions[region]}
+                checked={selectedRegion["region"] === region}
+              />
+              {region}
+            </label>
+          );
+        })}
       </div>
       <Container>
         <div className="title">{title}</div>
@@ -217,8 +268,19 @@ function App() {
           </thead>
           <tbody>
             {Object.keys(data).map((oneKey, i) => {
-              console.log("oneKey", oneKey);
-              // return <tr key={i}>{data[oneKey]}</tr>;
+              let scalar_name = `${scores} ${selectedRegion.value}`;
+
+              // <tr key={oneKey}>{oneKey}</tr>;
+              console.log("data[oneKey]:", data[oneKey][scalar_name]);
+              return (
+                <tr
+                  className="parent"
+                  key={i}
+                  style={{ backgroundColor: scalarColorScale[oneKey] }}
+                >
+                  <td className="row-label">{oneKey}</td>
+                </tr>
+              );
             })}
           </tbody>
         </table>

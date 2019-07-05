@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { Fragment, useRef, useEffect, useState } from "react";
 import * as d3 from "d3";
 import { json } from "d3-request";
 import styled, { createGlobalStyle } from "styled-components";
@@ -183,6 +183,49 @@ function mapToColor(value, cmap) {
   return clr;
 }
 
+// function colorizeRow(row, table, scores, selectedRegion) {
+//   let scalar_name = `${scores} ${selectedRegion.value}`;
+//   console.log("scalar_name:", scalar_name);
+//   let columns = response.data[row][scalar_name];
+//   let newRow = table.insertRow(-1);
+
+// }
+
+function TableRow(props) {
+  console.log("data:", props.data);
+  let columns = props.data[props.row][props.scalar];
+  let children = props.data[props.row].children;
+  console.log("children:", children);
+  return (
+    <Fragment>
+      <tr
+        className="parent"
+        key={props.index}
+        style={{ backgroundColor: scalarColorScale[props.row] }}
+      >
+        <td className="row-label">{props.row}</td>
+        {columns.map((column, i) => {
+          console.log("column:", mapToColor(column, cmap));
+          return <td style={{ backgroundColor: mapToColor(column, cmap) }} />;
+        })}
+      </tr>
+
+      {Object.keys(children).map((child, j) => {
+        console.log("child:", child);
+        return (
+          <TableRow
+            data={props.data[props.row].children}
+            row={child}
+            columns={columns}
+            index={j}
+            scalar={props.scalar}
+          />
+        );
+      })}
+    </Fragment>
+  );
+}
+
 function App() {
   // Declare a new state variable, which we'll call "count"
   // const [scores, setScores] = useState(["Spatial Distribution Score"]);
@@ -229,33 +272,30 @@ function App() {
   // }
 
   useEffect(() => {
-    axios.get("test.json").then(response => {
+    var table = document.getElementById("scoresTable");
+    axios.get("scalars_test.json").then(response => {
       console.log("data:", response.data);
       let tableRows = Object.keys(response.data).map((row, i) => {
         console.log("row:", row);
         console.log("scores:", scores);
         console.log("selectedRegion:", selectedRegion);
+        // colorizeRow(row, table, scores, selectedRegion);
         let scalar_name = `${scores} ${selectedRegion.value}`;
         console.log("scalar_name:", scalar_name);
         // let columns = data[row][scalar_name]
         let columns = response.data[row][scalar_name];
         let children = response.data[row].children;
         console.log("children:", children);
+
         // TODO: Break creating Table Rows into it's own component; Create list to hold the table rows returned from the function; Pass in parent row and loop over children rows passing them in to the function
         return (
-          <tr
-            className="parent"
-            key={i}
-            style={{ backgroundColor: scalarColorScale[row] }}
-          >
-            <td className="row-label">{row}</td>
-            {columns.map((column, i) => {
-              console.log("column:", mapToColor(column, cmap));
-              return (
-                <td style={{ backgroundColor: mapToColor(column, cmap) }} />
-              );
-            })}
-          </tr>
+          <TableRow
+            data={response.data}
+            row={row}
+            columns={columns}
+            index={i}
+            scalar={scalar_name}
+          />
         );
       });
       console.log("rows:", rows);
@@ -313,7 +353,7 @@ function App() {
       </div>
       <Container>
         <div className="title">{title}</div>
-        <table className="table-header-rotated">
+        <table id="scoresTable" className="table-header-rotated">
           <thead>
             <tr>
               <th />

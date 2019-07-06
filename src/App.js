@@ -206,7 +206,9 @@ function TableRow(props) {
         <td className="row-label">{props.row}</td>
         {columns.map((column, i) => {
           console.log("column:", mapToColor(column, cmap));
-          return <td style={{ backgroundColor: mapToColor(column, cmap) }} />;
+          return (
+            <td key={i} style={{ backgroundColor: mapToColor(column, cmap) }} />
+          );
         })}
       </tr>
 
@@ -214,6 +216,7 @@ function TableRow(props) {
         console.log("child:", child);
         return (
           <TableRow
+            key={props.row + " " + child}
             data={props.data[props.row].children}
             row={child}
             columns={columns}
@@ -290,6 +293,7 @@ function App() {
         // TODO: Break creating Table Rows into it's own component; Create list to hold the table rows returned from the function; Pass in parent row and loop over children rows passing them in to the function
         return (
           <TableRow
+            key={row}
             data={response.data}
             row={row}
             columns={columns}
@@ -366,7 +370,6 @@ function App() {
           </thead>
           <tbody>{rows}</tbody>
         </table>
-        {/*10*/}
       </Container>
     </div>
   );

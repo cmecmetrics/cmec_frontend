@@ -30,7 +30,9 @@ const title = "My Data Visualization";
 const scalarColorScale = {
   "Ecosystem and Carbon Cycle": "#ECFFE6",
   "Hydrology Cycle": "#E6F9FF",
-  "Radiation and Energy Cycle": "#FFECE6"
+  "Radiation and Energy Cycle": "#FFECE6",
+  Forcings: "#EDEDED",
+  Relationships: "#fff2e5"
 };
 
 export const GlobalStyle = createGlobalStyle`
@@ -191,32 +193,50 @@ function mapToColor(value, cmap) {
 
 // }
 
+function toggleChildrenRow(e) {
+  console.log("parent row clicked", e);
+}
+
 function TableRow(props) {
   console.log("data:", props.data);
+  // console.log("level:", props.level);
   let columns = props.data[props.row][props.scalar];
   let children = props.data[props.row].children;
   console.log("children:", children);
   return (
     <Fragment>
       <tr
-        className="parent"
+        className={props.level}
         key={props.index}
-        style={{ backgroundColor: scalarColorScale[props.row] }}
+        style={{
+          backgroundColor: props.bgColor,
+          display: props.level.includes("childDataset") ? "none" : "table-row"
+        }}
+        onClick={toggleChildrenRow}
       >
         <td className="row-label">{props.row}</td>
         {columns.map((column, i) => {
           console.log("column:", mapToColor(column, cmap));
           return (
-            <td key={i} style={{ backgroundColor: mapToColor(column, cmap) }} />
+            <td
+              key={i}
+              style={{
+                backgroundColor: mapToColor(column, cmap)
+              }}
+            />
           );
         })}
       </tr>
 
       {Object.keys(children).map((child, j) => {
-        console.log("child:", child);
+        // console.log("child:", child);
+        let childLevel =
+          props.level === "parent" ? "childVariable" : "childDataset";
         return (
           <TableRow
             key={props.row + " " + child}
+            level={`${childLevel} ${props.row}`}
+            bgColor={props.bgColor}
             data={props.data[props.row].children}
             row={child}
             columns={columns}
@@ -294,6 +314,8 @@ function App() {
         return (
           <TableRow
             key={row}
+            level="parent"
+            bgColor={scalarColorScale[row]}
             data={response.data}
             row={row}
             columns={columns}
@@ -307,14 +329,6 @@ function App() {
     });
   }, []);
 
-  // let dataKeys = d3.keys(data);
-  // console.log("dataKeys:", dataKeys);
-
-  // d3.json("test.json", function(d) {
-  //   console.log("data d:", d);
-  // });
-
-  // if (loading) return "loading...";
   return (
     <div className="App">
       <GlobalStyle />

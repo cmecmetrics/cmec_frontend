@@ -8,6 +8,7 @@ import logo from "./logo.svg";
 import Header from "./Header.js";
 import TableRow from "./TableRow.js";
 import Scalars from "./Scalars.js";
+import Regions from "./Regions.js";
 import "./App.css";
 import { scaleOrdinal } from "d3-scale";
 import {
@@ -229,25 +230,7 @@ function App() {
       <GlobalStyle />
       <Header />
       <Scalars scalars={scalarOptions} scores={scores} />
-      <h2>Regions</h2>
-      <div className="radio">
-        {Object.keys(regionOptions).map((region, i) => {
-          console.log("region:", region);
-          console.log("region value:", regionOptions[region]);
-          return (
-            <label key={region} className="radio-inline scalarLabel">
-              <input
-                type="radio"
-                className="radioLabel"
-                name="regionRadio"
-                value={regionOptions[region]}
-                checked={selectedRegion["region"] === region}
-              />
-              {region}
-            </label>
-          );
-        })}
-      </div>
+      <Regions regionOptions={regionOptions} selectedRegion={selectedRegion} />
       <Container>
         <div className="title">{title}</div>
         <table id="scoresTable" className="table-header-rotated">

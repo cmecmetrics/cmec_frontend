@@ -5,18 +5,13 @@ import styled, { createGlobalStyle } from "styled-components";
 import axios from "axios";
 import useAxios from "axios-hooks";
 import logo from "./logo.svg";
+import Header from "./Header.js";
 import "./App.css";
 import { scaleOrdinal } from "d3-scale";
 import {
   Button,
   ButtonGroup,
   Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -194,7 +189,13 @@ function mapToColor(value, cmap) {
 // }
 
 function toggleChildrenRow(e) {
-  console.log("parent row clicked", e);
+  console.log("parent row clicked", e.currentTarget.dataset.category);
+  const category = e.currentTarget.dataset.category;
+  const childRows = document.getElementsByClassName(
+    `childVariable ${category}`
+  );
+  childRows.forEach(el => console.log("display:", el.style.display));
+  console.log("childRows:", childRows);
 }
 
 function TableRow(props) {
@@ -208,6 +209,7 @@ function TableRow(props) {
       <tr
         className={props.level}
         key={props.index}
+        data-category={props.row}
         style={{
           backgroundColor: props.bgColor,
           display: props.level.includes("childDataset") ? "none" : "table-row"
@@ -332,9 +334,7 @@ function App() {
   return (
     <div className="App">
       <GlobalStyle />
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">CMEC</NavbarBrand>
-      </Navbar>
+      <Header />
       <h2>Scalars</h2>
       <div className="radio">
         {scalarOptions.map((scalar, i) => (

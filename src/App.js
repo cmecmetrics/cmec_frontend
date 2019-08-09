@@ -7,6 +7,7 @@ import useAxios from "axios-hooks";
 import logo from "./logo.svg";
 import Header from "./Header.js";
 import TableRow from "./TableRow.js";
+import Scalars from "./Scalars.js";
 import "./App.css";
 import { scaleOrdinal } from "d3-scale";
 import {
@@ -227,21 +228,7 @@ function App() {
     <div className="App">
       <GlobalStyle />
       <Header />
-      <h2>Scalars</h2>
-      <div className="radio">
-        {scalarOptions.map((scalar, i) => (
-          <label key={scalar} className="radio-inline scalarLabel">
-            <input
-              key={scalar}
-              type="radio"
-              className="radioLabel"
-              name="scalarRadio"
-              checked={scores === scalar}
-            />
-            {scalar}
-          </label>
-        ))}
-      </div>
+      <Scalars scalars={scalarOptions} scores={scores} />
       <h2>Regions</h2>
       <div className="radio">
         {Object.keys(regionOptions).map((region, i) => {

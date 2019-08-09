@@ -9,6 +9,7 @@ import Header from "./Header.js";
 import TableRow from "./TableRow.js";
 import Scalars from "./Scalars.js";
 import Regions from "./Regions.js";
+import Table from "./Table.js";
 import "./App.css";
 import { scaleOrdinal } from "d3-scale";
 import {
@@ -66,17 +67,6 @@ td {
 td.row-label {
   width: 325px;
 }
-`;
-
-export const Container = styled.div`
-  display: grid;
-  grid-template-rows: 30px 1fr;
-  align-items: center;
-  .title {
-    font-size: 25px;
-    font-weight: 600;
-    padding-left: 20px;
-  }
 `;
 
 export const Visualization = styled.div`
@@ -231,22 +221,7 @@ function App() {
       <Header />
       <Scalars scalars={scalarOptions} scores={scores} />
       <Regions regionOptions={regionOptions} selectedRegion={selectedRegion} />
-      <Container>
-        <div className="title">{title}</div>
-        <table id="scoresTable" className="table-header-rotated">
-          <thead>
-            <tr>
-              <th />
-              {modelNames.map((model, i) => (
-                <th key={model} className="rotate">
-                  <div>{model}</div>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>{rows}</tbody>
-        </table>
-      </Container>
+      <Table title={title} modelNames={modelNames} rows={rows} />
     </div>
   );
 }

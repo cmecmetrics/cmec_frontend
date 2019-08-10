@@ -58,12 +58,22 @@ function mapToColor(value, cmap) {
 
 function toggleChildrenRow(e) {
   console.log("parent row clicked", e.currentTarget.dataset.category);
+  console.log("parent row class", e.currentTarget.className);
   const category = e.currentTarget.dataset.category;
+  let childLevel =
+    e.currentTarget.className === "parent" ? "childVariable" : "childDataset";
+  console.log("childLevel:", childLevel);
   const childRows = document.getElementsByClassName(
-    `childVariable ${category}`
+    `${childLevel} ${category}`
   );
-  childRows.forEach(el => console.log("display:", el.style.display));
   console.log("childRows:", childRows);
+  for (var dataset of childRows) {
+    if (dataset.style.display === "none") {
+      dataset.style.display = "table-row";
+    } else {
+      dataset.style.display = "none";
+    }
+  }
 }
 
 function TableRow(props) {

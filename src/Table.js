@@ -15,7 +15,8 @@ export const Container = styled.div`
 function Table(props) {
   return (
     <Container>
-      <div className="title">{props.title}</div>
+      {/* Leaving this empty div because deleting it somehow breaks the layout */}
+      <div className="title" />
       <table id="scoresTable" className="table-header-rotated">
         <thead>
           <tr>

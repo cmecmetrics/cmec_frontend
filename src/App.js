@@ -183,11 +183,11 @@ function App() {
   useEffect(() => {
     var table = document.getElementById("scoresTable");
     axios.get("scalars_test.json").then(response => {
-      console.log("data:", response.data);
+      // console.log("data:", response.data);
       let tableRows = Object.keys(response.data).map((row, i) => {
-        console.log("row:", row);
-        console.log("scores:", scores);
-        console.log("selectedRegion:", selectedRegion);
+        // console.log("row:", row);
+        // console.log("scores:", scores);
+        // console.log("selectedRegion:", selectedRegion);
         // colorizeRow(row, table, scores, selectedRegion);
         let scalar_name = `${scores} ${selectedRegion.value}`;
         console.log("scalar_name:", scalar_name);
@@ -207,6 +207,7 @@ function App() {
             columns={columns}
             index={i}
             scalar={scalar_name}
+            models={modelNames}
           />
         );
       });

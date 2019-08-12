@@ -1,5 +1,4 @@
 import React, { Fragment, useRef, useEffect, useState } from "react";
-
 import {
   Button,
   ButtonGroup,
@@ -7,7 +6,8 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  Tooltip
 } from "reactstrap";
 
 var PuOr = [
@@ -50,7 +50,7 @@ function mapToColor(value, cmap) {
   }
   //Calculated index for colormap
   ind = Math.min(Math.max(ind, 0), nc - 1);
-  console.log("color index:", ind);
+  // console.log("color index:", ind);
   clr = isNaN(ind) ? clr : cmap[ind];
   // console.log("clr:", clr)
   return clr;
@@ -77,11 +77,11 @@ function toggleChildrenRow(e) {
 }
 
 function TableRow(props) {
-  console.log("data:", props.data);
+  // console.log("data:", props.data);
   // console.log("level:", props.level);
   let columns = props.data[props.row][props.scalar];
   let children = props.data[props.row].children;
-  console.log("children:", children);
+  // console.log("children:", children);
   return (
     <Fragment>
       <tr
@@ -96,13 +96,16 @@ function TableRow(props) {
       >
         <td className="row-label">{props.row}</td>
         {columns.map((column, i) => {
-          console.log("column:", mapToColor(column, cmap));
+          // console.log("column:", mapToColor(column, cmap));
           return (
             <td
               key={i}
+              id={`${props.row.split(" ").join("_")}_${props.models[i]}`}
+              data-score={column}
               style={{
                 backgroundColor: mapToColor(column, cmap)
               }}
+              title={column}
             />
           );
         })}
@@ -122,6 +125,7 @@ function TableRow(props) {
             columns={columns}
             index={j}
             scalar={props.scalar}
+            models={props.models}
           />
         );
       })}

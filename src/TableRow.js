@@ -68,6 +68,7 @@ function handleMissingData(models) {
   return new Array(models.length).fill(-999);
 }
 
+
 function TableRow(props) {
   let columns = props.data[props.row][props.scalar];
   if (typeof columns === "undefined") {

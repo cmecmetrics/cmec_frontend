@@ -1,14 +1,4 @@
-import React, { Fragment, useRef, useEffect, useState } from "react";
-import {
-  Button,
-  ButtonGroup,
-  Collapse,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  Tooltip
-} from "reactstrap";
+import React, { Fragment } from "react";
 
 var PuOr = [
   "#b35806",
@@ -50,23 +40,17 @@ function mapToColor(value, cmap) {
   }
   //Calculated index for colormap
   ind = Math.min(Math.max(ind, 0), nc - 1);
-  // console.log("color index:", ind);
   clr = isNaN(ind) ? clr : cmap[ind];
-  // console.log("clr:", clr)
   return clr;
 }
 
 function toggleChildrenRow(e) {
-  console.log("parent row clicked", e.currentTarget.dataset.category);
-  console.log("parent row class", e.currentTarget.className);
   const category = e.currentTarget.dataset.category;
   let childLevel =
     e.currentTarget.className === "parent" ? "childVariable" : "childDataset";
-  console.log("childLevel:", childLevel);
   const childRows = document.getElementsByClassName(
     `${childLevel} ${category}`
   );
-  console.log("childRows:", childRows);
   for (var dataset of childRows) {
     if (dataset.style.display === "none") {
       dataset.style.display = "table-row";
@@ -76,11 +60,19 @@ function toggleChildrenRow(e) {
   }
 }
 
+/**
+ * Create an array of the length of the number of models that fills each value with -999, the established placeholder
+ * for a missing value in the dataset
+ */
+function handleMissingData(models) {
+  return new Array(models.length).fill(-999);
+}
+
 function TableRow(props) {
   let columns = props.data[props.row][props.scalar];
   if (typeof columns === "undefined") {
     console.log("found missing data");
-    columns = new Array(props.models.length).fill(-999);
+    columns = handleMissingData(props.models);
   }
   let children = props.data[props.row].children;
   return (
@@ -112,7 +104,6 @@ function TableRow(props) {
       </tr>
 
       {Object.keys(children).map((child, j) => {
-        // console.log("child:", child);
         let childLevel =
           props.level === "parent" ? "childVariable" : "childDataset";
         return (

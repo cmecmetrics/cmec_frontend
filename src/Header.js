@@ -1,19 +1,5 @@
-import React, { Fragment, useRef, useEffect, useState } from "react";
-import {
-  Button,
-  ButtonGroup,
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from "reactstrap";
+import React from "react";
+import { Navbar, NavbarBrand } from "reactstrap";
 
 function Header() {
   return (

@@ -1,26 +1,12 @@
-import React, { Fragment, useRef, useEffect, useState } from "react";
-import * as d3 from "d3";
-import { json } from "d3-request";
+import React, { useEffect, useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import axios from "axios";
-import useAxios from "axios-hooks";
-import logo from "./logo.svg";
 import Header from "./Header.js";
 import TableRow from "./TableRow.js";
 import Scalars from "./Scalars.js";
 import Regions from "./Regions.js";
 import Table from "./Table.js";
 import "./App.css";
-import { scaleOrdinal } from "d3-scale";
-import {
-  Button,
-  ButtonGroup,
-  Collapse,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from "reactstrap";
 import { setGlobal, useGlobal } from "reactn";
 
 const width = 1000;
@@ -128,46 +114,21 @@ const regionOptions = {
   "South America - Amazon": "southamericaamazon"
 };
 
-// function colorizeRow(row, table, scores, selectedRegion) {
-//   let scalar_name = `${scores} ${selectedRegion.value}`;
-//   console.log("scalar_name:", scalar_name);
-//   let columns = response.data[row][scalar_name];
-//   let newRow = table.insertRow(-1);
-
-// }
-
 setGlobal({
   scalar: "Overall Score",
   region: "global"
 });
 
 function App() {
-  // Declare a new state variable, which we'll call "count"
-  // const [scores, setScores] = useState(["Spatial Distribution Score"]);
-
-  const visualization = useRef(null);
-  // const [{ data, loading, error }, refetch] = useAxios("test.json");
   const [scalar, setScalar] = useGlobal("scalar");
   const [selectedRegion, setSelectedRegion] = useGlobal("region");
   const [rows, setRows] = useState("");
-  console.log("back in top level component");
 
   useEffect(() => {
-    var table = document.getElementById("scoresTable");
-    console.log("scalar in useEffect:", scalar);
     axios.get("scalars_test.json").then(response => {
-      // console.log("data:", response.data);
       let tableRows = Object.keys(response.data).map((row, i) => {
-        console.log("row:", row);
-        // console.log("scores:", scores);
-        // console.log("selectedRegion:", selectedRegion);
-        // colorizeRow(row, table, scores, selectedRegion);
         let scalar_name = `${scalar} ${selectedRegion}`;
-        console.log("scalar_name:", scalar_name);
-        // let columns = data[row][scalar_name]
         let columns = response.data[row][scalar_name];
-        let children = response.data[row].children;
-        console.log("children:", children);
 
         return (
           <TableRow

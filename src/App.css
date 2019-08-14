@@ -54,6 +54,24 @@
 .controlColumn, .tableColumn{
   margin-top: 0.5em;
 }
+
+#colorLegendTable, .missingLegend{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.colorLegendLabel {
+  margin-left: .25em;
+}
+
+.missingLegend{
+  margin-top: 1.5em;
+}
+
+.hover {
+  font-weight: bold;
+  border: 2px solid;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

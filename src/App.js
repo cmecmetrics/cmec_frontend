@@ -6,6 +6,7 @@ import TableRow from "./TableRow.js";
 import Scalars from "./Scalars.js";
 import Regions from "./Regions.js";
 import Table from "./Table.js";
+import ColorLegend from "./ColorLegend.js";
 import "./App.css";
 import { setGlobal, useGlobal } from "reactn";
 
@@ -160,9 +161,13 @@ function App() {
           <Regions regionOptions={regionOptions} selectedRegion={selectedRegion} />
         </div>
       </div>
-      <div className="columns is-mobile is-centered tableColumn">
+      <div className="columns is-mobile is-centered is-vcentered tableColumn">
         <div className="column is-four-fifths">
           <Table title={title} modelNames={modelNames} rows={rows} />
+        </div>
+        <div className="column has-text-centered">
+          <p>Relative Scale</p>
+          <ColorLegend />
         </div>
       </div>
     </div>

@@ -77,11 +77,12 @@ function toggleChildrenRow(e) {
 }
 
 function TableRow(props) {
-  // console.log("data:", props.data);
-  // console.log("level:", props.level);
   let columns = props.data[props.row][props.scalar];
+  if (typeof columns === "undefined") {
+    console.log("found missing data");
+    columns = new Array(props.models.length).fill(-999);
+  }
   let children = props.data[props.row].children;
-  // console.log("children:", children);
   return (
     <Fragment>
       <tr
@@ -96,7 +97,6 @@ function TableRow(props) {
       >
         <td className="row-label">{props.row}</td>
         {columns.map((column, i) => {
-          // console.log("column:", mapToColor(column, cmap));
           return (
             <td
               key={i}

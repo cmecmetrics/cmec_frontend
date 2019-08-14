@@ -21,6 +21,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from "reactstrap";
+import { setGlobal, useGlobal } from "reactn";
 
 const width = 1000;
 const height = 600;
@@ -135,68 +136,39 @@ const regionOptions = {
 
 // }
 
+setGlobal({
+  scalar: "Overall Score",
+  region: { region: "Global - Land", value: "global" }
+});
+
 function App() {
   // Declare a new state variable, which we'll call "count"
   // const [scores, setScores] = useState(["Spatial Distribution Score"]);
 
   const visualization = useRef(null);
   // const [{ data, loading, error }, refetch] = useAxios("test.json");
-  const [scores, setScores] = useState("Overall Score");
-  const [selectedRegion, setSelectedRegion] = useState({
-    region: "Global - Land",
-    value: "global"
-  });
+  const [scalar, setScalar] = useGlobal("scalar");
+  const [selectedRegion, setSelectedRegion] = useGlobal("region");
   const [rows, setRows] = useState("");
-
-  // if (!loading) {
-  //   console.log("json data:", data);
-  //   console.log("data type:", typeof data);
-  //   for (let h1 in data) {
-  //     console.log("h1:", h1);
-  //   }
-  //   let tableRows = Object.keys(data).map((row, i) => {
-  //     console.log("row:", row);
-  //     console.log("scores:", scores);
-  //     console.log("selectedRegion:", selectedRegion);
-  //     let scalar_name = `${scores} ${selectedRegion.value}`;
-  //     console.log("scalar_name:", scalar_name);
-  //     // let columns = data[row][scalar_name]
-  //     let columns = data[row][scalar_name];
-  //     return (
-  //       <tr
-  //         className="parent"
-  //         key={i}
-  //         style={{ backgroundColor: scalarColorScale[row] }}
-  //       >
-  //         <td className="row-label">{row}</td>
-  //         {columns.map((column, i) => {
-  //           console.log("column:", mapToColor(column, cmap));
-  //           return <td style={{ backgroundColor: mapToColor(column, cmap) }} />;
-  //         })}
-  //       </tr>
-  //     );
-  //   });
-
-  //   console.log("rows:", rows);
-  // }
+  console.log("back in top level component");
 
   useEffect(() => {
     var table = document.getElementById("scoresTable");
+    console.log("scalar in useEffect:", scalar);
     axios.get("scalars_test.json").then(response => {
       // console.log("data:", response.data);
       let tableRows = Object.keys(response.data).map((row, i) => {
-        // console.log("row:", row);
+        console.log("row:", row);
         // console.log("scores:", scores);
         // console.log("selectedRegion:", selectedRegion);
         // colorizeRow(row, table, scores, selectedRegion);
-        let scalar_name = `${scores} ${selectedRegion.value}`;
+        let scalar_name = `${scalar} ${selectedRegion.value}`;
         console.log("scalar_name:", scalar_name);
         // let columns = data[row][scalar_name]
         let columns = response.data[row][scalar_name];
         let children = response.data[row].children;
         console.log("children:", children);
 
-        // TODO: Break creating Table Rows into it's own component; Create list to hold the table rows returned from the function; Pass in parent row and loop over children rows passing them in to the function
         return (
           <TableRow
             key={row}
@@ -211,16 +183,15 @@ function App() {
           />
         );
       });
-      console.log("rows:", rows);
       setRows(tableRows);
     });
-  }, []);
+  }, [scalar]);
 
   return (
     <div className="App">
       <GlobalStyle />
       <Header />
-      <Scalars scalars={scalarOptions} scores={scores} />
+      <Scalars scalars={scalarOptions} scores={scalar} />
       <Regions regionOptions={regionOptions} selectedRegion={selectedRegion} />
       <Table title={title} modelNames={modelNames} rows={rows} />
     </div>

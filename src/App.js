@@ -138,7 +138,7 @@ const regionOptions = {
 
 setGlobal({
   scalar: "Overall Score",
-  region: { region: "Global - Land", value: "global" }
+  region: "global"
 });
 
 function App() {
@@ -162,7 +162,7 @@ function App() {
         // console.log("scores:", scores);
         // console.log("selectedRegion:", selectedRegion);
         // colorizeRow(row, table, scores, selectedRegion);
-        let scalar_name = `${scalar} ${selectedRegion.value}`;
+        let scalar_name = `${scalar} ${selectedRegion}`;
         console.log("scalar_name:", scalar_name);
         // let columns = data[row][scalar_name]
         let columns = response.data[row][scalar_name];
@@ -185,7 +185,7 @@ function App() {
       });
       setRows(tableRows);
     });
-  }, [scalar]);
+  }, [scalar, selectedRegion]);
 
   return (
     <div className="App">

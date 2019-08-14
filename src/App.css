@@ -23,13 +23,33 @@
   color: #61dafb;
 }
 
-.scalarRadio {
+.radioLabel {
   margin-right: 5px;
   margin-left: 5px;
 }
 
 .scalarLabel {
   margin-right: 5px;
+}
+
+.parent .row-label {
+  text-align: left;
+  text-indent: 5%;
+}
+
+.childVariable .row-label {
+  text-align: left;
+  text-indent: 10%;
+}
+
+.childDataset .row-label {
+  text-align: left;
+  text-indent: 15%;
+}
+
+#scalarDiv {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @keyframes App-logo-spin {

@@ -19,7 +19,11 @@ function Scalars(props) {
     <Fragment>
       <h2>Scalars</h2>
       <div className="text-center">
-        <Select onChange={updateScalar} options={scalars} value={scalar} />
+        <Select
+          onChange={updateScalar}
+          options={scalars}
+          value={{ label: scalar, value: scalar }}
+        />
       </div>
     </Fragment>
   );

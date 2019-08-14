@@ -36,7 +36,7 @@ table.table-header-rotated {
 }
 
 th.rotate {
-  height: 82px;
+  height: 62px;
   white-space: nowrap;
   font-weight: normal;
 }
@@ -152,9 +152,19 @@ function App() {
     <div className="App">
       <GlobalStyle />
       <Header />
-      <Scalars scalars={scalarOptions} scores={scalar} />
-      <Regions regionOptions={regionOptions} selectedRegion={selectedRegion} />
-      <Table title={title} modelNames={modelNames} rows={rows} />
+      <div className="columns controlColumn">
+        <div className="column">
+          <Scalars scalars={scalarOptions} scores={scalar} />
+        </div>
+        <div className="column">
+          <Regions regionOptions={regionOptions} selectedRegion={selectedRegion} />
+        </div>
+      </div>
+      <div className="columns is-mobile is-centered tableColumn">
+        <div className="column is-four-fifths">
+          <Table title={title} modelNames={modelNames} rows={rows} />
+        </div>
+      </div>
     </div>
   );
 }

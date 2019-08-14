@@ -67,6 +67,11 @@
 .missingLegend{
   margin-top: 1.5em;
 }
+
+.hover {
+  font-weight: bold;
+  border: 2px solid;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

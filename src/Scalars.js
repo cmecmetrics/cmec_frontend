@@ -1,26 +1,28 @@
-import React, { Fragment, useRef, useEffect, useState } from "react";
-import SelectSearch from "react-select-search";
-import "./react_select_search.css";
+import React, { Fragment } from "react";
+import { useGlobal } from "reactn";
+import Select from "react-select";
 
 function Scalars(props) {
-  console.log("props.scalars:", props);
+  const [scalar, setScalar] = useGlobal("scalar");
   let scalars = [];
+
+  function updateScalar(scalar) {
+    setScalar(scalar.label);
+  }
 
   for (let scalar of props.scalars) {
     var lastIndex = scalar.lastIndexOf(" ");
     let value = scalar.substring(0, lastIndex);
-    scalars.push({ name: scalar, value: value });
+    scalars.push({ label: scalar, value: value });
   }
-  console.log("scalars:", scalars);
   return (
     <Fragment>
       <h2>Scalars</h2>
       <div className="text-center">
-        <SelectSearch
+        <Select
+          onChange={updateScalar}
           options={scalars}
-          value="Spatial Distribution"
-          name="scalars"
-          placeholder="Choose a scalar"
+          value={{ label: scalar, value: scalar }}
         />
       </div>
     </Fragment>

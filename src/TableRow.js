@@ -1,14 +1,4 @@
-import React, { Fragment, useRef, useEffect, useState } from "react";
-import {
-  Button,
-  ButtonGroup,
-  Collapse,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  Tooltip
-} from "reactstrap";
+import React, { Fragment, useState } from "react";
 
 var PuOr = [
   "#b35806",
@@ -50,23 +40,22 @@ function mapToColor(value, cmap) {
   }
   //Calculated index for colormap
   ind = Math.min(Math.max(ind, 0), nc - 1);
-  // console.log("color index:", ind);
   clr = isNaN(ind) ? clr : cmap[ind];
-  // console.log("clr:", clr)
   return clr;
 }
 
 function toggleChildrenRow(e) {
-  console.log("parent row clicked", e.currentTarget.dataset.category);
-  console.log("parent row class", e.currentTarget.className);
   const category = e.currentTarget.dataset.category;
-  let childLevel =
-    e.currentTarget.className === "parent" ? "childVariable" : "childDataset";
-  console.log("childLevel:", childLevel);
-  const childRows = document.getElementsByClassName(
-    `${childLevel} ${category}`
-  );
-  console.log("childRows:", childRows);
+  let childLevel = e.currentTarget.classList.contains("parent")
+    ? "childVariable"
+    : "childDataset";
+
+  let childRows;
+  if (childLevel === "childVariable") {
+    childRows = document.getElementsByClassName(`${category}`);
+  } else {
+    childRows = document.getElementsByClassName(`${childLevel} ${category}`);
+  }
   for (var dataset of childRows) {
     if (dataset.style.display === "none") {
       dataset.style.display = "table-row";
@@ -76,16 +65,28 @@ function toggleChildrenRow(e) {
   }
 }
 
+/**
+ * Create an array of the length of the number of models that fills each value with -999, the established placeholder
+ * for a missing value in the dataset
+ */
+function handleMissingData(models) {
+  return new Array(models.length).fill(-999);
+}
+
 function TableRow(props) {
-  // console.log("data:", props.data);
-  // console.log("level:", props.level);
   let columns = props.data[props.row][props.scalar];
+  const [hovered, setHovered] = useState(false);
+  const toggleHover = () => setHovered(!hovered);
+
+  if (typeof columns === "undefined") {
+    console.log("found missing data");
+    columns = handleMissingData(props.models);
+  }
   let children = props.data[props.row].children;
-  // console.log("children:", children);
   return (
     <Fragment>
       <tr
-        className={props.level}
+        className={`${props.level} ${hovered ? "hover" : ""}`}
         key={props.index}
         data-category={props.row}
         style={{
@@ -93,10 +94,11 @@ function TableRow(props) {
           display: props.level.includes("childDataset") ? "none" : "table-row"
         }}
         onClick={toggleChildrenRow}
+        onMouseEnter={toggleHover}
+        onMouseLeave={toggleHover}
       >
         <td className="row-label">{props.row}</td>
         {columns.map((column, i) => {
-          // console.log("column:", mapToColor(column, cmap));
           return (
             <td
               key={i}
@@ -112,7 +114,6 @@ function TableRow(props) {
       </tr>
 
       {Object.keys(children).map((child, j) => {
-        // console.log("child:", child);
         let childLevel =
           props.level === "parent" ? "childVariable" : "childDataset";
         return (

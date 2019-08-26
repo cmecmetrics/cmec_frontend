@@ -1,26 +1,14 @@
-import React, { Fragment, useRef, useEffect, useState } from "react";
-import * as d3 from "d3";
-import { json } from "d3-request";
+import React, { useEffect, useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import axios from "axios";
-import useAxios from "axios-hooks";
-import logo from "./logo.svg";
 import Header from "./Header.js";
 import TableRow from "./TableRow.js";
 import Scalars from "./Scalars.js";
 import Regions from "./Regions.js";
 import Table from "./Table.js";
+import ColorLegend from "./ColorLegend.js";
 import "./App.css";
-import { scaleOrdinal } from "d3-scale";
-import {
-  Button,
-  ButtonGroup,
-  Collapse,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from "reactstrap";
+import { setGlobal, useGlobal } from "reactn";
 
 const width = 1000;
 const height = 600;
@@ -49,7 +37,7 @@ table.table-header-rotated {
 }
 
 th.rotate {
-  height: 82px;
+  height: 62px;
   white-space: nowrap;
   font-weight: normal;
 }
@@ -127,76 +115,22 @@ const regionOptions = {
   "South America - Amazon": "southamericaamazon"
 };
 
-// function colorizeRow(row, table, scores, selectedRegion) {
-//   let scalar_name = `${scores} ${selectedRegion.value}`;
-//   console.log("scalar_name:", scalar_name);
-//   let columns = response.data[row][scalar_name];
-//   let newRow = table.insertRow(-1);
-
-// }
+setGlobal({
+  scalar: "Overall Score",
+  region: "global"
+});
 
 function App() {
-  // Declare a new state variable, which we'll call "count"
-  // const [scores, setScores] = useState(["Spatial Distribution Score"]);
-
-  const visualization = useRef(null);
-  // const [{ data, loading, error }, refetch] = useAxios("test.json");
-  const [scores, setScores] = useState("Overall Score");
-  const [selectedRegion, setSelectedRegion] = useState({
-    region: "Global - Land",
-    value: "global"
-  });
+  const [scalar, setScalar] = useGlobal("scalar");
+  const [selectedRegion, setSelectedRegion] = useGlobal("region");
   const [rows, setRows] = useState("");
 
-  // if (!loading) {
-  //   console.log("json data:", data);
-  //   console.log("data type:", typeof data);
-  //   for (let h1 in data) {
-  //     console.log("h1:", h1);
-  //   }
-  //   let tableRows = Object.keys(data).map((row, i) => {
-  //     console.log("row:", row);
-  //     console.log("scores:", scores);
-  //     console.log("selectedRegion:", selectedRegion);
-  //     let scalar_name = `${scores} ${selectedRegion.value}`;
-  //     console.log("scalar_name:", scalar_name);
-  //     // let columns = data[row][scalar_name]
-  //     let columns = data[row][scalar_name];
-  //     return (
-  //       <tr
-  //         className="parent"
-  //         key={i}
-  //         style={{ backgroundColor: scalarColorScale[row] }}
-  //       >
-  //         <td className="row-label">{row}</td>
-  //         {columns.map((column, i) => {
-  //           console.log("column:", mapToColor(column, cmap));
-  //           return <td style={{ backgroundColor: mapToColor(column, cmap) }} />;
-  //         })}
-  //       </tr>
-  //     );
-  //   });
-
-  //   console.log("rows:", rows);
-  // }
-
   useEffect(() => {
-    var table = document.getElementById("scoresTable");
     axios.get("scalars_test.json").then(response => {
-      // console.log("data:", response.data);
       let tableRows = Object.keys(response.data).map((row, i) => {
-        // console.log("row:", row);
-        // console.log("scores:", scores);
-        // console.log("selectedRegion:", selectedRegion);
-        // colorizeRow(row, table, scores, selectedRegion);
-        let scalar_name = `${scores} ${selectedRegion.value}`;
-        console.log("scalar_name:", scalar_name);
-        // let columns = data[row][scalar_name]
+        let scalar_name = `${scalar} ${selectedRegion}`;
         let columns = response.data[row][scalar_name];
-        let children = response.data[row].children;
-        console.log("children:", children);
 
-        // TODO: Break creating Table Rows into it's own component; Create list to hold the table rows returned from the function; Pass in parent row and loop over children rows passing them in to the function
         return (
           <TableRow
             key={row}
@@ -211,18 +145,31 @@ function App() {
           />
         );
       });
-      console.log("rows:", rows);
       setRows(tableRows);
     });
-  }, []);
+  }, [scalar, selectedRegion]);
 
   return (
     <div className="App">
       <GlobalStyle />
       <Header />
-      <Scalars scalars={scalarOptions} scores={scores} />
-      <Regions regionOptions={regionOptions} selectedRegion={selectedRegion} />
-      <Table title={title} modelNames={modelNames} rows={rows} />
+      <div className="columns controlColumn">
+        <div className="column">
+          <Scalars scalars={scalarOptions} scores={scalar} />
+        </div>
+        <div className="column">
+          <Regions regionOptions={regionOptions} selectedRegion={selectedRegion} />
+        </div>
+      </div>
+      <div className="columns is-mobile is-centered is-vcentered tableColumn">
+        <div className="column is-four-fifths">
+          <Table title={title} modelNames={modelNames} rows={rows} />
+        </div>
+        <div className="column has-text-centered">
+          <p>Relative Scale</p>
+          <ColorLegend />
+        </div>
+      </div>
     </div>
   );
 }

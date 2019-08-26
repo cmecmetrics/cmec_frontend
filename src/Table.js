@@ -1,5 +1,5 @@
-import React, { Fragment, useRef, useEffect, useState } from "react";
-import styled, { createGlobalStyle } from "styled-components";
+import React from "react";
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: grid;

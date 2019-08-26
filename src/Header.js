@@ -1,25 +1,19 @@
-import React, { Fragment, useRef, useEffect, useState } from "react";
-import {
-  Button,
-  ButtonGroup,
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from "reactstrap";
+import React from "react";
 
 function Header() {
   return (
-    <Navbar color="light" light expand="md">
-      <NavbarBrand href="/">CMEC</NavbarBrand>
-    </Navbar>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="https://cmec.llnl.gov/">
+          <img src="cmec_logo.png" alt="CMEC Logo" width="112" height="28" /> <span>CMEC</span>
+        </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+    </nav>
   );
 }
 

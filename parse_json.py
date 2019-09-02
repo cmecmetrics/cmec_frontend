@@ -38,6 +38,46 @@ def load_json_data():
     return scalar_data
 
 
+def refector_json(scalar_data):
+    metric_catalogues = scalar_data.keys()
+    metric_catalogues_list = list(metric_catalogues)
+    regions = set([x.split()[-1]
+                   for x in scalar_data[metric_catalogues_list[0]].keys() if x != "children"])
+
+    obj = {}
+    for region in regions:
+        obj[region] = {}
+        for catalogue in metric_catalogues:
+            obj[region][catalogue] = {}
+            for index, model in enumerate(MODEL_NAMES):
+                obj[region][catalogue][model] = {}
+                for k, v in {key.rsplit(' ', 1)[0]: value for (key, value) in scalar_data[catalogue].items() if key != 'children' and region in key}.items():
+                    # print('k:', k)
+                    # print('v:', v)
+                    obj[region][catalogue][model][k] = v[index]
+                metrics = scalar_data[catalogue]['children']
+                metrics_obj = {}
+                if metrics:
+                    for metric, metric_value in metrics.items():
+                        foo = {key.rsplit(' ', 1)[0]: value[index] for (key, value) in metric_value.items(
+                        ) if key != "children" and region in key}
+                        print('foo:', foo)
+                        obj[region][catalogue][model][metric] = foo
+                        observational_products = metric_value['children']
+                        if observational_products:
+                            products_obj = {}
+                            for observation, observation_value in observational_products.items():
+                                print("observation:", observation)
+                                product = {key.rsplit(' ', 1)[0]: value[index] for (key, value) in observation_value.items(
+                                ) if key != "children" and region in key}
+                                print("product:", product)
+                                # return
+                                obj[region][catalogue][model][metric][observation] = product
+
+    # print('obj:', obj)
+    return obj
+
+
 def reformat_json(scalar_data):
     metric_catalogues = scalar_data.keys()
     metric_catalogues_list = list(metric_catalogues)
@@ -158,10 +198,15 @@ def get_catalogue_for_all_regions(metric_catalogue):
 if __name__ == "__main__":
     # main()
     # get_catalogue_for_all_regions("Ecosystem and Carbon Cycle")
-    get_all_scores_for_model_by_region("bcc-csm1-1", "southamericaamazon")
+    # get_all_scores_for_model_by_region("bcc-csm1-1", "southamericaamazon")
 
-    # with open('data_file.json') as scalar_json:
-    #     scalar_data = json.load(scalar_json)
+    with open('test.json') as scalar_json:
+        scalar_data = json.load(scalar_json)
+
+    test = refector_json(scalar_data)
+
+    with open("REGIONS_BY_MODEL_3.json", "w") as write_file:
+        json.dump(test, write_file)
 
     # values = extract_values(scalar_data, "inmcm4")
     # print(len(values))

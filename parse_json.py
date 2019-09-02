@@ -91,5 +91,78 @@ def main():
     write_json_file(obj)
 
 
+def extract_values(obj, key):
+    """Recursively pull values of specified key from nested JSON."""
+    arr = []
+
+    def extract(obj, arr, key):
+        """Return all matching values in an object."""
+        if isinstance(obj, dict):
+            for k, v in obj.items():
+                if isinstance(v, (dict, list)):
+                    extract(v, arr, key)
+                elif k == key:
+                    arr.append({k: v})
+        elif isinstance(obj, list):
+            for item in obj:
+                extract(item, arr, key)
+        return arr
+
+    results = extract(obj, arr, key)
+    return results
+
+
+def get_all_scores_for_model_by_region(model, region):
+    # load json object
+    with open('data_file.json') as scalar_json:
+        scalar_data = json.load(scalar_json)
+
+    output = {}
+    metric_catalogue = scalar_data[region]
+    for catalogue in metric_catalogue:
+        output[catalogue] = {}
+        scores_obj = {}
+        scores = scalar_data[region][catalogue]["scores"]
+        for key, value in scores.items():
+            scores_obj[key] = {model: value[model]}
+        output[catalogue]["scores"] = scores_obj
+        metrics = scalar_data[region][catalogue]['metrics']
+        metrics_obj = {}
+        if metrics:
+            for metric, value in metrics.items():
+                metrics_obj[metric] = {}
+                for score, score_value in value['scores'].items():
+                    metrics_obj[metric][score] = {model: score_value[model]}
+            output[catalogue]["metrics"] = metrics_obj
+
+    with open("ALL_SCORES_{}_{}.json".format(model, region), "w") as write_file:
+        json.dump(output, write_file)
+
+
+def get_catalogue_for_all_regions(metric_catalogue):
+    # load json object
+    with open('data_file.json') as scalar_json:
+        scalar_data = json.load(scalar_json)
+
+    regions = scalar_data.keys()
+
+    output = {}
+
+    for region in regions:
+        output[region] = scalar_data[region][metric_catalogue]
+
+    with open("ALL_REGIONS_{}.json".format(metric_catalogue), "w") as write_file:
+        json.dump(output, write_file)
+
+
 if __name__ == "__main__":
-    main()
+    # main()
+    # get_catalogue_for_all_regions("Ecosystem and Carbon Cycle")
+    get_all_scores_for_model_by_region("bcc-csm1-1", "southamericaamazon")
+
+    # with open('data_file.json') as scalar_json:
+    #     scalar_data = json.load(scalar_json)
+
+    # values = extract_values(scalar_data, "inmcm4")
+    # print(len(values))
+    # print("values:", values)

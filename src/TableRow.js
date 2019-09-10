@@ -46,11 +46,16 @@ function mapToColor(value, cmap) {
 
 function toggleChildrenRow(e) {
   const category = e.currentTarget.dataset.category;
-  let childLevel =
-    e.currentTarget.className === "parent" ? "childVariable" : "childDataset";
-  const childRows = document.getElementsByClassName(
-    `${childLevel} ${category}`
-  );
+  let childLevel = e.currentTarget.classList.contains("parent")
+    ? "childVariable"
+    : "childDataset";
+
+  let childRows;
+  if (childLevel === "childVariable") {
+    childRows = document.getElementsByClassName(`${category}`);
+  } else {
+    childRows = document.getElementsByClassName(`${childLevel} ${category}`);
+  }
   for (var dataset of childRows) {
     if (dataset.style.display === "none") {
       dataset.style.display = "table-row";
@@ -68,12 +73,10 @@ function handleMissingData(models) {
   return new Array(models.length).fill(-999);
 }
 
-
 function TableRow(props) {
   let columns = props.data[props.row][props.scalar];
   const [hovered, setHovered] = useState(false);
   const toggleHover = () => setHovered(!hovered);
-
 
   if (typeof columns === "undefined") {
     console.log("found missing data");
@@ -83,7 +86,7 @@ function TableRow(props) {
   return (
     <Fragment>
       <tr
-        className={`${props.level} ${hovered ? 'hover' : ''}`}
+        className={`${props.level} ${hovered ? "hover" : ""}`}
         key={props.index}
         data-category={props.row}
         style={{

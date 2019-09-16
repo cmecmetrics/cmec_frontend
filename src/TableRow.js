@@ -64,26 +64,33 @@ function toggleChildrenRow(e) {
  * Create an array of the length of the number of models that fills each value with -999, the established placeholder
  * for a missing value in the dataset
  */
-function handleMissingData(models) {
-  return new Array(models.length).fill(-999);
+function handleMissingData(models, filter = undefined) {
+  let model_object = {};
+  for (let model of models) {
+    model_object[model] = -999;
+  }
+  return model_object;
 }
 
-
 function TableRow(props) {
-  let columns = props.data[props.row][props.scalar];
+  let columns = props.columns;
   const [hovered, setHovered] = useState(false);
   const toggleHover = () => setHovered(!hovered);
-
 
   if (typeof columns === "undefined") {
     console.log("found missing data");
     columns = handleMissingData(props.models);
   }
-  let children = props.data[props.row].children;
+  let children;
+  if (props.data["metrics"]) {
+    children = props.data["metrics"];
+  } else if (props.data["observational_products"]) {
+    children = props.data["observational_products"];
+  }
   return (
     <Fragment>
       <tr
-        className={`${props.level} ${hovered ? 'hover' : ''}`}
+        className={`${props.level} ${hovered ? "hover" : ""}`}
         key={props.index}
         data-category={props.row}
         style={{
@@ -95,35 +102,53 @@ function TableRow(props) {
         onMouseLeave={toggleHover}
       >
         <td className="row-label">{props.row}</td>
-        {columns.map((column, i) => {
+        {Object.keys(columns).map((column, i) => {
           return (
             <td
               key={i}
               id={`${props.row.split(" ").join("_")}_${props.models[i]}`}
               data-score={column}
               style={{
-                backgroundColor: mapToColor(column, cmap)
+                backgroundColor: mapToColor(columns[column], cmap)
               }}
-              title={column}
+              title={columns[column]}
             />
           );
         })}
       </tr>
 
-      {Object.keys(children).map((child, j) => {
+      {Object.keys(children || {}).map((child, j) => {
         let childLevel =
           props.level === "parent" ? "childVariable" : "childDataset";
+
+        console.log("child:", child);
+        console.log("props.data:", props.data);
+        let columnData;
+        if (props.data["metrics"]) {
+          columnData = props.data["metrics"][child]["scores"][props.scalar];
+        } else if (props.data["observational_products"]) {
+          columnData =
+            props.data["observational_products"][child]["scores"][props.scalar];
+        } else {
+          columnData = props.data["scores"];
+        }
+
         return (
           <TableRow
             key={props.row + " " + child}
             level={`${childLevel} ${props.row}`}
             bgColor={props.bgColor}
-            data={props.data[props.row].children}
+            data={
+              props.data["metrics"]
+                ? props.data["metrics"][child]
+                : props.data["observational_products"][child]
+            }
             row={child}
-            columns={columns}
+            columns={columnData}
             index={j}
             scalar={props.scalar}
             models={props.models}
+            filter={props.filter}
           />
         );
       })}

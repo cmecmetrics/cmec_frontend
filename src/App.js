@@ -64,7 +64,7 @@ export const Visualization = styled.div`
   // 6
 `;
 
-const modelNames = [
+let modelNames = [
   "bcc-csm1-1",
   "bcc-csm1-1-m",
   "CESM1-BGC",
@@ -124,29 +124,47 @@ function App() {
   const [scalar, setScalar] = useGlobal("scalar");
   const [selectedRegion, setSelectedRegion] = useGlobal("region");
   const [rows, setRows] = useState("");
+  const [filter, setFilter] = useState("ALL_SCORES");
 
   useEffect(() => {
-    axios.get("scalars_test.json").then(response => {
-      let tableRows = Object.keys(response.data).map((row, i) => {
-        let scalar_name = `${scalar} ${selectedRegion}`;
-        let columns = response.data[row][scalar_name];
+    axios
+      // .get("ALL_SCORES_bcc-csm1-1_southamericaamazon.json")
+      .get("ALL_REGIONS_Ecosystem and Carbon Cycle.json")
+      // .get("sample.json")
+      // .get("scalars_test.json")
+      .then(response => {
+        let rows;
+        let responseRegion;
+        let data;
+        if (filter === "ALL_SCORES") {
+          rows = Object.keys(response.data);
+          data = response.data;
+          modelNames = ["bcc_csm1-1"];
+        } else {
+          data = response.data[selectedRegion];
+          rows = Object.keys(responseRegion);
+        }
+        let tableRows = rows.map((row, i) => {
+          console.log("row:", row);
+          let columns = data[row]["scores"][scalar];
 
-        return (
-          <TableRow
-            key={row}
-            level="parent"
-            bgColor={scalarColorScale[row]}
-            data={response.data}
-            row={row}
-            columns={columns}
-            index={i}
-            scalar={scalar_name}
-            models={modelNames}
-          />
-        );
+          return (
+            <TableRow
+              key={row}
+              level="parent"
+              bgColor={scalarColorScale[row]}
+              data={data[row]}
+              row={row}
+              columns={columns}
+              index={i}
+              scalar={scalar}
+              models={modelNames}
+              filter={filter}
+            />
+          );
+        });
+        setRows(tableRows);
       });
-      setRows(tableRows);
-    });
   }, [scalar, selectedRegion]);
 
   return (
@@ -158,7 +176,10 @@ function App() {
           <Scalars scalars={scalarOptions} scores={scalar} />
         </div>
         <div className="column">
-          <Regions regionOptions={regionOptions} selectedRegion={selectedRegion} />
+          <Regions
+            regionOptions={regionOptions}
+            selectedRegion={selectedRegion}
+          />
         </div>
       </div>
       <div className="columns is-mobile is-centered is-vcentered tableColumn">

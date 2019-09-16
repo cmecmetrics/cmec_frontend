@@ -171,8 +171,11 @@ def get_all_scores_for_model_by_region(model, region):
         if metrics:
             for metric, value in metrics.items():
                 metrics_obj[metric] = {}
+                metrics_scores_obj = {}
                 for score, score_value in value['scores'].items():
-                    metrics_obj[metric][score] = {model: score_value[model]}
+                    metrics_scores_obj[score] = {model: score_value[model]}
+                    # metrics_obj[metric][score] = {model: score_value[model]}
+                metrics_obj[metric]["scores"] = metrics_scores_obj
             output[catalogue]["metrics"] = metrics_obj
 
     with open("ALL_SCORES_{}_{}.json".format(model, region), "w") as write_file:
@@ -198,15 +201,15 @@ def get_catalogue_for_all_regions(metric_catalogue):
 if __name__ == "__main__":
     # main()
     # get_catalogue_for_all_regions("Ecosystem and Carbon Cycle")
-    # get_all_scores_for_model_by_region("bcc-csm1-1", "southamericaamazon")
+    get_all_scores_for_model_by_region("bcc-csm1-1", "southamericaamazon")
 
-    with open('test.json') as scalar_json:
-        scalar_data = json.load(scalar_json)
+    # with open('test.json') as scalar_json:
+    #     scalar_data = json.load(scalar_json)
 
-    test = refector_json(scalar_data)
+    # test = refector_json(scalar_data)
 
-    with open("REGIONS_BY_MODEL_3.json", "w") as write_file:
-        json.dump(test, write_file)
+    # with open("REGIONS_BY_MODEL_3.json", "w") as write_file:
+    #     json.dump(test, write_file)
 
     # values = extract_values(scalar_data, "inmcm4")
     # print(len(values))

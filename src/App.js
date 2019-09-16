@@ -52,8 +52,14 @@ td {
   width: 25px;
   border: 1px solid;
 }
+@media all and (min-width: 1216px) {
+  td.row-label {
+    width: 20%;
+  }
+ }
+
 td.row-label {
-  width: 325px;
+  width: 30%;
 }
 `;
 
@@ -158,14 +164,17 @@ function App() {
           <Scalars scalars={scalarOptions} scores={scalar} />
         </div>
         <div className="column">
-          <Regions regionOptions={regionOptions} selectedRegion={selectedRegion} />
+          <Regions
+            regionOptions={regionOptions}
+            selectedRegion={selectedRegion}
+          />
         </div>
       </div>
       <div className="columns is-mobile is-centered is-vcentered tableColumn">
-        <div className="column is-four-fifths">
+        <div className="column is-9-widescreen">
           <Table title={title} modelNames={modelNames} rows={rows} />
         </div>
-        <div className="column has-text-centered">
+        <div className="column is-2-widescreen has-text-centered">
           <p>Relative Scale</p>
           <ColorLegend />
         </div>

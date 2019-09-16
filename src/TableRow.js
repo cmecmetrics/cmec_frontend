@@ -75,8 +75,6 @@ function handleMissingData(models) {
 
 function TableRow(props) {
   let columns = props.data[props.row][props.scalar];
-  const [hovered, setHovered] = useState(false);
-  const toggleHover = () => setHovered(!hovered);
 
   if (typeof columns === "undefined") {
     console.log("found missing data");
@@ -86,7 +84,7 @@ function TableRow(props) {
   return (
     <Fragment>
       <tr
-        className={`${props.level} ${hovered ? "hover" : ""}`}
+        className={`${props.level} row_header`}
         key={props.index}
         data-category={props.row}
         style={{
@@ -94,8 +92,6 @@ function TableRow(props) {
           display: props.level.includes("childDataset") ? "none" : "table-row"
         }}
         onClick={toggleChildrenRow}
-        onMouseEnter={toggleHover}
-        onMouseLeave={toggleHover}
       >
         <td className="row-label">{props.row}</td>
         {columns.map((column, i) => {

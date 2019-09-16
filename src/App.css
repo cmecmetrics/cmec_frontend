@@ -51,27 +51,34 @@
   margin-left: auto;
   margin-right: auto;
 }
-.controlColumn, .tableColumn{
+.controlColumn,
+.tableColumn {
   margin-top: 0.5em;
 }
 
-#colorLegendTable, .missingLegend{
+#colorLegendTable,
+.missingLegend {
   margin-left: auto;
   margin-right: auto;
 }
 
 .colorLegendLabel {
-  margin-left: .25em;
+  margin-left: 0.25em;
 }
 
-.missingLegend{
+.missingLegend {
   margin-top: 1.5em;
 }
 
-.hover {
-  font-weight: bold;
+.row_header:hover {
   border: 2px solid;
 }
+
+.row-label:hover {
+  border-width: 1.5px;
+  font-weight: bold;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

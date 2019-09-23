@@ -1,0 +1,2384 @@
+{
+    "globe":{
+       "Ecosystem and Carbon Cycle":{
+          "bcc-csm1-1":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "bcc-csm1-1-m":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "CESM1-BGC":{
+             "Spatial Distribution Score":-1.6997561647504578,
+             "Bias Score":-1.4270234668657849,
+             "Overall Score":-1.602499713288684
+          },
+          "GFDL-ESM2G":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "inmcm4":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "IPSL-CM5A-LR":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "MIROC-ESM":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "MPI-ESM-LR":{
+             "Spatial Distribution Score":0.008351858574534335,
+             "Bias Score":-0.3359453073012602,
+             "Overall Score":-0.3330920964312571
+          },
+          "NorESM1-ME":{
+             "Spatial Distribution Score":-1.8348477081416519,
+             "Bias Score":-1.7354698838547473,
+             "Overall Score":-1.666129084160986
+          },
+          "MeanCMIP5":{
+             "Spatial Distribution Score":1.0008024230202885,
+             "Bias Score":0.9369501112918313,
+             "Overall Score":1.2112561332435985
+          },
+          "BCC-CSM2-MR":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "BCC-ESM1":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "CESM2":{
+             "Spatial Distribution Score":0.2294491634131502,
+             "Bias Score":0.2450099292343723,
+             "Overall Score":-0.02410402094366709
+          },
+          "CESM2-WACCM":{
+             "Spatial Distribution Score":0.27343010528734385,
+             "Bias Score":0.23297022533337328,
+             "Overall Score":-0.022734784156065762
+          },
+          "CNRM-CM6-1":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "CNRM-ESM2-1":{
+             "Spatial Distribution Score":0.6877098852137968,
+             "Bias Score":0.6703901813170907,
+             "Overall Score":0.9133662183937552
+          },
+          "E3SMv1-CTC":{
+             "Spatial Distribution Score":1.0218350746971927,
+             "Bias Score":-0.12975244575537428,
+             "Overall Score":0.5602404699614337
+          },
+          "GISS-E2-1-G":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "GISS-E2-1-H":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "IPSL-CM6A-LR":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "MIROC6":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "MRI-ESM2-0":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "MeanCMIP6":{
+             "Spatial Distribution Score":0.3130253626857996,
+             "Bias Score":1.542870656600499,
+             "Overall Score":0.9636968773818668
+          }
+       },
+       "Hydrology Cycle":{
+          "bcc-csm1-1":{
+             "Spatial Distribution Score":0.34112583162447935,
+             "Seasonal Cycle Score":-0.8211984009008411,
+             "Interannual Variability Score":-0.41748006272323557,
+             "Bias Score":0.018496238445542764,
+             "RMSE Score":-0.6683059990567163,
+             "Overall Score":-0.4885878035013447
+          },
+          "bcc-csm1-1-m":{
+             "Spatial Distribution Score":0.2953216271626722,
+             "Seasonal Cycle Score":-0.8012981228738003,
+             "Interannual Variability Score":-0.4966064682942764,
+             "Bias Score":-0.0646525511370108,
+             "RMSE Score":-0.9187524560514362,
+             "Overall Score":-0.7057859559456953
+          },
+          "CESM1-BGC":{
+             "Spatial Distribution Score":-4.203001592624897,
+             "Seasonal Cycle Score":-0.5267089302106898,
+             "Interannual Variability Score":-0.3892154786738877,
+             "Bias Score":-0.636773279656469,
+             "RMSE Score":-0.7455952979114094,
+             "Overall Score":-1.2216934774542554
+          },
+          "GFDL-ESM2G":{
+             "Spatial Distribution Score":0.27478858845915255,
+             "Seasonal Cycle Score":0.5630263720539513,
+             "Interannual Variability Score":-1.551651949495457,
+             "Bias Score":-1.2084311440081066,
+             "RMSE Score":-1.340040627538568,
+             "Overall Score":-0.956829772848003
+          },
+          "inmcm4":{
+             "Spatial Distribution Score":-0.7774496696144008,
+             "Seasonal Cycle Score":0.06887856671865533,
+             "Interannual Variability Score":-1.5890740554326988,
+             "Bias Score":-1.2850885731171187,
+             "RMSE Score":-2.11323083538818,
+             "Overall Score":-1.8522207187912643
+          },
+          "IPSL-CM5A-LR":{
+             "Spatial Distribution Score":0.3202300356375129,
+             "Seasonal Cycle Score":-0.7750928649354144,
+             "Interannual Variability Score":0.6187735294053961,
+             "Bias Score":0.05546359064165166,
+             "RMSE Score":0.2719235602390701,
+             "Overall Score":-0.05131548296282984
+          },
+          "MIROC-ESM":{
+             "Spatial Distribution Score":-0.21055426528145657,
+             "Seasonal Cycle Score":-0.7475980770920959,
+             "Interannual Variability Score":-0.02722809773049173,
+             "Bias Score":-0.8249150297383638,
+             "RMSE Score":-0.5209643148451415,
+             "Overall Score":-0.6892867192975743
+          },
+          "MPI-ESM-LR":{
+             "Spatial Distribution Score":-0.5369144094668931,
+             "Seasonal Cycle Score":-0.5984539339105754,
+             "Interannual Variability Score":-0.8290148361221467,
+             "Bias Score":-1.2351024954312306,
+             "RMSE Score":-0.8596917071629067,
+             "Overall Score":-1.3883020476600143
+          },
+          "NorESM1-ME":{
+             "Spatial Distribution Score":-0.03955813045116002,
+             "Seasonal Cycle Score":-0.06338756028779757,
+             "Interannual Variability Score":0.4605305032155338,
+             "Bias Score":-0.5525453524881132,
+             "RMSE Score":-0.2174833517395433,
+             "Overall Score":-0.17817798001973362
+          },
+          "MeanCMIP5":{
+             "Spatial Distribution Score":0.4202673675927298,
+             "Seasonal Cycle Score":0.7131683036602693,
+             "Interannual Variability Score":0.5754321526013003,
+             "Bias Score":0.6349442591420333,
+             "RMSE Score":1.6740514250690315,
+             "Overall Score":1.2872292527130151
+          },
+          "BCC-CSM2-MR":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "BCC-ESM1":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "CESM2":{
+             "Spatial Distribution Score":0.5434082255111498,
+             "Seasonal Cycle Score":0.4509954478574385,
+             "Interannual Variability Score":0.7685333872496799,
+             "Bias Score":1.5336720960160568,
+             "RMSE Score":0.7819096435502142,
+             "Overall Score":1.2172635827362277
+          },
+          "CESM2-WACCM":{
+             "Spatial Distribution Score":0.5376576549736493,
+             "Seasonal Cycle Score":0.47205703560605494,
+             "Interannual Variability Score":0.7109427382800432,
+             "Bias Score":1.4664152138484643,
+             "RMSE Score":0.743977012570002,
+             "Overall Score":1.1794681473709157
+          },
+          "CNRM-CM6-1":{
+             "Spatial Distribution Score":0.49628213073379696,
+             "Seasonal Cycle Score":0.1809691715529499,
+             "Interannual Variability Score":-0.03357963280648385,
+             "Bias Score":0.8408240157244556,
+             "RMSE Score":-0.056573352995948546,
+             "Overall Score":0.44393508871226617
+          },
+          "CNRM-ESM2-1":{
+             "Spatial Distribution Score":0.40199738449808176,
+             "Seasonal Cycle Score":-0.014043464708374254,
+             "Interannual Variability Score":0.04427631421089345,
+             "Bias Score":0.6780412397931993,
+             "RMSE Score":-0.07245663914517977,
+             "Overall Score":0.3129269899332515
+          },
+          "E3SMv1-CTC":{
+             "Spatial Distribution Score":0.5499584041617362,
+             "Seasonal Cycle Score":0.8493616301069151,
+             "Interannual Variability Score":0.4595547953943513,
+             "Bias Score":0.3177727970082818,
+             "RMSE Score":0.31287870560207287,
+             "Overall Score":0.5566692083494279
+          },
+          "GISS-E2-1-G":{
+             "Spatial Distribution Score":0.2809169963179702,
+             "Seasonal Cycle Score":-0.6473888962647695,
+             "Interannual Variability Score":0.4447791616406391,
+             "Bias Score":0.6118509068971263,
+             "RMSE Score":0.18201550640822603,
+             "Overall Score":0.25523248632629003
+          },
+          "GISS-E2-1-H":{
+             "Spatial Distribution Score":0.003949852290300557,
+             "Seasonal Cycle Score":-1.10881422289755,
+             "Interannual Variability Score":0.36546914440519634,
+             "Bias Score":0.060363194359624506,
+             "RMSE Score":-0.005810133197224779,
+             "Overall Score":-0.18067273175238763
+          },
+          "IPSL-CM6A-LR":{
+             "Spatial Distribution Score":0.31783557531904894,
+             "Seasonal Cycle Score":0.5761315271609252,
+             "Interannual Variability Score":0.42161957102981734,
+             "Bias Score":0.8562121639260274,
+             "RMSE Score":0.08198330439741354,
+             "Overall Score":0.696443355367285
+          },
+          "MIROC6":{
+             "Spatial Distribution Score":0.3081688664162237,
+             "Seasonal Cycle Score":0.5809185591773902,
+             "Interannual Variability Score":0.6754214072442657,
+             "Bias Score":-1.8395948001752116,
+             "RMSE Score":0.9004216648783384,
+             "Overall Score":0.05917288667357801
+          },
+          "MRI-ESM2-0":{
+             "Spatial Distribution Score":0.19622684394482115,
+             "Seasonal Cycle Score":0.3500898105460837,
+             "Interannual Variability Score":-0.08619334948388735,
+             "Bias Score":-1.1506794388629904,
+             "RMSE Score":-0.044426405073438376,
+             "Overall Score":-0.3305135033633555
+          },
+          "MeanCMIP6":{
+             "Spatial Distribution Score":0.4793426827955037,
+             "Seasonal Cycle Score":1.2983880496412248,
+             "Interannual Variability Score":-0.12528877391455723,
+             "Bias Score":1.7237269488121423,
+             "RMSE Score":2.6141702973913348,
+             "Overall Score":2.0350451954141366
+          }
+       },
+       "Radiation and Energy Cycle":{
+          "bcc-csm1-1":{
+             "Spatial Distribution Score":-0.052306151292424996,
+             "Seasonal Cycle Score":-0.09824707663003696,
+             "Interannual Variability Score":0.11401569707990182,
+             "Bias Score":-0.3536111687687243,
+             "RMSE Score":-0.5637514420385595,
+             "Overall Score":-0.2926297512706677
+          },
+          "bcc-csm1-1-m":{
+             "Spatial Distribution Score":0.044688954722416074,
+             "Seasonal Cycle Score":-0.14574776091498265,
+             "Interannual Variability Score":0.09314509526248971,
+             "Bias Score":-0.732118595316189,
+             "RMSE Score":-0.5718274360030928,
+             "Overall Score":-0.40897875285534346
+          },
+          "CESM1-BGC":{
+             "Spatial Distribution Score":0.018382574345587877,
+             "Seasonal Cycle Score":0.04689112703498144,
+             "Interannual Variability Score":0.5761691897176449,
+             "Bias Score":-0.5329003414923065,
+             "RMSE Score":-0.3569021561084393,
+             "Overall Score":-0.043562384907669394
+          },
+          "GFDL-ESM2G":{
+             "Spatial Distribution Score":-0.048161569251120584,
+             "Seasonal Cycle Score":-0.17384297294176787,
+             "Interannual Variability Score":0.3237891020035805,
+             "Bias Score":-0.0034404043638216046,
+             "RMSE Score":-0.8288761939803188,
+             "Overall Score":-0.24366302293332698
+          },
+          "inmcm4":{
+             "Spatial Distribution Score":-0.8987093684561631,
+             "Seasonal Cycle Score":-0.7041095459098534,
+             "Interannual Variability Score":-0.6207139924755297,
+             "Bias Score":-2.7821374838002777,
+             "RMSE Score":-0.6716728245872642,
+             "Overall Score":-1.5111869368066522
+          },
+          "IPSL-CM5A-LR":{
+             "Spatial Distribution Score":-0.5045495563145708,
+             "Seasonal Cycle Score":-0.5460057254106254,
+             "Interannual Variability Score":-0.3530407116836908,
+             "Bias Score":-1.4337289430983864,
+             "RMSE Score":-0.17880196902977444,
+             "Overall Score":-0.7701500722005927
+          },
+          "MIROC-ESM":{
+             "Spatial Distribution Score":-0.28532569147647346,
+             "Seasonal Cycle Score":-0.8241880441444083,
+             "Interannual Variability Score":0.31218537052280254,
+             "Bias Score":-1.140662664153955,
+             "RMSE Score":-0.8444414013295042,
+             "Overall Score":-0.7354169830584012
+          },
+          "MPI-ESM-LR":{
+             "Spatial Distribution Score":0.17282896875722153,
+             "Seasonal Cycle Score":-0.03505125413933996,
+             "Interannual Variability Score":0.39017712850356295,
+             "Bias Score":0.7870563384724317,
+             "RMSE Score":0.1792330511208864,
+             "Overall Score":0.45996596939689716
+          },
+          "NorESM1-ME":{
+             "Spatial Distribution Score":0.06438457777762085,
+             "Seasonal Cycle Score":-0.4887948212805193,
+             "Interannual Variability Score":0.4470718319746515,
+             "Bias Score":-0.6390314868690611,
+             "RMSE Score":-0.28727478428455483,
+             "Overall Score":-0.18429515794897156
+          },
+          "MeanCMIP5":{
+             "Spatial Distribution Score":0.27552613415806615,
+             "Seasonal Cycle Score":0.8878378380906049,
+             "Interannual Variability Score":-2.956436309261789,
+             "Bias Score":1.0253735929666241,
+             "RMSE Score":2.828243260153851,
+             "Overall Score":0.5248573738226514
+          },
+          "BCC-CSM2-MR":{
+             "Spatial Distribution Score":0.03348003047162207,
+             "Seasonal Cycle Score":0.1405245167289737,
+             "Interannual Variability Score":0.2861148947809964,
+             "Bias Score":-0.4344192204903805,
+             "RMSE Score":-0.3549468482845366,
+             "Overall Score":-0.13588613452197307
+          },
+          "BCC-ESM1":{
+             "Spatial Distribution Score":-0.10390110300391164,
+             "Seasonal Cycle Score":-0.31305563928274993,
+             "Interannual Variability Score":0.24734997885784163,
+             "Bias Score":-0.8185036334518064,
+             "RMSE Score":-0.8358555718820277,
+             "Overall Score":-0.5246084886084468
+          },
+          "CESM2":{
+             "Spatial Distribution Score":0.28813973229007694,
+             "Seasonal Cycle Score":0.6023612082860674,
+             "Interannual Variability Score":0.9222365355195524,
+             "Bias Score":0.5111191754681116,
+             "RMSE Score":0.6040410984389496,
+             "Overall Score":0.8549090957620409
+          },
+          "CESM2-WACCM":{
+             "Spatial Distribution Score":0.25950861727994656,
+             "Seasonal Cycle Score":0.4790316035879816,
+             "Interannual Variability Score":0.7539855644278924,
+             "Bias Score":0.45133989489455867,
+             "RMSE Score":0.44860334854435174,
+             "Overall Score":0.6832135529390049
+          },
+          "CNRM-CM6-1":{
+             "Spatial Distribution Score":0.33573709940104,
+             "Seasonal Cycle Score":0.026029293262680442,
+             "Interannual Variability Score":0.34103086324812143,
+             "Bias Score":0.8725198380748667,
+             "RMSE Score":-0.33626897498556846,
+             "Overall Score":0.2722447643911885
+          },
+          "CNRM-ESM2-1":{
+             "Spatial Distribution Score":0.36854980078145916,
+             "Seasonal Cycle Score":0.026111049434812683,
+             "Interannual Variability Score":0.39985323313363136,
+             "Bias Score":0.9439238961789023,
+             "RMSE Score":-0.45792621772481235,
+             "Overall Score":0.2605087333128697
+          },
+          "E3SMv1-CTC":{
+             "Spatial Distribution Score":0.210369047283121,
+             "Seasonal Cycle Score":-0.39664308987774066,
+             "Interannual Variability Score":0.486937719750747,
+             "Bias Score":-0.5242406397459184,
+             "RMSE Score":-0.579070001704889,
+             "Overall Score":-0.16518102788893319
+          },
+          "GISS-E2-1-G":{
+             "Spatial Distribution Score":-0.5678820110656568,
+             "Seasonal Cycle Score":-0.35741524498636434,
+             "Interannual Variability Score":0.24553357002013584,
+             "Bias Score":0.5867271404726595,
+             "RMSE Score":-0.26617457741265615,
+             "Overall Score":-0.019376582916330598
+          },
+          "GISS-E2-1-H":{
+             "Spatial Distribution Score":-0.5540015616619542,
+             "Seasonal Cycle Score":-0.09377273791457141,
+             "Interannual Variability Score":0.29890610456919875,
+             "Bias Score":0.4645904551609332,
+             "RMSE Score":-0.047660065988398184,
+             "Overall Score":0.11002979752197106
+          },
+          "IPSL-CM6A-LR":{
+             "Spatial Distribution Score":0.23470705184952534,
+             "Seasonal Cycle Score":0.2046812885825533,
+             "Interannual Variability Score":0.1820806526505064,
+             "Bias Score":1.145403041195619,
+             "RMSE Score":-0.11530986433829622,
+             "Overall Score":0.4137128612506036
+          },
+          "MIROC6":{
+             "Spatial Distribution Score":-0.008652504130396421,
+             "Seasonal Cycle Score":-0.00010277279694492769,
+             "Interannual Variability Score":0.3659169598384258,
+             "Bias Score":-0.05409229245408485,
+             "RMSE Score":-0.16546821275558626,
+             "Overall Score":0.02861899458077022
+          },
+          "MRI-ESM2-0":{
+             "Spatial Distribution Score":0.26598505497300584,
+             "Seasonal Cycle Score":0.6145144464611285,
+             "Interannual Variability Score":0.35653386706593093,
+             "Bias Score":1.0040249662842893,
+             "RMSE Score":0.23798129124492529,
+             "Overall Score":0.639833428750991
+          },
+          "MeanCMIP6":{
+             "Spatial Distribution Score":0.45120187256194044,
+             "Seasonal Cycle Score":1.148994314760049,
+             "Interannual Variability Score":-3.2128423455065835,
+             "Bias Score":1.6568085348359016,
+             "RMSE Score":3.1641264929352837,
+             "Overall Score":0.787040724188337
+          }
+       },
+       "Forcings":{
+          "bcc-csm1-1":{
+             "Spatial Distribution Score":0.0047323691468366125,
+             "Seasonal Cycle Score":-0.28565786242423785,
+             "Interannual Variability Score":-0.32823133314748115,
+             "Bias Score":-0.7168321694126452,
+             "RMSE Score":-0.756801895416243,
+             "Overall Score":-0.7355237345793096
+          },
+          "bcc-csm1-1-m":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "CESM1-BGC":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "GFDL-ESM2G":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "inmcm4":{
+             "Spatial Distribution Score":-3.157108581762719,
+             "Seasonal Cycle Score":-1.34194923977779,
+             "Interannual Variability Score":-0.8011780249710106,
+             "Bias Score":-1.1852057819771002,
+             "RMSE Score":-1.0198931683684784,
+             "Overall Score":-2.0635452208732876
+          },
+          "IPSL-CM5A-LR":{
+             "Spatial Distribution Score":-0.5133568512593963,
+             "Seasonal Cycle Score":-1.9596920351303615,
+             "Interannual Variability Score":-0.938154245021663,
+             "Bias Score":-2.3731537297486467,
+             "RMSE Score":-1.055073786079081,
+             "Overall Score":-1.959815919389369
+          },
+          "MIROC-ESM":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "MPI-ESM-LR":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "NorESM1-ME":{
+             "Spatial Distribution Score":0.6062280544103508,
+             "Seasonal Cycle Score":-0.35515341657518795,
+             "Interannual Variability Score":0.922038768246454,
+             "Bias Score":-0.1016102958696238,
+             "RMSE Score":0.05526419625370277,
+             "Overall Score":0.4345479714439155
+          },
+          "MeanCMIP5":{
+             "Spatial Distribution Score":0.4747271316589753,
+             "Seasonal Cycle Score":0.9364344159399685,
+             "Interannual Variability Score":-1.4602778885411987,
+             "Bias Score":1.0135333880404542,
+             "RMSE Score":2.0827647305409687,
+             "Overall Score":1.0094766723851092
+          },
+          "BCC-CSM2-MR":{
+             "Spatial Distribution Score":-0.40339467965722087,
+             "Seasonal Cycle Score":0.3078831015366157,
+             "Interannual Variability Score":-0.2168837103016368,
+             "Bias Score":-0.1298767502676861,
+             "RMSE Score":-0.6519814472853137,
+             "Overall Score":-0.4819639443992391
+          },
+          "BCC-ESM1":{
+             "Spatial Distribution Score":-0.30896350086255414,
+             "Seasonal Cycle Score":0.07850327019446879,
+             "Interannual Variability Score":-0.24780248427792095,
+             "Bias Score":-0.9028766504272299,
+             "RMSE Score":-0.7688614167166286,
+             "Overall Score":-0.796250628874973
+          },
+          "CESM2":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "CESM2-WACCM":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "CNRM-CM6-1":{
+             "Spatial Distribution Score":1.067759578236497,
+             "Seasonal Cycle Score":0.8721238104514084,
+             "Interannual Variability Score":0.646205960335619,
+             "Bias Score":0.8532261639631251,
+             "RMSE Score":0.011607090275952192,
+             "Overall Score":0.868061881806472
+          },
+          "CNRM-ESM2-1":{
+             "Spatial Distribution Score":0.9730148951514235,
+             "Seasonal Cycle Score":0.94032473002158,
+             "Interannual Variability Score":0.8478053252552695,
+             "Bias Score":0.9898868715534249,
+             "RMSE Score":0.061031780908620985,
+             "Overall Score":0.9919883369702148
+          },
+          "E3SMv1-CTC":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "GISS-E2-1-G":{
+             "Spatial Distribution Score":0.36673046040063495,
+             "Seasonal Cycle Score":-0.41442761391336513,
+             "Interannual Variability Score":0.6809670024743089,
+             "Bias Score":0.5491708336116509,
+             "RMSE Score":-0.08334256009760423,
+             "Overall Score":0.40957959275707206
+          },
+          "GISS-E2-1-H":{
+             "Spatial Distribution Score":0.21401955777683418,
+             "Seasonal Cycle Score":-0.7929539529799856,
+             "Interannual Variability Score":0.8300378787706326,
+             "Bias Score":0.31223379877783597,
+             "RMSE Score":-0.05489464659930599,
+             "Overall Score":0.32170379267827454
+          },
+          "IPSL-CM6A-LR":{
+             "Spatial Distribution Score":0.29782947468473725,
+             "Seasonal Cycle Score":-0.16413321972195138,
+             "Interannual Variability Score":0.8804845643450708,
+             "Bias Score":0.0009721184977321562,
+             "RMSE Score":0.01168898845795156,
+             "Overall Score":0.3670337146009619
+          },
+          "MIROC6":{
+             "Spatial Distribution Score":-0.8680736615777548,
+             "Seasonal Cycle Score":0.1709348221143825,
+             "Interannual Variability Score":0.590678136148422,
+             "Bias Score":-0.12116497220662659,
+             "RMSE Score":-0.5776112398733034,
+             "Overall Score":-0.2779319642312543
+          },
+          "MRI-ESM2-0":{
+             "Spatial Distribution Score":0.49536010501745514,
+             "Seasonal Cycle Score":0.3655503459827958,
+             "Interannual Variability Score":1.0115152796557787,
+             "Bias Score":-0.04735569125587294,
+             "RMSE Score":0.190138941348089,
+             "Overall Score":0.6129159544219672
+          },
+          "MeanCMIP6":{
+             "Spatial Distribution Score":0.7504956486358256,
+             "Seasonal Cycle Score":1.6422128442817763,
+             "Interannual Variability Score":-2.417205228970668,
+             "Bias Score":1.8590528667212491,
+             "RMSE Score":2.555964432650652,
+             "Overall Score":1.299723495283497
+          }
+       },
+       "Relationships":{
+          "bcc-csm1-1":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "bcc-csm1-1-m":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "CESM1-BGC":{
+             "Precipitation RMSE Score":-1.951008100207919,
+             "SurfaceAirTemperature RMSE Score":-1.7397471628631218,
+             "Overall Score":-1.8378504576418813
+          },
+          "GFDL-ESM2G":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "inmcm4":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "IPSL-CM5A-LR":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "MIROC-ESM":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "MPI-ESM-LR":{
+             "Precipitation RMSE Score":0.02953392809677501,
+             "SurfaceAirTemperature RMSE Score":-0.2196732981756923,
+             "Overall Score":0.03774986861710594
+          },
+          "NorESM1-ME":{
+             "Precipitation RMSE Score":-1.3652156123511991,
+             "SurfaceAirTemperature RMSE Score":-1.2812608071013605,
+             "Overall Score":-1.4416342710048358
+          },
+          "MeanCMIP5":{
+             "Precipitation RMSE Score":-0.3959314224423617,
+             "SurfaceAirTemperature RMSE Score":-0.6901497523648055,
+             "Overall Score":-0.5115461386145107
+          },
+          "BCC-CSM2-MR":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "BCC-ESM1":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "CESM2":{
+             "Precipitation RMSE Score":0.9285556140549516,
+             "SurfaceAirTemperature RMSE Score":1.1152797062316888,
+             "Overall Score":0.9391580202676846
+          },
+          "CESM2-WACCM":{
+             "Precipitation RMSE Score":1.0164746692454487,
+             "SurfaceAirTemperature RMSE Score":1.1784684740420344,
+             "Overall Score":1.0230338336486595
+          },
+          "CNRM-CM6-1":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "CNRM-ESM2-1":{
+             "Precipitation RMSE Score":0.5269672662776784,
+             "SurfaceAirTemperature RMSE Score":0.1805794741658052,
+             "Overall Score":0.5493370409686541
+          },
+          "E3SMv1-CTC":{
+             "Precipitation RMSE Score":0.240493943033141,
+             "SurfaceAirTemperature RMSE Score":0.5268307639827142,
+             "Overall Score":0.24702415640518596
+          },
+          "GISS-E2-1-G":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "GISS-E2-1-H":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "IPSL-CM6A-LR":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "MIROC6":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "MRI-ESM2-0":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "MeanCMIP6":{
+             "Precipitation RMSE Score":0.9701297142934855,
+             "SurfaceAirTemperature RMSE Score":0.9296726020827367,
+             "Overall Score":0.9947279473539367
+          }
+       }
+    },
+    "southamericaamazon":{
+       "Ecosystem and Carbon Cycle":{
+          "bcc-csm1-1":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "bcc-csm1-1-m":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "CESM1-BGC":{
+             "Spatial Distribution Score":-1.4809882293451395,
+             "Bias Score":-1.5251221678228921,
+             "Overall Score":-1.2416465838986916
+          },
+          "GFDL-ESM2G":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "inmcm4":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "IPSL-CM5A-LR":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "MIROC-ESM":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "MPI-ESM-LR":{
+             "Spatial Distribution Score":0.8899190521633384,
+             "Bias Score":-0.49803843755833666,
+             "Overall Score":-0.5482188867981779
+          },
+          "NorESM1-ME":{
+             "Spatial Distribution Score":-1.446934043984314,
+             "Bias Score":-1.8930412480640688,
+             "Overall Score":-1.163452115087046
+          },
+          "MeanCMIP5":{
+             "Spatial Distribution Score":-0.679149977327202,
+             "Bias Score":0.96342067949284,
+             "Overall Score":-0.1187537270939272
+          },
+          "BCC-CSM2-MR":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "BCC-ESM1":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "CESM2":{
+             "Spatial Distribution Score":0.45588648454372316,
+             "Bias Score":0.6332495899004823,
+             "Overall Score":1.6226653451306523
+          },
+          "CESM2-WACCM":{
+             "Spatial Distribution Score":0.7859717066468698,
+             "Bias Score":0.7083446634457085,
+             "Overall Score":1.6086508633148213
+          },
+          "CNRM-CM6-1":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "CNRM-ESM2-1":{
+             "Spatial Distribution Score":-0.6061988344387023,
+             "Bias Score":0.8485481900193366,
+             "Overall Score":-0.41524670524182594
+          },
+          "E3SMv1-CTC":{
+             "Spatial Distribution Score":0.8165976604705192,
+             "Bias Score":0.3643581955020691,
+             "Overall Score":-0.29864170275580765
+          },
+          "GISS-E2-1-G":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "GISS-E2-1-H":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "IPSL-CM6A-LR":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "MIROC6":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "MRI-ESM2-0":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "MeanCMIP6":{
+             "Spatial Distribution Score":1.2648961812709063,
+             "Bias Score":0.39828053508485667,
+             "Overall Score":0.5546435124299893
+          }
+       },
+       "Hydrology Cycle":{
+          "bcc-csm1-1":{
+             "Spatial Distribution Score":-0.40273337945692134,
+             "Seasonal Cycle Score":-0.0026163047731254945,
+             "Interannual Variability Score":-1.5586018794011935,
+             "Bias Score":-1.6244082240993265,
+             "RMSE Score":-1.186648819800177,
+             "Overall Score":-1.1375887381255203
+          },
+          "bcc-csm1-1-m":{
+             "Spatial Distribution Score":-0.2293361916874386,
+             "Seasonal Cycle Score":-1.7311304347190009,
+             "Interannual Variability Score":-1.3083306751265629,
+             "Bias Score":-1.5643246262489086,
+             "RMSE Score":-1.2662728005698742,
+             "Overall Score":-1.288711753008209
+          },
+          "CESM1-BGC":{
+             "Spatial Distribution Score":-0.16463551617164077,
+             "Seasonal Cycle Score":0.5952472288619001,
+             "Interannual Variability Score":1.0851171584433643,
+             "Bias Score":0.0736181359747984,
+             "RMSE Score":0.2139796422797023,
+             "Overall Score":0.2285880083928887
+          },
+          "GFDL-ESM2G":{
+             "Spatial Distribution Score":0.4425753500694832,
+             "Seasonal Cycle Score":-0.029361909195462423,
+             "Interannual Variability Score":-2.061677232340543,
+             "Bias Score":-0.7093829723903905,
+             "RMSE Score":-1.9632558952553036,
+             "Overall Score":-0.5191120057733454
+          },
+          "inmcm4":{
+             "Spatial Distribution Score":-0.48631117853818717,
+             "Seasonal Cycle Score":0.7471920839312212,
+             "Interannual Variability Score":-0.09469034211510147,
+             "Bias Score":-0.8857875023911612,
+             "RMSE Score":-0.9185411177514299,
+             "Overall Score":-0.601495248981153
+          },
+          "IPSL-CM5A-LR":{
+             "Spatial Distribution Score":-0.8496935939591806,
+             "Seasonal Cycle Score":-0.7132987046742072,
+             "Interannual Variability Score":-0.9383405351053303,
+             "Bias Score":-0.9093257720471106,
+             "RMSE Score":-0.44591517168423506,
+             "Overall Score":-0.9473318930510811
+          },
+          "MIROC-ESM":{
+             "Spatial Distribution Score":-0.6148647360539713,
+             "Seasonal Cycle Score":-1.6981917194978722,
+             "Interannual Variability Score":-0.3874418929263317,
+             "Bias Score":0.31268271028720107,
+             "RMSE Score":-0.6316536543126094,
+             "Overall Score":-0.7318155720753489
+          },
+          "MPI-ESM-LR":{
+             "Spatial Distribution Score":-1.1612785640457302,
+             "Seasonal Cycle Score":-1.0478974124273737,
+             "Interannual Variability Score":-1.8497518260958996,
+             "Bias Score":-0.6984058503074777,
+             "RMSE Score":-1.2862837974594086,
+             "Overall Score":-1.38970673683111
+          },
+          "NorESM1-ME":{
+             "Spatial Distribution Score":0.18981357685552033,
+             "Seasonal Cycle Score":0.765033931147487,
+             "Interannual Variability Score":1.2667385049577675,
+             "Bias Score":0.06176882504067795,
+             "RMSE Score":0.21092332697274918,
+             "Overall Score":0.3122845543399365
+          },
+          "MeanCMIP5":{
+             "Spatial Distribution Score":0.47410865439484595,
+             "Seasonal Cycle Score":-0.49490474090628633,
+             "Interannual Variability Score":0.9144799902196092,
+             "Bias Score":0.2179151050038184,
+             "RMSE Score":0.36168311512944884,
+             "Overall Score":0.49104511470328394
+          },
+          "BCC-CSM2-MR":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "BCC-ESM1":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "CESM2":{
+             "Spatial Distribution Score":1.1594223947777247,
+             "Seasonal Cycle Score":0.16270468999423354,
+             "Interannual Variability Score":0.6981732621437348,
+             "Bias Score":1.2730870728541803,
+             "RMSE Score":1.3383026618927032,
+             "Overall Score":1.3005512756787319
+          },
+          "CESM2-WACCM":{
+             "Spatial Distribution Score":1.3125984790162588,
+             "Seasonal Cycle Score":0.6537566303580765,
+             "Interannual Variability Score":0.5654277302940055,
+             "Bias Score":1.4486069265430621,
+             "RMSE Score":1.4187244090106663,
+             "Overall Score":1.4716372306551477
+          },
+          "CNRM-CM6-1":{
+             "Spatial Distribution Score":-0.06084240559793385,
+             "Seasonal Cycle Score":0.27054878430719936,
+             "Interannual Variability Score":0.8690753074859863,
+             "Bias Score":1.4332748591121358,
+             "RMSE Score":0.374970027190173,
+             "Overall Score":0.5360950096456719
+          },
+          "CNRM-ESM2-1":{
+             "Spatial Distribution Score":-0.1669997943520253,
+             "Seasonal Cycle Score":0.09542467058157351,
+             "Interannual Variability Score":1.12808667324989,
+             "Bias Score":1.2261414021653492,
+             "RMSE Score":0.45214906432104784,
+             "Overall Score":0.43545052209297236
+          },
+          "E3SMv1-CTC":{
+             "Spatial Distribution Score":0.3588812131385319,
+             "Seasonal Cycle Score":-0.9348276091290291,
+             "Interannual Variability Score":0.3766769397091639,
+             "Bias Score":0.4697917788943732,
+             "RMSE Score":-0.3489112657083641,
+             "Overall Score":0.028652551553216977
+          },
+          "GISS-E2-1-G":{
+             "Spatial Distribution Score":-1.167355603216615,
+             "Seasonal Cycle Score":-0.6477324837726197,
+             "Interannual Variability Score":-0.21004055463175708,
+             "Bias Score":-0.32405716760630254,
+             "RMSE Score":-0.3706876056797282,
+             "Overall Score":-0.6912899655020444
+          },
+          "GISS-E2-1-H":{
+             "Spatial Distribution Score":-2.1168473782893913,
+             "Seasonal Cycle Score":-0.6998556257904975,
+             "Interannual Variability Score":0.32183422715512505,
+             "Bias Score":-0.6169255163668766,
+             "RMSE Score":0.029497304195480058,
+             "Overall Score":-1.0129407458273714
+          },
+          "IPSL-CM6A-LR":{
+             "Spatial Distribution Score":2.0297859640680658,
+             "Seasonal Cycle Score":2.2959223701832863,
+             "Interannual Variability Score":1.0968293437775727,
+             "Bias Score":1.4757838206963874,
+             "RMSE Score":0.6819360385241782,
+             "Overall Score":2.016158385032634
+          },
+          "MIROC6":{
+             "Spatial Distribution Score":-1.0470560818853374,
+             "Seasonal Cycle Score":-0.4063273714881121,
+             "Interannual Variability Score":-0.04050335197061866,
+             "Bias Score":-1.0338171279167627,
+             "RMSE Score":0.6624551651520537,
+             "Overall Score":-0.7611983651914115
+          },
+          "MRI-ESM2-0":{
+             "Spatial Distribution Score":0.9328019578420537,
+             "Seasonal Cycle Score":1.5440947122666242,
+             "Interannual Variability Score":0.37303284551240457,
+             "Bias Score":-0.7768123447727614,
+             "RMSE Score":0.35438639275455885,
+             "Overall Score":0.5735951146366375
+          },
+          "MeanCMIP6":{
+             "Spatial Distribution Score":1.5679668330919116,
+             "Seasonal Cycle Score":1.2762192147419695,
+             "Interannual Variability Score":-0.24609369323526903,
+             "Bias Score":1.1505764675750987,
+             "RMSE Score":2.3191629807983767,
+             "Overall Score":1.6871332576354778
+          }
+       },
+       "Radiation and Energy Cycle":{
+          "bcc-csm1-1":{
+             "Spatial Distribution Score":0.6191436024410947,
+             "Seasonal Cycle Score":-0.5512493406856025,
+             "Interannual Variability Score":-0.21257880442689917,
+             "Bias Score":0.33535216339759333,
+             "RMSE Score":-0.9216047119570949,
+             "Overall Score":-0.1992159096473703
+          },
+          "bcc-csm1-1-m":{
+             "Spatial Distribution Score":0.17519948393988635,
+             "Seasonal Cycle Score":-2.619857520159812,
+             "Interannual Variability Score":-0.04809746144763568,
+             "Bias Score":-0.42006057770079536,
+             "RMSE Score":-1.0913704572491563,
+             "Overall Score":-1.5221003473247297
+          },
+          "CESM1-BGC":{
+             "Spatial Distribution Score":0.2691609589595578,
+             "Seasonal Cycle Score":0.6653772768064762,
+             "Interannual Variability Score":0.7125749799115139,
+             "Bias Score":1.0200153527660565,
+             "RMSE Score":0.03647102396939225,
+             "Overall Score":1.0202030015906807
+          },
+          "GFDL-ESM2G":{
+             "Spatial Distribution Score":0.28020282319702744,
+             "Seasonal Cycle Score":-0.2968397754580663,
+             "Interannual Variability Score":0.25076483399832955,
+             "Bias Score":-1.48764469289402,
+             "RMSE Score":-2.5879591635637333,
+             "Overall Score":-1.361339417091506
+          },
+          "inmcm4":{
+             "Spatial Distribution Score":0.49872196461843854,
+             "Seasonal Cycle Score":-0.5520685233260518,
+             "Interannual Variability Score":-0.35013689436066764,
+             "Bias Score":-1.4119009698922056,
+             "RMSE Score":0.4590008212830366,
+             "Overall Score":-0.6421613923024462
+          },
+          "IPSL-CM5A-LR":{
+             "Spatial Distribution Score":-0.3792806149355683,
+             "Seasonal Cycle Score":-1.0643270812631909,
+             "Interannual Variability Score":-0.8498120638602946,
+             "Bias Score":-2.4614087239454845,
+             "RMSE Score":-0.3036632688721294,
+             "Overall Score":-1.9997828699961215
+          },
+          "MIROC-ESM":{
+             "Spatial Distribution Score":-0.0828293622396836,
+             "Seasonal Cycle Score":-1.7554415373424501,
+             "Interannual Variability Score":0.3467003195741408,
+             "Bias Score":-0.337408682359213,
+             "RMSE Score":-0.6195281615670357,
+             "Overall Score":-0.9704824166073116
+          },
+          "MPI-ESM-LR":{
+             "Spatial Distribution Score":-1.4221146531963282,
+             "Seasonal Cycle Score":-1.230272849812098,
+             "Interannual Variability Score":0.38399967205362984,
+             "Bias Score":-0.004539863667030721,
+             "RMSE Score":-0.5752241927216478,
+             "Overall Score":-0.9347843867556583
+          },
+          "NorESM1-ME":{
+             "Spatial Distribution Score":-0.21480685981311817,
+             "Seasonal Cycle Score":0.2920693728584585,
+             "Interannual Variability Score":0.9439856928706382,
+             "Bias Score":0.7803675514439146,
+             "RMSE Score":-0.19119877596907559,
+             "Overall Score":0.6385508168639502
+          },
+          "MeanCMIP5":{
+             "Spatial Distribution Score":0.1361988367841756,
+             "Seasonal Cycle Score":0.2855899609097491,
+             "Interannual Variability Score":-2.818805369396813,
+             "Bias Score":0.3528260616044443,
+             "RMSE Score":2.178452096052179,
+             "Overall Score":0.17900770238285843
+          },
+          "BCC-CSM2-MR":{
+             "Spatial Distribution Score":0.48727202498180655,
+             "Seasonal Cycle Score":-1.0810747022173637,
+             "Interannual Variability Score":0.4306888859741494,
+             "Bias Score":-1.1773192356462008,
+             "RMSE Score":0.057492806697044326,
+             "Overall Score":-0.7529020983865747
+          },
+          "BCC-ESM1":{
+             "Spatial Distribution Score":0.7543824909805186,
+             "Seasonal Cycle Score":-0.13918560019934575,
+             "Interannual Variability Score":0.6344504964218627,
+             "Bias Score":-0.2931507612746425,
+             "RMSE Score":-0.21465352698014012,
+             "Overall Score":0.13484037045899805
+          },
+          "CESM2":{
+             "Spatial Distribution Score":0.9945657901756302,
+             "Seasonal Cycle Score":0.949819666315259,
+             "Interannual Variability Score":0.6840076679724703,
+             "Bias Score":1.1879120080706216,
+             "RMSE Score":0.5479256217485856,
+             "Overall Score":1.5049542699694245
+          },
+          "CESM2-WACCM":{
+             "Spatial Distribution Score":0.9524464291364748,
+             "Seasonal Cycle Score":1.1464016497886897,
+             "Interannual Variability Score":0.5604362664071121,
+             "Bias Score":1.45666010578442,
+             "RMSE Score":0.6089047971641312,
+             "Overall Score":1.6770039944607396
+          },
+          "CNRM-CM6-1":{
+             "Spatial Distribution Score":0.6906720739385149,
+             "Seasonal Cycle Score":1.0039523176369758,
+             "Interannual Variability Score":0.328238399064904,
+             "Bias Score":1.4146533334223672,
+             "RMSE Score":0.46530511258246054,
+             "Overall Score":1.452943033833349
+          },
+          "CNRM-ESM2-1":{
+             "Spatial Distribution Score":0.48179911862276936,
+             "Seasonal Cycle Score":0.8762636368417546,
+             "Interannual Variability Score":0.2415467135827781,
+             "Bias Score":1.3852794214639497,
+             "RMSE Score":0.5946375362161351,
+             "Overall Score":1.3535397101993147
+          },
+          "E3SMv1-CTC":{
+             "Spatial Distribution Score":-2.9825562573760624,
+             "Seasonal Cycle Score":0.9324863847613071,
+             "Interannual Variability Score":0.47584678020580795,
+             "Bias Score":0.1267954896982584,
+             "RMSE Score":0.009034112204439913,
+             "Overall Score":-0.2671901917625809
+          },
+          "GISS-E2-1-G":{
+             "Spatial Distribution Score":0.7987199716440988,
+             "Seasonal Cycle Score":-0.04365018451518005,
+             "Interannual Variability Score":0.1155763643497333,
+             "Bias Score":-0.3777390580169621,
+             "RMSE Score":-0.4160886473669608,
+             "Overall Score":-0.051234458013552725
+          },
+          "GISS-E2-1-H":{
+             "Spatial Distribution Score":0.5191804596476172,
+             "Seasonal Cycle Score":-0.11519005644457833,
+             "Interannual Variability Score":0.5455447352908496,
+             "Bias Score":-0.7023197877552667,
+             "RMSE Score":-0.36553158432778005,
+             "Overall Score":-0.16736604741037298
+          },
+          "IPSL-CM6A-LR":{
+             "Spatial Distribution Score":0.30707300230627843,
+             "Seasonal Cycle Score":0.7307818712950075,
+             "Interannual Variability Score":0.5348899875721038,
+             "Bias Score":0.24714474090776956,
+             "RMSE Score":0.0397101636376748,
+             "Overall Score":0.6444089068162789
+          },
+          "MIROC6":{
+             "Spatial Distribution Score":-0.6406801472447134,
+             "Seasonal Cycle Score":0.7192260606546746,
+             "Interannual Variability Score":0.005907328570690435,
+             "Bias Score":-0.3901028554750457,
+             "RMSE Score":-0.15892794075062847,
+             "Overall Score":-0.1042449690585859
+          },
+          "MRI-ESM2-0":{
+             "Spatial Distribution Score":-2.483993283052194,
+             "Seasonal Cycle Score":0.5496215691986014,
+             "Interannual Variability Score":0.24834471776789227,
+             "Bias Score":-0.11236929140525155,
+             "RMSE Score":-0.16094533604132863,
+             "Overall Score":-0.48021199076746174
+          },
+          "MeanCMIP6":{
+             "Spatial Distribution Score":0.24152214648382903,
+             "Seasonal Cycle Score":1.2975674043567744,
+             "Interannual Variability Score":-3.1640732480963947,
+             "Bias Score":0.8689582714727451,
+             "RMSE Score":2.6097616758116278,
+             "Overall Score":0.8475646885487208
+          }
+       },
+       "Forcings":{
+          "bcc-csm1-1":{
+             "Spatial Distribution Score":-0.7840507956317274,
+             "Seasonal Cycle Score":-1.4616310347644124,
+             "Interannual Variability Score":-1.7775370084111588,
+             "Bias Score":-0.2329047462384712,
+             "RMSE Score":-1.0478005382288935,
+             "Overall Score":-1.3871338332477183
+          },
+          "bcc-csm1-1-m":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "CESM1-BGC":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "GFDL-ESM2G":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "inmcm4":{
+             "Spatial Distribution Score":-0.401301910720485,
+             "Seasonal Cycle Score":-1.4315285460532468,
+             "Interannual Variability Score":0.534115026844762,
+             "Bias Score":-0.8714253381025834,
+             "RMSE Score":-0.26194793813656675,
+             "Overall Score":-0.4826935740390872
+          },
+          "IPSL-CM5A-LR":{
+             "Spatial Distribution Score":-0.15133019745170093,
+             "Seasonal Cycle Score":0.20952925705258027,
+             "Interannual Variability Score":-0.2953443516074359,
+             "Bias Score":-2.113155114247948,
+             "RMSE Score":-1.168112583989086,
+             "Overall Score":-0.9647728995829077
+          },
+          "MIROC-ESM":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "MPI-ESM-LR":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "NorESM1-ME":{
+             "Spatial Distribution Score":-0.09599823734928695,
+             "Seasonal Cycle Score":0.02776875753987282,
+             "Interannual Variability Score":1.3425225593718515,
+             "Bias Score":0.2845671026318447,
+             "RMSE Score":-0.03285844836197709,
+             "Overall Score":0.4146627261180361
+          },
+          "MeanCMIP5":{
+             "Spatial Distribution Score":1.0958311813941937,
+             "Seasonal Cycle Score":1.2199402786398146,
+             "Interannual Variability Score":0.04799734076419009,
+             "Bias Score":1.6607801690611859,
+             "RMSE Score":1.7726928853165436,
+             "Overall Score":1.4954475252657267
+          },
+          "BCC-CSM2-MR":{
+             "Spatial Distribution Score":-0.1266261219535746,
+             "Seasonal Cycle Score":-0.45563934589322314,
+             "Interannual Variability Score":0.012536641716439489,
+             "Bias Score":-0.48382760720541523,
+             "RMSE Score":-0.08342201084547399,
+             "Overall Score":-0.2517540410377868
+          },
+          "BCC-ESM1":{
+             "Spatial Distribution Score":-0.02009865839297789,
+             "Seasonal Cycle Score":-0.8704819205373533,
+             "Interannual Variability Score":-0.22468975744661884,
+             "Bias Score":0.18835599957950985,
+             "RMSE Score":-0.6186911470384882,
+             "Overall Score":-0.4192041619722503
+          },
+          "CESM2":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "CESM2-WACCM":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "CNRM-CM6-1":{
+             "Spatial Distribution Score":0.738879570140193,
+             "Seasonal Cycle Score":0.6828016638477463,
+             "Interannual Variability Score":0.9821043530514321,
+             "Bias Score":0.05822341163309045,
+             "RMSE Score":-0.3277358791142899,
+             "Overall Score":0.4516968379933698
+          },
+          "CNRM-ESM2-1":{
+             "Spatial Distribution Score":0.30097818410089666,
+             "Seasonal Cycle Score":0.6990478915172722,
+             "Interannual Variability Score":1.1954957242326527,
+             "Bias Score":1.1275592790054414,
+             "RMSE Score":-0.26143195950576265,
+             "Overall Score":0.6697215697404989
+          },
+          "E3SMv1-CTC":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "GISS-E2-1-G":{
+             "Spatial Distribution Score":-0.0018583193441124445,
+             "Seasonal Cycle Score":-0.7739983321668792,
+             "Interannual Variability Score":-1.533124056098269,
+             "Bias Score":-0.7725181076968816,
+             "RMSE Score":-0.8451376621207001,
+             "Overall Score":-1.0239133480545148
+          },
+          "GISS-E2-1-H":{
+             "Spatial Distribution Score":-1.2662914157797236,
+             "Seasonal Cycle Score":-1.4592900410376755,
+             "Interannual Variability Score":-0.6212580705289074,
+             "Bias Score":-1.1998229623795933,
+             "RMSE Score":-0.6777108798077425,
+             "Overall Score":-1.236768343064046
+          },
+          "IPSL-CM6A-LR":{
+             "Spatial Distribution Score":0.7468206665254677,
+             "Seasonal Cycle Score":1.0424247298437526,
+             "Interannual Variability Score":1.2573843306058297,
+             "Bias Score":-0.2879546893428477,
+             "RMSE Score":1.359688055519744,
+             "Overall Score":1.1612851339144061
+          },
+          "MIROC6":{
+             "Spatial Distribution Score":-2.592111623543775,
+             "Seasonal Cycle Score":-0.08501614581380428,
+             "Interannual Variability Score":-0.9521543039711516,
+             "Bias Score":0.12312380281871313,
+             "RMSE Score":-0.5603283242748002,
+             "Overall Score":-1.0671858951025297
+          },
+          "MRI-ESM2-0":{
+             "Spatial Distribution Score":0.97159287378452,
+             "Seasonal Cycle Score":1.2526654538023847,
+             "Interannual Variability Score":1.0145368106039399,
+             "Bias Score":1.1363769671926367,
+             "RMSE Score":0.47230146260856243,
+             "Overall Score":1.1467807456878476
+          },
+          "MeanCMIP6":{
+             "Spatial Distribution Score":1.5855648042220885,
+             "Seasonal Cycle Score":1.4034073340231792,
+             "Interannual Variability Score":-0.9825852391275159,
+             "Bias Score":1.3826218332913178,
+             "RMSE Score":2.280494967978949,
+             "Overall Score":1.4938315573809764
+          }
+       },
+       "Relationships":{
+          "bcc-csm1-1":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "bcc-csm1-1-m":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "CESM1-BGC":{
+             "Precipitation RMSE Score":-1.564449129574704,
+             "SurfaceAirTemperature RMSE Score":-1.7008057718832355,
+             "Overall Score":-1.6248036154072145
+          },
+          "GFDL-ESM2G":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "inmcm4":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "IPSL-CM5A-LR":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "MIROC-ESM":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "MPI-ESM-LR":{
+             "Precipitation RMSE Score":0.809768415179889,
+             "SurfaceAirTemperature RMSE Score":0.6982307845499058,
+             "Overall Score":0.8893029984021795
+          },
+          "NorESM1-ME":{
+             "Precipitation RMSE Score":-1.8616786999756216,
+             "SurfaceAirTemperature RMSE Score":-1.7365573093864461,
+             "Overall Score":-1.875995795285359
+          },
+          "MeanCMIP5":{
+             "Precipitation RMSE Score":-0.4485045487304177,
+             "SurfaceAirTemperature RMSE Score":-0.004575117029949698,
+             "Overall Score":-0.33140802509491607
+          },
+          "BCC-CSM2-MR":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "BCC-ESM1":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "CESM2":{
+             "Precipitation RMSE Score":0.6839304208929327,
+             "SurfaceAirTemperature RMSE Score":0.2463982284298604,
+             "Overall Score":0.4792189195726617
+          },
+          "CESM2-WACCM":{
+             "Precipitation RMSE Score":0.6973102056935893,
+             "SurfaceAirTemperature RMSE Score":0.1845244736623894,
+             "Overall Score":0.5567173082836319
+          },
+          "CNRM-CM6-1":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "CNRM-ESM2-1":{
+             "Precipitation RMSE Score":0.8831932435703893,
+             "SurfaceAirTemperature RMSE Score":0.6037804629083406,
+             "Overall Score":0.9134442294060215
+          },
+          "E3SMv1-CTC":{
+             "Precipitation RMSE Score":0.10407883908212621,
+             "SurfaceAirTemperature RMSE Score":1.439489859498694,
+             "Overall Score":0.30643117099501327
+          },
+          "GISS-E2-1-G":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "GISS-E2-1-H":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "IPSL-CM6A-LR":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "MIROC6":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "MRI-ESM2-0":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "MeanCMIP6":{
+             "Precipitation RMSE Score":0.6963512538618114,
+             "SurfaceAirTemperature RMSE Score":0.26951438925042215,
+             "Overall Score":0.6870928091279818
+          }
+       }
+    },
+    "global":{
+       "Ecosystem and Carbon Cycle":{
+          "bcc-csm1-1":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "bcc-csm1-1-m":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "CESM1-BGC":{
+             "Spatial Distribution Score":-1.721753310063378,
+             "Bias Score":-1.4333564932005,
+             "Overall Score":-1.6415293795984185
+          },
+          "GFDL-ESM2G":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "inmcm4":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "IPSL-CM5A-LR":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "MIROC-ESM":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "MPI-ESM-LR":{
+             "Spatial Distribution Score":-0.030099014896512302,
+             "Bias Score":-0.35142548355935266,
+             "Overall Score":-999
+          },
+          "NorESM1-ME":{
+             "Spatial Distribution Score":-1.8284028888763764,
+             "Bias Score":-1.7184304891305888,
+             "Overall Score":-1.4119383470457718
+          },
+          "MeanCMIP5":{
+             "Spatial Distribution Score":0.9528226837298939,
+             "Bias Score":0.9515021774991047,
+             "Overall Score":1.4698519331967201
+          },
+          "BCC-CSM2-MR":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "BCC-ESM1":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "CESM2":{
+             "Spatial Distribution Score":0.2375957109467798,
+             "Bias Score":0.23269101280062776,
+             "Overall Score":0.48063615172639373
+          },
+          "CESM2-WACCM":{
+             "Spatial Distribution Score":0.2812690588927651,
+             "Bias Score":0.22056621593825393,
+             "Overall Score":0.31247370904943533
+          },
+          "CNRM-CM6-1":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "CNRM-ESM2-1":{
+             "Spatial Distribution Score":0.6545829440465643,
+             "Bias Score":0.6712971911211192,
+             "Overall Score":-0.28613976812581543
+          },
+          "E3SMv1-CTC":{
+             "Spatial Distribution Score":1.0121701062383415,
+             "Bias Score":-0.12063071311986791,
+             "Overall Score":0.2543890412852543
+          },
+          "GISS-E2-1-G":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "GISS-E2-1-H":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "IPSL-CM6A-LR":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "MIROC6":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "MRI-ESM2-0":{
+             "Spatial Distribution Score":-999,
+             "Bias Score":-999,
+             "Overall Score":-999
+          },
+          "MeanCMIP6":{
+             "Spatial Distribution Score":0.4418147099819284,
+             "Bias Score":1.547786581651195,
+             "Overall Score":0.8222566595121965
+          }
+       },
+       "Hydrology Cycle":{
+          "bcc-csm1-1":{
+             "Spatial Distribution Score":-2.376839369404462,
+             "Seasonal Cycle Score":-0.8210565141105991,
+             "Interannual Variability Score":-1.461865191364088,
+             "Bias Score":-0.8915031065831676,
+             "RMSE Score":-0.5573638770165932,
+             "Overall Score":-1.611618585402285
+          },
+          "bcc-csm1-1-m":{
+             "Spatial Distribution Score":0.07228610257310684,
+             "Seasonal Cycle Score":-0.7989812030643806,
+             "Interannual Variability Score":-0.8015851594009331,
+             "Bias Score":-0.2209973800017339,
+             "RMSE Score":-0.6981823374848743,
+             "Overall Score":-0.5171319226987883
+          },
+          "CESM1-BGC":{
+             "Spatial Distribution Score":-1.4113064181967316,
+             "Seasonal Cycle Score":-0.5369231733071439,
+             "Interannual Variability Score":-1.683848215591343,
+             "Bias Score":-0.44811477134147354,
+             "RMSE Score":-1.5499741489911296,
+             "Overall Score":-1.177447285288341
+          },
+          "GFDL-ESM2G":{
+             "Spatial Distribution Score":-0.024677534516227166,
+             "Seasonal Cycle Score":0.5597889620191671,
+             "Interannual Variability Score":0.37541267453977856,
+             "Bias Score":-0.8075011053267368,
+             "RMSE Score":-0.894802136276776,
+             "Overall Score":-0.005521084110054011
+          },
+          "inmcm4":{
+             "Spatial Distribution Score":-0.15284354970609984,
+             "Seasonal Cycle Score":0.07833768255226525,
+             "Interannual Variability Score":-0.6221690728042141,
+             "Bias Score":-1.1399332314199087,
+             "RMSE Score":-1.3056638467750605,
+             "Overall Score":-0.5674227804245948
+          },
+          "IPSL-CM5A-LR":{
+             "Spatial Distribution Score":-2.6059293687241203,
+             "Seasonal Cycle Score":-0.7769083686500533,
+             "Interannual Variability Score":-2.8576677301143447,
+             "Bias Score":-1.5082581626195204,
+             "RMSE Score":-1.6781012946227731,
+             "Overall Score":-2.8976002369926155
+          },
+          "MIROC-ESM":{
+             "Spatial Distribution Score":-0.3110079622516006,
+             "Seasonal Cycle Score":-0.7414083349946143,
+             "Interannual Variability Score":0.8194161158016302,
+             "Bias Score":-1.0607605841156829,
+             "RMSE Score":-0.3139452453667244,
+             "Overall Score":-0.1197346254977867
+          },
+          "MPI-ESM-LR":{
+             "Spatial Distribution Score":0.1896660288719211,
+             "Seasonal Cycle Score":-0.5918200179100969,
+             "Interannual Variability Score":0.07944624812012409,
+             "Bias Score":-0.8344397542771914,
+             "RMSE Score":-0.37474083664419183,
+             "Overall Score":-0.13474450741357805
+          },
+          "NorESM1-ME":{
+             "Spatial Distribution Score":0.4591901982513358,
+             "Seasonal Cycle Score":-0.05974055488039143,
+             "Interannual Variability Score":0.6724232987567662,
+             "Bias Score":-0.5310798160679343,
+             "RMSE Score":0.32840597092162715,
+             "Overall Score":0.3966264285927317
+          },
+          "MeanCMIP5":{
+             "Spatial Distribution Score":-0.14411788726722974,
+             "Seasonal Cycle Score":0.7260995590543912,
+             "Interannual Variability Score":0.7444309760729547,
+             "Bias Score":0.5487742270769504,
+             "RMSE Score":1.2804058553186892,
+             "Overall Score":0.5769915327521686
+          },
+          "BCC-CSM2-MR":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "BCC-ESM1":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "CESM2":{
+             "Spatial Distribution Score":0.9518957502094523,
+             "Seasonal Cycle Score":0.45956409614297533,
+             "Interannual Variability Score":0.8849513173686044,
+             "Bias Score":1.720493959998772,
+             "RMSE Score":1.0444334398753963,
+             "Overall Score":1.1573965767177363
+          },
+          "CESM2-WACCM":{
+             "Spatial Distribution Score":0.9430348666328838,
+             "Seasonal Cycle Score":0.48065888321809913,
+             "Interannual Variability Score":0.873809909067886,
+             "Bias Score":1.5946156566995808,
+             "RMSE Score":0.9409882208428901,
+             "Overall Score":1.1018594181997858
+          },
+          "CNRM-CM6-1":{
+             "Spatial Distribution Score":0.712446394791534,
+             "Seasonal Cycle Score":0.17748600280532434,
+             "Interannual Variability Score":0.4615755573584691,
+             "Bias Score":0.825959014562889,
+             "RMSE Score":0.1232541106800413,
+             "Overall Score":0.5803791466466981
+          },
+          "CNRM-ESM2-1":{
+             "Spatial Distribution Score":0.6663808912014931,
+             "Seasonal Cycle Score":-0.02119590857455056,
+             "Interannual Variability Score":0.7089121961774709,
+             "Bias Score":0.6626411252768847,
+             "RMSE Score":-0.06225924417742791,
+             "Overall Score":0.5304034442080207
+          },
+          "E3SMv1-CTC":{
+             "Spatial Distribution Score":0.6005578983185367,
+             "Seasonal Cycle Score":0.8177009138508995,
+             "Interannual Variability Score":0.5750799269794932,
+             "Bias Score":0.5036937589958798,
+             "RMSE Score":0.6155708624580583,
+             "Overall Score":0.6495132200571447
+          },
+          "GISS-E2-1-G":{
+             "Spatial Distribution Score":0.2013635338288252,
+             "Seasonal Cycle Score":-0.6472135451347505,
+             "Interannual Variability Score":-0.023676648383270917,
+             "Bias Score":0.3394530961398316,
+             "RMSE Score":-0.12276533617909621,
+             "Overall Score":-0.06272012646686174
+          },
+          "GISS-E2-1-H":{
+             "Spatial Distribution Score":-0.1687252917654091,
+             "Seasonal Cycle Score":-1.1021348661097385,
+             "Interannual Variability Score":-0.36975064987178136,
+             "Bias Score":-0.3030710611469521,
+             "RMSE Score":-0.5368791862432126,
+             "Overall Score":-0.5530510998372922
+          },
+          "IPSL-CM6A-LR":{
+             "Spatial Distribution Score":0.5688394909204765,
+             "Seasonal Cycle Score":0.5681738743702563,
+             "Interannual Variability Score":0.48119167953980907,
+             "Bias Score":0.8627079231313316,
+             "RMSE Score":0.4265810174532807,
+             "Overall Score":0.6785653469230599
+          },
+          "MIROC6":{
+             "Spatial Distribution Score":0.9210027201025812,
+             "Seasonal Cycle Score":0.5735897162194192,
+             "Interannual Variability Score":1.0138782469664611,
+             "Bias Score":-1.115632171380172,
+             "RMSE Score":0.9357691579531587,
+             "Overall Score":0.6767421717658506
+          },
+          "MRI-ESM2-0":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":0.3532331753985263,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "MeanCMIP6":{
+             "Spatial Distribution Score":0.908783506129716,
+             "Seasonal Cycle Score":1.3027496211050371,
+             "Interannual Variability Score":0.13003452078056166,
+             "Bias Score":1.8029523823983291,
+             "RMSE Score":2.3992688542747147,
+             "Overall Score":1.2985149682689663
+          }
+       },
+       "Radiation and Energy Cycle":{
+          "bcc-csm1-1":{
+             "Spatial Distribution Score":0.26120313762040825,
+             "Seasonal Cycle Score":-0.34758725772605636,
+             "Interannual Variability Score":-0.027442425180442816,
+             "Bias Score":0.28902520210459526,
+             "RMSE Score":-0.5642914233025764,
+             "Overall Score":-0.16150675609902798
+          },
+          "bcc-csm1-1-m":{
+             "Spatial Distribution Score":0.2786121150157139,
+             "Seasonal Cycle Score":-0.43914789225331097,
+             "Interannual Variability Score":-0.06400382870262802,
+             "Bias Score":0.1542084388196672,
+             "RMSE Score":-0.275480251279725,
+             "Overall Score":-0.13341236439523008
+          },
+          "CESM1-BGC":{
+             "Spatial Distribution Score":-0.1184663639073158,
+             "Seasonal Cycle Score":0.08922898980485705,
+             "Interannual Variability Score":0.6332158201283951,
+             "Bias Score":0.3009008820878163,
+             "RMSE Score":-0.07887100985492501,
+             "Overall Score":0.2673029716685149
+          },
+          "GFDL-ESM2G":{
+             "Spatial Distribution Score":0.13957180927699486,
+             "Seasonal Cycle Score":-0.37808739435105654,
+             "Interannual Variability Score":0.044234841824283944,
+             "Bias Score":-0.28392275854709326,
+             "RMSE Score":-1.253065764281519,
+             "Overall Score":-0.5092766017083306
+          },
+          "inmcm4":{
+             "Spatial Distribution Score":-0.9130071812545659,
+             "Seasonal Cycle Score":-0.31693867385186314,
+             "Interannual Variability Score":-0.2639213173090935,
+             "Bias Score":-2.246242492648311,
+             "RMSE Score":-0.5173813445492226,
+             "Overall Score":-0.9732057307043407
+          },
+          "IPSL-CM5A-LR":{
+             "Spatial Distribution Score":-0.6202492463735609,
+             "Seasonal Cycle Score":-0.6210784066933872,
+             "Interannual Variability Score":-0.34380349024829854,
+             "Bias Score":-2.310020338949535,
+             "RMSE Score":-0.26668166720151265,
+             "Overall Score":-0.9197023828441897
+          },
+          "MIROC-ESM":{
+             "Spatial Distribution Score":-0.682884626598157,
+             "Seasonal Cycle Score":-0.911836803353,
+             "Interannual Variability Score":-0.04915287058999422,
+             "Bias Score":-1.536317411333423,
+             "RMSE Score":-1.387319865330361,
+             "Overall Score":-1.1169644641257248
+          },
+          "MPI-ESM-LR":{
+             "Spatial Distribution Score":0.07432824182638798,
+             "Seasonal Cycle Score":-0.4434855140186489,
+             "Interannual Variability Score":0.35243881719984116,
+             "Bias Score":0.1713254878065523,
+             "RMSE Score":0.06265168870507876,
+             "Overall Score":0.1425352878591024
+          },
+          "NorESM1-ME":{
+             "Spatial Distribution Score":-0.049024886721449334,
+             "Seasonal Cycle Score":-0.5911506163473135,
+             "Interannual Variability Score":0.6645988071330394,
+             "Bias Score":-0.10951542770615341,
+             "RMSE Score":-0.022823723059356427,
+             "Overall Score":0.113530903212955
+          },
+          "MeanCMIP5":{
+             "Spatial Distribution Score":-0.012078336614268492,
+             "Seasonal Cycle Score":0.9166187176252227,
+             "Interannual Variability Score":-2.9049616917367818,
+             "Bias Score":0.8536639685964883,
+             "RMSE Score":2.7422562785536173,
+             "Overall Score":0.2715485969659037
+          },
+          "BCC-CSM2-MR":{
+             "Spatial Distribution Score":-0.022196962940618237,
+             "Seasonal Cycle Score":-0.035295164746040886,
+             "Interannual Variability Score":0.25645327221202885,
+             "Bias Score":0.1626855327416925,
+             "RMSE Score":-0.2962608980076997,
+             "Overall Score":-0.0046212152405467055
+          },
+          "BCC-ESM1":{
+             "Spatial Distribution Score":0.13544905414174524,
+             "Seasonal Cycle Score":-0.37439024103533836,
+             "Interannual Variability Score":0.35305177323309583,
+             "Bias Score":0.17757255646075373,
+             "RMSE Score":-0.6490793643997128,
+             "Overall Score":-0.1121063694498936
+          },
+          "CESM2":{
+             "Spatial Distribution Score":0.2663338569222795,
+             "Seasonal Cycle Score":0.4600348853856462,
+             "Interannual Variability Score":0.8753914986492956,
+             "Bias Score":1.1804069148945169,
+             "RMSE Score":0.19385386868314147,
+             "Overall Score":0.7746470823318863
+          },
+          "CESM2-WACCM":{
+             "Spatial Distribution Score":0.27077002051482113,
+             "Seasonal Cycle Score":0.2413444534432596,
+             "Interannual Variability Score":0.8215297153396328,
+             "Bias Score":1.1104436030232734,
+             "RMSE Score":0.08552826422047466,
+             "Overall Score":0.6507977561686695
+          },
+          "CNRM-CM6-1":{
+             "Spatial Distribution Score":0.4046697205046301,
+             "Seasonal Cycle Score":0.2666651225445127,
+             "Interannual Variability Score":0.26875112036645765,
+             "Bias Score":0.809367159682712,
+             "RMSE Score":0.2419864410860173,
+             "Overall Score":0.4476221723706708
+          },
+          "CNRM-ESM2-1":{
+             "Spatial Distribution Score":0.48665832911584106,
+             "Seasonal Cycle Score":0.2307661758091717,
+             "Interannual Variability Score":0.19080793827418902,
+             "Bias Score":0.6728872478937551,
+             "RMSE Score":0.006175761094445731,
+             "Overall Score":0.30370093228773154
+          },
+          "E3SMv1-CTC":{
+             "Spatial Distribution Score":0.31796993866469725,
+             "Seasonal Cycle Score":0.6673712652093933,
+             "Interannual Variability Score":0.7887032652404798,
+             "Bias Score":0.2507382650721648,
+             "RMSE Score":-0.034219812439340025,
+             "Overall Score":0.5114052900428878
+          },
+          "GISS-E2-1-G":{
+             "Spatial Distribution Score":-0.6214537347482951,
+             "Seasonal Cycle Score":0.07369385845752419,
+             "Interannual Variability Score":0.35470571813019736,
+             "Bias Score":-0.4194702429804264,
+             "RMSE Score":-0.20530967595434602,
+             "Overall Score":-0.13044519949428346
+          },
+          "GISS-E2-1-H":{
+             "Spatial Distribution Score":-0.6581915525644133,
+             "Seasonal Cycle Score":0.3876768178081025,
+             "Interannual Variability Score":0.2996685000174571,
+             "Bias Score":-0.7114785434704093,
+             "RMSE Score":-0.18983023178418823,
+             "Overall Score":-0.15299334947354026
+          },
+          "IPSL-CM6A-LR":{
+             "Spatial Distribution Score":0.2152278765414517,
+             "Seasonal Cycle Score":-0.07151625454013821,
+             "Interannual Variability Score":0.28694282039026886,
+             "Bias Score":0.6240045272945367,
+             "RMSE Score":-0.01989762922925964,
+             "Overall Score":0.24956363981730734
+          },
+          "MIROC6":{
+             "Spatial Distribution Score":0.43141976307208285,
+             "Seasonal Cycle Score":-0.3457870618770231,
+             "Interannual Variability Score":0.2326885636173036,
+             "Bias Score":-0.1346823454000908,
+             "RMSE Score":-0.4690199706871456,
+             "Overall Score":-0.10102040377814037
+          },
+          "MRI-ESM2-0":{
+             "Spatial Distribution Score":0.12000291374985594,
+             "Seasonal Cycle Score":0.24571499387278095,
+             "Interannual Variability Score":0.46527701584734654,
+             "Bias Score":-0.8757599724186265,
+             "RMSE Score":-0.22721072517578045,
+             "Overall Score":-0.023169965760383437
+          },
+          "MeanCMIP6":{
+             "Spatial Distribution Score":0.29533611475576205,
+             "Seasonal Cycle Score":1.2971860008328173,
+             "Interannual Variability Score":-3.235173863836082,
+             "Bias Score":1.8701797469755974,
+             "RMSE Score":3.1242910541938005,
+             "Overall Score":0.6057701703478746
+          }
+       },
+       "Forcings":{
+          "bcc-csm1-1":{
+             "Spatial Distribution Score":0.3877602235922054,
+             "Seasonal Cycle Score":-0.636910583685435,
+             "Interannual Variability Score":-0.18615164915036886,
+             "Bias Score":-0.27946119774646494,
+             "RMSE Score":-0.6126562387199579,
+             "Overall Score":-0.420124402615309
+          },
+          "bcc-csm1-1-m":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "CESM1-BGC":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "GFDL-ESM2G":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "inmcm4":{
+             "Spatial Distribution Score":-3.256328542342357,
+             "Seasonal Cycle Score":-1.4548330453078517,
+             "Interannual Variability Score":-1.2180707169660112,
+             "Bias Score":-1.5841465970361557,
+             "RMSE Score":-1.339109576746992,
+             "Overall Score":-2.4787521566744433
+          },
+          "IPSL-CM5A-LR":{
+             "Spatial Distribution Score":-0.6022718415650042,
+             "Seasonal Cycle Score":-1.2690964726343568,
+             "Interannual Variability Score":-0.9863266352077539,
+             "Bias Score":-2.3951277096786674,
+             "RMSE Score":-1.2556458982496261,
+             "Overall Score":-1.9086393694833943
+          },
+          "MIROC-ESM":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "MPI-ESM-LR":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "NorESM1-ME":{
+             "Spatial Distribution Score":0.754309656373517,
+             "Seasonal Cycle Score":-0.14007930249377853,
+             "Interannual Variability Score":1.0655957412433643,
+             "Bias Score":-0.17132545909069763,
+             "RMSE Score":0.10194636489992023,
+             "Overall Score":0.5387954590998562
+          },
+          "MeanCMIP5":{
+             "Spatial Distribution Score":0.48082715346149135,
+             "Seasonal Cycle Score":1.0833717766210782,
+             "Interannual Variability Score":-1.2913245594693545,
+             "Bias Score":1.1514822412511916,
+             "RMSE Score":1.9585624578273297,
+             "Overall Score":1.0677865702452578
+          },
+          "BCC-CSM2-MR":{
+             "Spatial Distribution Score":0.17546642381381336,
+             "Seasonal Cycle Score":0.2332904061421226,
+             "Interannual Variability Score":0.2271827634810619,
+             "Bias Score":0.7154642910661697,
+             "RMSE Score":-0.29886271743239645,
+             "Overall Score":0.20371040779776337
+          },
+          "BCC-ESM1":{
+             "Spatial Distribution Score":0.25031327088138366,
+             "Seasonal Cycle Score":-0.19541705687743938,
+             "Interannual Variability Score":0.10319449646424629,
+             "Bias Score":-0.32114287911198675,
+             "RMSE Score":-0.4697610506636363,
+             "Overall Score":-0.24000533270199226
+          },
+          "CESM2":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "CESM2-WACCM":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "CNRM-CM6-1":{
+             "Spatial Distribution Score":0.7575265607956395,
+             "Seasonal Cycle Score":1.1895536467738943,
+             "Interannual Variability Score":0.5420557900226243,
+             "Bias Score":0.8233201917349231,
+             "RMSE Score":0.07367310592124063,
+             "Overall Score":0.7890677810894238
+          },
+          "CNRM-ESM2-1":{
+             "Spatial Distribution Score":0.6649746768852287,
+             "Seasonal Cycle Score":1.2479980131827273,
+             "Interannual Variability Score":0.7321459585857916,
+             "Bias Score":0.9514354422504913,
+             "RMSE Score":0.1074972056880993,
+             "Overall Score":0.8869093625170071
+          },
+          "E3SMv1-CTC":{
+             "Spatial Distribution Score":-999,
+             "Seasonal Cycle Score":-999,
+             "Interannual Variability Score":-999,
+             "Bias Score":-999,
+             "RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "GISS-E2-1-G":{
+             "Spatial Distribution Score":0.3940845648236312,
+             "Seasonal Cycle Score":-0.6550625677449962,
+             "Interannual Variability Score":0.46186896733651744,
+             "Bias Score":0.32463816502615334,
+             "RMSE Score":-0.14154521185711674,
+             "Overall Score":0.18827526453304133
+          },
+          "GISS-E2-1-H":{
+             "Spatial Distribution Score":0.2687559338407752,
+             "Seasonal Cycle Score":-1.0266300621239344,
+             "Interannual Variability Score":0.6455644789788579,
+             "Bias Score":-0.08170735355834016,
+             "RMSE Score":-0.13999296644122608,
+             "Overall Score":0.06339583306562459
+          },
+          "IPSL-CM6A-LR":{
+             "Spatial Distribution Score":0.18093230151218126,
+             "Seasonal Cycle Score":-0.23321802658929358,
+             "Interannual Variability Score":0.8238837321938514,
+             "Bias Score":-0.45941633550774374,
+             "RMSE Score":-0.06214679493723047,
+             "Overall Score":0.13531332349342662
+          },
+          "MIROC6":{
+             "Spatial Distribution Score":-1.138779976431845,
+             "Seasonal Cycle Score":-0.1677978372274791,
+             "Interannual Variability Score":0.48071241435264295,
+             "Bias Score":-0.6231420678639752,
+             "RMSE Score":-0.5988568624934267,
+             "Overall Score":-0.5892111663722881
+          },
+          "MRI-ESM2-0":{
+             "Spatial Distribution Score":0.03820453496331664,
+             "Seasonal Cycle Score":0.5154723413943241,
+             "Interannual Variability Score":1.0737097377636462,
+             "Bias Score":0.468904095848856,
+             "RMSE Score":0.09417485318217085,
+             "Overall Score":0.6193469188059999
+          },
+          "MeanCMIP6":{
+             "Spatial Distribution Score":0.644225059396052,
+             "Seasonal Cycle Score":1.5093587705705125,
+             "Interannual Variability Score":-2.4740405196291624,
+             "Bias Score":1.480225172416271,
+             "RMSE Score":2.5827233300228714,
+             "Overall Score":1.1441315072000173
+          }
+       },
+       "Relationships":{
+          "bcc-csm1-1":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "bcc-csm1-1-m":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "CESM1-BGC":{
+             "Precipitation RMSE Score":-1.9519734499093524,
+             "SurfaceAirTemperature RMSE Score":-1.7437048438846305,
+             "Overall Score":-1.8322738521050694
+          },
+          "GFDL-ESM2G":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "inmcm4":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "IPSL-CM5A-LR":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "MIROC-ESM":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "MPI-ESM-LR":{
+             "Precipitation RMSE Score":0.07001339079157345,
+             "SurfaceAirTemperature RMSE Score":-0.20595383755411562,
+             "Overall Score":0.06514937785410731
+          },
+          "NorESM1-ME":{
+             "Precipitation RMSE Score":-1.3694697651429923,
+             "SurfaceAirTemperature RMSE Score":-1.2836935949318495,
+             "Overall Score":-1.4479416532518088
+          },
+          "MeanCMIP5":{
+             "Precipitation RMSE Score":-0.39701020733477704,
+             "SurfaceAirTemperature RMSE Score":-0.6798888904936199,
+             "Overall Score":-0.5178110097278232
+          },
+          "BCC-CSM2-MR":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "BCC-ESM1":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "CESM2":{
+             "Precipitation RMSE Score":0.9223958980344943,
+             "SurfaceAirTemperature RMSE Score":1.1181388604985112,
+             "Overall Score":0.9405269574306842
+          },
+          "CESM2-WACCM":{
+             "Precipitation RMSE Score":1.0102428906506076,
+             "SurfaceAirTemperature RMSE Score":1.1823481623084318,
+             "Overall Score":1.0251098439797683
+          },
+          "CNRM-CM6-1":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "CNRM-ESM2-1":{
+             "Precipitation RMSE Score":0.4692732353800413,
+             "SurfaceAirTemperature RMSE Score":0.16812144461815412,
+             "Overall Score":0.5134672258835311
+          },
+          "E3SMv1-CTC":{
+             "Precipitation RMSE Score":0.24690318184947418,
+             "SurfaceAirTemperature RMSE Score":0.5137139065790159,
+             "Overall Score":0.24688552279489137
+          },
+          "GISS-E2-1-G":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "GISS-E2-1-H":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "IPSL-CM6A-LR":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "MIROC6":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "MRI-ESM2-0":{
+             "Precipitation RMSE Score":-999,
+             "SurfaceAirTemperature RMSE Score":-999,
+             "Overall Score":-999
+          },
+          "MeanCMIP6":{
+             "Precipitation RMSE Score":0.9996248256809347,
+             "SurfaceAirTemperature RMSE Score":0.9309187928600983,
+             "Overall Score":1.0068875871417144
+          }
+       }
+    }
+ }

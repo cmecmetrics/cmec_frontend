@@ -51,26 +51,33 @@
   margin-left: auto;
   margin-right: auto;
 }
-.controlColumn, .tableColumn{
+.controlColumn,
+.tableColumn {
   margin-top: 0.5em;
 }
 
-#colorLegendTable, .missingLegend{
+#colorLegendTable,
+.missingLegend {
   margin-left: auto;
   margin-right: auto;
 }
 
 .colorLegendLabel {
-  margin-left: .25em;
+  margin-left: 0.25em;
 }
 
-.missingLegend{
+.missingLegend {
   margin-top: 1.5em;
 }
 
 .hover {
   font-weight: bold;
   border: 2px solid;
+}
+
+td {
+  font-size: 0.85em;
+  white-space: pre;
 }
 @keyframes App-logo-spin {
   from {

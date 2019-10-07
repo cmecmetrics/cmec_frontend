@@ -72,7 +72,26 @@ function handleMissingData(models, filter = undefined) {
   return model_object;
 }
 
+function findLevel(rowName) {
+  var count = (rowName.match(/::/g) || []).length;
+  console.log("Number of double colons:", count);
+  return count;
+}
+
 function TableRow(props) {
+  // console.log("props:", props);
+  console.log("props.row:", props.row);
+  console.log("Level:", findLevel(props.row));
+  let rowLabel;
+  let labelLevel = findLevel(props.row);
+  if (labelLevel > 0) {
+    let label = props.row.split("::");
+    console.log("label:", label);
+    let tabs = "\t".repeat(labelLevel);
+    rowLabel = tabs + label.slice(-1)[0];
+  } else {
+    rowLabel = props.row;
+  }
   let columns = props.columns;
   const [hovered, setHovered] = useState(false);
   const toggleHover = () => setHovered(!hovered);
@@ -101,7 +120,7 @@ function TableRow(props) {
         onMouseEnter={toggleHover}
         onMouseLeave={toggleHover}
       >
-        <td className="row-label">{props.row}</td>
+        <td className="row-label">{rowLabel}</td>
         {Object.keys(columns).map((column, i) => {
           return (
             <td

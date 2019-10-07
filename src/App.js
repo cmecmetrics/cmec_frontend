@@ -22,6 +22,18 @@ const scalarColorScale = {
   Relationships: "#fff2e5"
 };
 
+function getBackgroundColor(rowName) {
+  if (rowName.includes("Ecosystem and Carbon Cycle")) {
+    return "#ECFFE6";
+  }
+  if (rowName.includes("Hydrology Cycle")) {
+    return "#E6F9FF";
+  }
+  if (rowName.includes("Radiation and Energy Cycle")) {
+    return "#FFECE6";
+  }
+}
+
 export const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,600&display=swap');
 
@@ -129,30 +141,32 @@ function App() {
   useEffect(() => {
     axios
       // .get("ALL_SCORES_bcc-csm1-1_southamericaamazon.json")
-      .get("ALL_REGIONS_Ecosystem and Carbon Cycle.json")
+      // .get("ALL_REGIONS_Ecosystem and Carbon Cycle.json")
+      .get("new_paul_format.json")
       // .get("sample.json")
       // .get("scalars_test.json")
       .then(response => {
         let rows;
         let responseRegion;
         let data;
+        console.log("response.data:", response.data);
         if (filter === "ALL_SCORES") {
-          rows = Object.keys(response.data);
-          data = response.data;
-          modelNames = ["bcc_csm1-1"];
+          rows = Object.keys(response.data["RESULTS"][selectedRegion]);
+          data = response.data["RESULTS"][selectedRegion];
         } else {
           data = response.data[selectedRegion];
           rows = Object.keys(responseRegion);
         }
+        console.log("rows:", rows);
         let tableRows = rows.map((row, i) => {
           console.log("row:", row);
-          let columns = data[row]["scores"][scalar];
+          let columns = data[row][scalar];
 
           return (
             <TableRow
               key={row}
               level="parent"
-              bgColor={scalarColorScale[row]}
+              bgColor={getBackgroundColor(row)}
               data={data[row]}
               row={row}
               columns={columns}

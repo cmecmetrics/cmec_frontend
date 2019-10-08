@@ -46,8 +46,11 @@ function mapToColor(value, cmap) {
 
 function toggleChildrenRow(e) {
   const category = e.currentTarget.dataset.category;
-  let childLevel =
-    e.currentTarget.className === "parent" ? "childVariable" : "childDataset";
+  console.log("category:", category);
+  let childLevel = e.currentTarget.className.includes("parent")
+    ? "childVariable"
+    : "childDataset";
+  console.log("childLevel:", childLevel);
   const childRows = document.getElementsByClassName(
     `${childLevel} ${category}`
   );
@@ -81,17 +84,6 @@ function findLevel(rowName) {
 function TableRow(props) {
   // console.log("props:", props);
   console.log("props.row:", props.row);
-  console.log("Level:", findLevel(props.row));
-  let rowLabel;
-  let labelLevel = findLevel(props.row);
-  if (labelLevel > 0) {
-    let label = props.row.split("::");
-    console.log("label:", label);
-    let tabs = "\t".repeat(labelLevel);
-    rowLabel = tabs + label.slice(-1)[0];
-  } else {
-    rowLabel = props.row;
-  }
   let columns = props.columns;
   const [hovered, setHovered] = useState(false);
   const toggleHover = () => setHovered(!hovered);
@@ -109,9 +101,11 @@ function TableRow(props) {
   return (
     <Fragment>
       <tr
-        className={`${props.level} ${hovered ? "hover" : ""}`}
+        className={`${props.level} ${props.parent} ${
+          hovered ? "hover" : ""
+        }`.trim()}
         key={props.index}
-        data-category={props.row}
+        data-category={props.row.trim()}
         style={{
           backgroundColor: props.bgColor,
           display: props.level.includes("childDataset") ? "none" : "table-row"
@@ -120,7 +114,7 @@ function TableRow(props) {
         onMouseEnter={toggleHover}
         onMouseLeave={toggleHover}
       >
-        <td className="row-label">{rowLabel}</td>
+        <td className="row-label">{props.row}</td>
         {Object.keys(columns).map((column, i) => {
           return (
             <td

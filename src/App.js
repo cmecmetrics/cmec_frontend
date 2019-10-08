@@ -32,6 +32,12 @@ function getBackgroundColor(rowName) {
   if (rowName.includes("Radiation and Energy Cycle")) {
     return "#FFECE6";
   }
+  if (rowName.includes("Forcings")) {
+    return "#EDEDED";
+  }
+  if (rowName.includes("Relationships")) {
+    return "#fff2e5";
+  }
 }
 
 export const GlobalStyle = createGlobalStyle`
@@ -132,6 +138,37 @@ setGlobal({
   region: "global"
 });
 
+function findHierarchyLevel(rowName) {
+  var count = (rowName.match(/::/g) || []).length;
+  console.log("Number of double colons:", count);
+  let hierarchyLevel;
+  if (count === 0) {
+    hierarchyLevel = "parent";
+  } else if (count === 1) {
+    hierarchyLevel = "childVariable";
+  } else if (count === 2) {
+    hierarchyLevel = "childDataset";
+  }
+  return [count, hierarchyLevel];
+}
+
+function formatRowLabel(rowLevel, row) {
+  console.log("rowLevel:", rowLevel);
+  let rowLabel;
+  let parent = "";
+  if (rowLevel > 0) {
+    let label = row.split("::");
+    console.log("label:", label);
+    let tabs = "\t".repeat(rowLevel);
+    rowLabel = tabs + label.slice(-1)[0];
+    parent = label.slice(-2)[0];
+    console.log("parent:", parent);
+  } else {
+    rowLabel = row;
+  }
+  return [rowLabel, parent];
+}
+
 function App() {
   const [scalar, setScalar] = useGlobal("scalar");
   const [selectedRegion, setSelectedRegion] = useGlobal("region");
@@ -158,17 +195,21 @@ function App() {
           rows = Object.keys(responseRegion);
         }
         console.log("rows:", rows);
+
         let tableRows = rows.map((row, i) => {
           console.log("row:", row);
+          let [rowLevel, hierarchyLevel] = findHierarchyLevel(row);
+          let [rowLabel, parent] = formatRowLabel(rowLevel, row);
           let columns = data[row][scalar];
 
           return (
             <TableRow
               key={row}
-              level="parent"
+              level={hierarchyLevel}
+              parent={parent}
               bgColor={getBackgroundColor(row)}
               data={data[row]}
-              row={row}
+              row={rowLabel}
               columns={columns}
               index={i}
               scalar={scalar}

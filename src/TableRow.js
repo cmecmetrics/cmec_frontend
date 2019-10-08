@@ -46,11 +46,9 @@ function mapToColor(value, cmap) {
 
 function toggleChildrenRow(e) {
   const category = e.currentTarget.dataset.category;
-  console.log("category:", category);
   let childLevel = e.currentTarget.className.includes("parent")
     ? "childVariable"
     : "childDataset";
-  console.log("childLevel:", childLevel);
   const childRows = document.getElementsByClassName(
     `${childLevel} ${category}`
   );
@@ -75,14 +73,7 @@ function handleMissingData(models, filter = undefined) {
   return model_object;
 }
 
-function findLevel(rowName) {
-  var count = (rowName.match(/::/g) || []).length;
-  console.log("Number of double colons:", count);
-  return count;
-}
-
 function TableRow(props) {
-  // console.log("props:", props);
   console.log("props.row:", props.row);
   let columns = props.columns;
   const [hovered, setHovered] = useState(false);
@@ -92,12 +83,7 @@ function TableRow(props) {
     console.log("found missing data");
     columns = handleMissingData(props.models);
   }
-  let children;
-  if (props.data["metrics"]) {
-    children = props.data["metrics"];
-  } else if (props.data["observational_products"]) {
-    children = props.data["observational_products"];
-  }
+
   return (
     <Fragment>
       <tr
@@ -129,42 +115,6 @@ function TableRow(props) {
           );
         })}
       </tr>
-
-      {Object.keys(children || {}).map((child, j) => {
-        let childLevel =
-          props.level === "parent" ? "childVariable" : "childDataset";
-
-        console.log("child:", child);
-        console.log("props.data:", props.data);
-        let columnData;
-        if (props.data["metrics"]) {
-          columnData = props.data["metrics"][child]["scores"][props.scalar];
-        } else if (props.data["observational_products"]) {
-          columnData =
-            props.data["observational_products"][child]["scores"][props.scalar];
-        } else {
-          columnData = props.data["scores"];
-        }
-
-        return (
-          <TableRow
-            key={props.row + " " + child}
-            level={`${childLevel} ${props.row}`}
-            bgColor={props.bgColor}
-            data={
-              props.data["metrics"]
-                ? props.data["metrics"][child]
-                : props.data["observational_products"][child]
-            }
-            row={child}
-            columns={columnData}
-            index={j}
-            scalar={props.scalar}
-            models={props.models}
-            filter={props.filter}
-          />
-        );
-      })}
     </Fragment>
   );
 }

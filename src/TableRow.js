@@ -74,7 +74,6 @@ function handleMissingData(models, filter = undefined) {
 }
 
 function TableRow(props) {
-  console.log("props.row:", props.row);
   let columns = props.columns;
   const [hovered, setHovered] = useState(false);
   const toggleHover = () => setHovered(!hovered);

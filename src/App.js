@@ -8,7 +8,9 @@ import Regions from "./Regions.js";
 import Table from "./Table.js";
 import ColorLegend from "./ColorLegend.js";
 import "./App.css";
+import "./animate.css";
 import { setGlobal, useGlobal } from "reactn";
+import Hyperslabs from "./Hyperslabs.js";
 
 const width = 1000;
 const height = 600;
@@ -79,7 +81,6 @@ export const Visualization = styled.div`
   justify-self: center;
   width: ${width}px;
   height: ${height}px;
-  // 6
 `;
 
 let modelNames = [
@@ -133,9 +134,12 @@ const regionOptions = {
   "South America - Amazon": "southamericaamazon"
 };
 
+const hyperslabOptions = ["region", "metric", "statistic", "model"];
+
 setGlobal({
   scalar: "Overall Score",
-  region: "global"
+  region: "global",
+  hyperslabs: ["region", "statistic"]
 });
 
 function findHierarchyLevel(rowName) {
@@ -172,6 +176,7 @@ function formatRowLabel(rowLevel, row) {
 function App() {
   const [scalar, setScalar] = useGlobal("scalar");
   const [selectedRegion, setSelectedRegion] = useGlobal("region");
+  const [selectedHyperslab, setselectedHyperslab] = useGlobal("hyperslabs");
   const [rows, setRows] = useState("");
   const [filter, setFilter] = useState("ALL_SCORES");
 
@@ -220,12 +225,20 @@ function App() {
         });
         setRows(tableRows);
       });
-  }, [scalar, selectedRegion]);
+  }, [scalar, selectedRegion, filter]);
 
   return (
     <div className="App">
       <GlobalStyle />
       <Header />
+      <div className="columns is-centered is-vcentered">
+        <div className="column">
+          <Hyperslabs
+            hyperslabOptions={hyperslabOptions}
+            selectedHyperslab={selectedHyperslab}
+          />
+        </div>
+      </div>
       <div className="columns controlColumn">
         <div className="column">
           <Scalars scalars={scalarOptions} scores={scalar} />

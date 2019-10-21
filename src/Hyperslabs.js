@@ -23,9 +23,6 @@ function Hyperslabs(props) {
   console.log("initial queue:", queue);
 
   function updateHyperslab(changeEvent) {
-    console.log("changeEvent target:", changeEvent.target);
-    console.log("changeEvent target checked:", changeEvent.target.checked);
-    console.log("changeEvent target id:", changeEvent.target.id);
     let targetID = changeEvent.target.id;
     if (selectedHyperslab.includes(targetID)) {
       setselectedHyperslab(
@@ -35,21 +32,10 @@ function Hyperslabs(props) {
       );
       return;
     }
-
-    // setselectedHyperslab({
-    //   ...selectedHyperslab,
-    //   [changeEvent.target.name]: changeEvent.target.checked
-    // });
-    // console.log("selectedHyperslab: ", selectedHyperslab);
-    // console.log("queue:", queue);
-    // console.log("changeEvent:", { ...changeEvent });
-    // queue.push(changeEvent.target);
-    // console.log("queue after push:", queue);
     let selectedCheckboxes = document.querySelectorAll(
       "input[type=checkbox]:checked"
     );
     let queue = Array.from(selectedCheckboxes);
-    console.log("queue:", queue);
     if (queue.length > 2) {
       showCheckboxErrorMessage();
       return;
@@ -58,21 +44,12 @@ function Hyperslabs(props) {
       tempArr.push(targetID);
       setselectedHyperslab(tempArr);
     }
-    // let checkedHyperslabs = queue.map(slab => slab.id);
-    // console.log("checkedHyperslabs:", checkedHyperslabs);
-    // setselectedHyperslab(checkedHyperslabs);
   }
   return (
     <Fragment>
       <h2>Hyperslabs</h2>
       <div className="radio">
         {props.hyperslabOptions.map((hyperslab, i) => {
-          console.log("hyperslab:", hyperslab);
-          console.log("selectedHyperslab:", selectedHyperslab);
-          console.log(
-            "hyperslab selected:",
-            selectedHyperslab.includes(hyperslab)
-          );
           let checked = selectedHyperslab.includes(hyperslab);
           return (
             <Fragment>

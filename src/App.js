@@ -11,6 +11,8 @@ import "./App.css";
 import "./animate.css";
 import { setGlobal, useGlobal } from "reactn";
 import Hyperslabs from "./Hyperslabs.js";
+import Models from "./Models.js";
+import Metrics from "./Metrics.js";
 
 const width = 1000;
 const height = 600;
@@ -83,6 +85,14 @@ export const Visualization = styled.div`
   height: ${height}px;
 `;
 
+let metricOptions = [
+  "Ecosystem and Carbon Cycle",
+  "Hydrology Cycle",
+  "Radiation and Energy Cycle",
+  "Forcings",
+  "Relationships"
+];
+
 let modelNames = [
   "bcc-csm1-1",
   "bcc-csm1-1-m",
@@ -134,12 +144,14 @@ const regionOptions = {
   "South America - Amazon": "southamericaamazon"
 };
 
-const hyperslabOptions = ["region", "metric", "statistic", "model"];
+const hyperslabOptions = ["region", "metric", "scalar", "model"];
 
 setGlobal({
   scalar: "Overall Score",
   region: "global",
-  hyperslabs: ["region", "statistic"]
+  hyperslabs: ["region", "scalar"],
+  model: "bcc-csm1-1",
+  metric: "Ecosystem and Carbon Cycle"
 });
 
 function findHierarchyLevel(rowName) {
@@ -175,6 +187,8 @@ function formatRowLabel(rowLevel, row) {
 
 function App() {
   const [scalar, setScalar] = useGlobal("scalar");
+  const [model, setModel] = useGlobal("model");
+  const [metric, setMetric] = useGlobal("metric");
   const [selectedRegion, setSelectedRegion] = useGlobal("region");
   const [selectedHyperslab, setselectedHyperslab] = useGlobal("hyperslabs");
   const [rows, setRows] = useState("");
@@ -240,15 +254,32 @@ function App() {
         </div>
       </div>
       <div className="columns controlColumn">
-        <div className="column">
-          <Scalars scalars={scalarOptions} scores={scalar} />
-        </div>
-        <div className="column">
-          <Regions
-            regionOptions={regionOptions}
-            selectedRegion={selectedRegion}
-          />
-        </div>
+        {selectedHyperslab.includes("model") ? (
+          <div className="column">
+            <Models models={modelNames} scores={model} />
+          </div>
+        ) : null}
+
+        {selectedHyperslab.includes("scalar") ? (
+          <div className="column">
+            <Scalars scalars={scalarOptions} scores={scalar} />
+          </div>
+        ) : null}
+
+        {selectedHyperslab.includes("region") ? (
+          <div className="column">
+            <Regions
+              regionOptions={regionOptions}
+              selectedRegion={selectedRegion}
+            />
+          </div>
+        ) : null}
+
+        {selectedHyperslab.includes("metric") ? (
+          <div className="column">
+            <Metrics metrics={metricOptions} selectedMetric={metric} />
+          </div>
+        ) : null}
       </div>
       <div className="columns is-mobile is-centered is-vcentered tableColumn">
         <div className="column is-four-fifths">

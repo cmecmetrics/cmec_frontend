@@ -23,6 +23,24 @@ function Hyperslabs(props) {
   console.log("initial queue:", queue);
 
   function updateHyperslab(changeEvent) {
+    console.log("changeEvent target:", changeEvent.target);
+    console.log("changeEvent target checked:", changeEvent.target.checked);
+    console.log("changeEvent target id:", changeEvent.target.id);
+    let targetID = changeEvent.target.id;
+    if (selectedHyperslab.includes(targetID)) {
+      setselectedHyperslab(
+        selectedHyperslab.filter(
+          arrayItem => arrayItem !== changeEvent.target.id
+        )
+      );
+      return;
+    }
+
+    // setselectedHyperslab({
+    //   ...selectedHyperslab,
+    //   [changeEvent.target.name]: changeEvent.target.checked
+    // });
+    // console.log("selectedHyperslab: ", selectedHyperslab);
     // console.log("queue:", queue);
     // console.log("changeEvent:", { ...changeEvent });
     // queue.push(changeEvent.target);
@@ -31,9 +49,14 @@ function Hyperslabs(props) {
       "input[type=checkbox]:checked"
     );
     let queue = Array.from(selectedCheckboxes);
+    console.log("queue:", queue);
     if (queue.length > 2) {
       showCheckboxErrorMessage();
       return;
+    } else {
+      let tempArr = [...selectedHyperslab];
+      tempArr.push(targetID);
+      setselectedHyperslab(tempArr);
     }
     // let checkedHyperslabs = queue.map(slab => slab.id);
     // console.log("checkedHyperslabs:", checkedHyperslabs);

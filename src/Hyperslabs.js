@@ -19,8 +19,6 @@ function Hyperslabs(props) {
   let selectedCheckboxes = document.querySelectorAll(
     "input[type=checkbox]:checked"
   );
-  let queue = Array.from(selectedCheckboxes);
-  console.log("initial queue:", queue);
 
   function updateHyperslab(changeEvent) {
     let targetID = changeEvent.target.id;

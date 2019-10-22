@@ -151,9 +151,11 @@ def reformat_json(scalar_data):
                                     key: value
                                     for (key, value) in zip(MODEL_NAMES, values)
                                 }
-                            products_obj[product] = {"scores": product_score_dict}
+                            products_obj[product] = {
+                                "scores": product_score_dict}
                     metrics_obj[metric]["observational_products"] = products_obj
-            obj[region][catalogue] = {"scores": score_dict, "metrics": metrics_obj}
+            obj[region][catalogue] = {
+                "scores": score_dict, "metrics": metrics_obj}
     return obj
 
 
@@ -235,6 +237,26 @@ def get_catalogue_for_all_regions(metric_catalogue):
         json.dump(output, write_file)
 
 
+def scalar_model_hyperslab(scalar_name, model_name):
+    with open("paul_format.json") as scalar_json:
+        scalar_data = json.load(scalar_json)
+
+    regions = scalar_data["RESULTS"].keys()
+    for region in regions:
+        metrics = scalar_data["RESULTS"][region].keys()
+        for metric in metrics:
+            try:
+                old_dict = scalar_data["RESULTS"][region][metric][scalar_name]
+            except KeyError:
+                old_dict = {model_name: -999}
+
+            scalar_data["RESULTS"][region][metric] = {
+                scalar_name: {model_name: old_dict[model_name]}}
+
+    with open("{}_scalar_{}_model_hyperslab.json".format(scalar_name, model_name), "w") as write_file:
+        json.dump(scalar_data, write_file)
+
+
 def paul_format(scalar_data):
     output = {}
 
@@ -284,7 +306,8 @@ def paul_format(scalar_data):
                             key: value for (key, value) in zip(MODEL_NAMES, values)
                         }
                     # print("metric_score_dict:", metric_score_dict)
-                    obj[region]["{}::{}".format(catalogue, metric)] = metric_score_dict
+                    obj[region]["{}::{}".format(
+                        catalogue, metric)] = metric_score_dict
                     observational_products = value["children"]
                     if observational_products:
                         for product, product_value in observational_products.items():
@@ -314,10 +337,10 @@ if __name__ == "__main__":
     # main()
     # get_catalogue_for_all_regions("Ecosystem and Carbon Cycle")
     # get_all_scores_for_model_by_region("bcc-csm1-1", "southamericaamazon")
-    with open("test.json") as scalar_json:
-        scalar_data = json.load(scalar_json)
+    # with open("test.json") as scalar_json:
+    #     scalar_data = json.load(scalar_json)
 
-    paul_format(scalar_data)
+    # paul_format(scalar_data)
     # with open('test.json') as scalar_json:
     #     scalar_data = json.load(scalar_json)
 
@@ -329,3 +352,5 @@ if __name__ == "__main__":
     # values = extract_values(scalar_data, "inmcm4")
     # print(len(values))
     # print("values:", values)
+
+    scalar_model_hyperslab("Bias Score", "BCC-CSM2-MR")

@@ -21,9 +21,9 @@ function Table(props) {
         <thead>
           <tr>
             <th />
-            {props.modelNames.map((model, i) => (
-              <th key={model} className="rotate">
-                <div>{model}</div>
+            {props.tableHeaderValues.map((headerValue, i) => (
+              <th key={headerValue} className="rotate">
+                <div>{headerValue}</div>
               </th>
             ))}
           </tr>

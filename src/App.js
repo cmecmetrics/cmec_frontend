@@ -151,7 +151,9 @@ setGlobal({
   region: "global",
   hyperslabs: ["region", "scalar"],
   model: "bcc-csm1-1",
-  metric: "Ecosystem and Carbon Cycle"
+  metric: "Ecosystem and Carbon Cycle",
+  dataFile: "new_paul_format.json",
+  tableHeaderValues: modelNames
 });
 
 function findHierarchyLevel(rowName) {
@@ -193,52 +195,49 @@ function App() {
   const [selectedHyperslab, setselectedHyperslab] = useGlobal("hyperslabs");
   const [rows, setRows] = useState("");
   const [filter, setFilter] = useState("ALL_SCORES");
+  const [dataFile, setDataFile] = useGlobal("dataFile");
+  const [tableHeaderValues, setTableHeaderValues] = useGlobal(
+    "tableHeaderValues"
+  );
 
   useEffect(() => {
-    axios
-      // .get("ALL_SCORES_bcc-csm1-1_southamericaamazon.json")
-      // .get("ALL_REGIONS_Ecosystem and Carbon Cycle.json")
-      .get("new_paul_format.json")
-      // .get("sample.json")
-      // .get("scalars_test.json")
-      .then(response => {
-        let rows;
-        let responseRegion;
-        let data;
-        console.log("response.data:", response.data);
-        if (filter === "ALL_SCORES") {
-          rows = Object.keys(response.data["RESULTS"][selectedRegion]);
-          data = response.data["RESULTS"][selectedRegion];
-        } else {
-          data = response.data[selectedRegion];
-          rows = Object.keys(responseRegion);
-        }
-        console.log("rows:", rows);
+    axios.get(dataFile).then(response => {
+      let rows;
+      let responseRegion;
+      let data;
+      if (filter === "ALL_SCORES") {
+        rows = Object.keys(response.data["RESULTS"][selectedRegion]);
+        data = response.data["RESULTS"][selectedRegion];
+      } else {
+        data = response.data[selectedRegion];
+        rows = Object.keys(responseRegion);
+      }
+      console.log("rows:", rows);
 
-        let tableRows = rows.map((row, i) => {
-          console.log("row:", row);
-          let [rowLevel, hierarchyLevel] = findHierarchyLevel(row);
-          let [rowLabel, parent] = formatRowLabel(rowLevel, row);
-          let columns = data[row][scalar];
+      let tableRows = rows.map((row, i) => {
+        console.log("row:", row);
+        let [rowLevel, hierarchyLevel] = findHierarchyLevel(row);
+        let [rowLabel, parent] = formatRowLabel(rowLevel, row);
+        let columns = data[row][scalar];
 
-          return (
-            <TableRow
-              key={row}
-              level={hierarchyLevel}
-              parent={parent}
-              bgColor={getBackgroundColor(row)}
-              data={data[row]}
-              row={rowLabel}
-              columns={columns}
-              index={i}
-              scalar={scalar}
-              models={modelNames}
-              filter={filter}
-            />
-          );
-        });
-        setRows(tableRows);
+        return (
+          <TableRow
+            key={row}
+            level={hierarchyLevel}
+            parent={parent}
+            bgColor={getBackgroundColor(row)}
+            data={data[row]}
+            row={rowLabel}
+            columns={columns}
+            index={i}
+            scalar={scalar}
+            models={modelNames}
+            filter={filter}
+          />
+        );
       });
+      setRows(tableRows);
+    });
   }, [scalar, selectedRegion, filter]);
 
   return (
@@ -283,7 +282,11 @@ function App() {
       </div>
       <div className="columns is-mobile is-centered is-vcentered tableColumn">
         <div className="column is-four-fifths">
-          <Table title={title} modelNames={modelNames} rows={rows} />
+          <Table
+            title={title}
+            tableHeaderValues={tableHeaderValues}
+            rows={rows}
+          />
         </div>
         <div className="column has-text-centered">
           <p>Relative Scale</p>

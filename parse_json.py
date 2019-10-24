@@ -235,6 +235,30 @@ def get_catalogue_for_all_regions(metric_catalogue):
         json.dump(output, write_file)
 
 
+def metric_scalar_hyperslab(metric_name, scalar_name):
+    with open("paul_format.json") as scalar_json:
+        scalar_data = json.load(scalar_json)
+
+    regions = scalar_data["RESULTS"].keys()
+    for region in regions:
+        scalar_data["RESULTS"][region] = {
+            metric: scalar_data["RESULTS"][region][metric]
+            for metric in scalar_data["RESULTS"][region].keys()
+            if metric_name in metric
+        }
+        metrics = scalar_data["RESULTS"][region].keys()
+        for metric in metrics:
+            try:
+                scalar_dict = scalar_data["RESULTS"][region][metric][scalar_name]
+            except KeyError:
+                scalar_dict = {}
+            scalar_data["RESULTS"][region][metric] = {scalar_name: scalar_dict}
+    with open(
+        "{}_metric_{}_scalar_hyperslab.json".format(metric_name, scalar_name), "w"
+    ) as write_file:
+        json.dump(scalar_data, write_file, sort_keys=True)
+
+
 def metric_model_hyperslab(metric_name, model_name):
     with open("paul_format.json") as scalar_json:
         scalar_data = json.load(scalar_json)
@@ -389,5 +413,6 @@ if __name__ == "__main__":
     # print(len(values))
     # print("values:", values)
 
-    scalar_model_hyperslab("Bias Score", "BCC-CSM2-MR")
-    metric_model_hyperslab("Ecosystem and Carbon Cycle", "BCC-CSM2-MR")
+    # scalar_model_hyperslab("Bias Score", "BCC-CSM2-MR")
+    # metric_model_hyperslab("Ecosystem and Carbon Cycle", "BCC-CSM2-MR")
+    metric_scalar_hyperslab("Ecosystem and Carbon Cycle", "Bias Score")

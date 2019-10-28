@@ -393,6 +393,131 @@ def paul_format(scalar_data):
         json.dump(output, write_file, sort_keys=True)
 
 
+def extract_scalar(options_array, write_file=False):
+    with open("paul_format.json") as scalar_json:
+        scalar_data = json.load(scalar_json)
+
+    try:
+        output = scalar_data["RESULTS"][options_array[0]][options_array[1]][
+            options_array[2]
+        ][options_array[3]]
+    except KeyError:
+        output = -999
+
+    scalar_data["RESULTS"] = {
+        options_array[0]: {
+            options_array[1]: {options_array[2]: {options_array[3]: output}}
+        }
+    }
+
+    if write_file:
+        with open(
+            "{}_{}_{}_{}_scalar.json".format(
+                options_array[0], options_array[1], options_array[2], options_array[3]
+            ),
+            "w",
+        ) as write_file:
+            json.dump(scalar_data, write_file, sort_keys=True)
+
+    return {options_array[3]: output}
+
+
+def extract_one_dimension(options_array):
+    with open("paul_format.json") as scalar_json:
+        scalar_data = json.load(scalar_json)
+
+    json_structure = scalar_data["DIMENSIONS"]["json_structure"]
+
+    options = dict(zip(json_structure, options_array))
+
+    print("options:", options)
+
+    if options_array[0] == ":":
+        keys = scalar_data["RESULTS"].keys()
+        for key in keys:
+            metrics = [
+                metric_name
+                for metric_name in scalar_data["RESULTS"][key].keys()
+                if options_array[1] in metric_name
+            ]
+            for metric in metrics:
+                scalar_data["RESULTS"][key][metric] = {}
+                scalar_data["RESULTS"][key][metric] = {
+                    options_array[2]: extract_scalar(
+                        [key, metric, options_array[2], options_array[3]]
+                    )
+                }
+        file_name = "{}_{}_{}_{}_scalar.json".format(
+            "all", options_array[1], options_array[2], options_array[3]
+        )
+    if options_array[1] == ":":
+        keys = scalar_data["RESULTS"][options_array[0]].keys()
+        scalar_data["RESULTS"] = {options_array[0]: {}}
+        for key in keys:
+            scalar_data["RESULTS"][options_array[0]][key] = {
+                options_array[2]: extract_scalar(
+                    [options_array[0], key, options_array[2], options_array[3]]
+                )
+            }
+        file_name = "{}_{}_{}_{}_scalar.json".format(
+            options_array[0], "all", options_array[2], options_array[3]
+        )
+
+    if options_array[2] == ":":
+        keys = scalar_data["RESULTS"][options_array[0]][options_array[1]].keys()
+        metrics = [
+            metric_name
+            for metric_name in scalar_data["RESULTS"][options_array[0]].keys()
+            if options_array[1] in metric_name
+        ]
+        scalar_data["RESULTS"] = {options_array[0]: {}}
+        for metric in metrics:
+            scalar_data["RESULTS"][options_array[0]][metric] = {}
+            for key in keys:
+                scalar_data["RESULTS"][options_array[0]][metric][key] = extract_scalar(
+                    [
+                        options_array[0],
+                        options_array[1],
+                        key,
+                        options_array[3],
+                    ]  # TODO: might have to change options_array[1] to metric because of loop
+                )
+
+        file_name = "{}_{}_{}_{}_scalar.json".format(
+            options_array[0], options_array[1], "all", options_array[3]
+        )
+    if options_array[3] == ":":
+        temp = {options_array[0]: {}}
+        metrics = [
+            metric_name
+            for metric_name in scalar_data["RESULTS"][options_array[0]].keys()
+            if options_array[1] in metric_name
+        ]
+        # scalar_data["RESULTS"] = {options_array[0]: {}}
+        for metric in metrics:
+            try:
+                keys = scalar_data["RESULTS"][options_array[0]][metric][
+                    options_array[2]
+                ].keys()
+            except KeyError:
+                keys = []
+            print("keys:", keys)
+            temp[options_array[0]][metric] = {}
+            for key in keys:
+                temp[options_array[0]][metric][key] = extract_scalar(
+                    [options_array[0], metric, options_array[2], key]
+                ).get(key)
+        scalar_data["RESULTS"] = temp
+        file_name = "{}_{}_{}_{}_scalar.json".format(
+            options_array[0], options_array[1], options_array[2], "all"
+        )
+    # if options_array[1] == ":":
+    #     options_array[1] = scalar_data["RESULTS"][options_array[0]].keys()
+
+    with open(file_name, "w") as write_file:
+        json.dump(scalar_data, write_file, sort_keys=True)
+
+
 if __name__ == "__main__":
     # main()
     # get_catalogue_for_all_regions("Ecosystem and Carbon Cycle")
@@ -415,4 +540,16 @@ if __name__ == "__main__":
 
     # scalar_model_hyperslab("Bias Score", "BCC-CSM2-MR")
     # metric_model_hyperslab("Ecosystem and Carbon Cycle", "BCC-CSM2-MR")
-    metric_scalar_hyperslab("Ecosystem and Carbon Cycle", "Bias Score")
+    # metric_scalar_hyperslab("Ecosystem and Carbon Cycle", "Bias Score")
+    # extract_scalar(
+    #     ["global", "Ecosystem and Carbon Cycle", "Bias Score", "BCC-CSM2-MR"]
+    # )
+
+    # TODO: Change wildcard character to *
+    # extract_one_dimension(
+    #     [":", "Ecosystem and Carbon Cycle", "Bias Score", "BCC-CSM2-MR"]
+    # )
+    # extract_one_dimension(["global", ":", "Bias Score", "BCC-CSM2-MR"])
+    # extract_one_dimension(["global", "Ecosystem and Carbon Cycle", ":", "BCC-CSM2-MR"])
+    extract_one_dimension(["global", "Ecosystem and Carbon Cycle", "Bias Score", ":"])
+

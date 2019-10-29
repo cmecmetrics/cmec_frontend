@@ -393,7 +393,7 @@ def paul_format(scalar_data):
         json.dump(output, write_file, sort_keys=True)
 
 
-def extract_scalar(options_array, write_file=False):
+def extract_scalar(options_array, output_file=False):
     with open("paul_format.json") as scalar_json:
         scalar_data = json.load(scalar_json)
 
@@ -410,7 +410,7 @@ def extract_scalar(options_array, write_file=False):
         }
     }
 
-    if write_file:
+    if output_file:
         with open(
             "{}_{}_{}_{}_scalar.json".format(
                 options_array[0], options_array[1], options_array[2], options_array[3]
@@ -422,15 +422,15 @@ def extract_scalar(options_array, write_file=False):
     return {options_array[3]: output}
 
 
-def extract_one_dimension(options_array):
+def extract_one_dimension(options_array, output_file=False):
     with open("paul_format.json") as scalar_json:
         scalar_data = json.load(scalar_json)
 
     json_structure = scalar_data["DIMENSIONS"]["json_structure"]
 
-    options = dict(zip(json_structure, options_array))
+    # options = dict(zip(json_structure, options_array))
 
-    print("options:", options)
+    # # print("options:", options)
 
     if options_array[0] == ":":
         keys = scalar_data["RESULTS"].keys()
@@ -452,13 +452,21 @@ def extract_one_dimension(options_array):
         )
     if options_array[1] == ":":
         keys = scalar_data["RESULTS"][options_array[0]].keys()
-        scalar_data["RESULTS"] = {options_array[0]: {}}
+        temp = {options_array[0]: {}}
+        # scalar_data["RESULTS"] = {options_array[0]: {}}
         for key in keys:
-            scalar_data["RESULTS"][options_array[0]][key] = {
+            # scalar_data["RESULTS"][options_array[0]][key] = {
+            #     options_array[2]: extract_scalar(
+            #         [options_array[0], key, options_array[2], options_array[3]]
+            #     )
+            # }
+            temp[options_array[0]][key] = {
                 options_array[2]: extract_scalar(
                     [options_array[0], key, options_array[2], options_array[3]]
                 )
             }
+
+        scalar_data["RESULTS"] = temp
         file_name = "{}_{}_{}_{}_scalar.json".format(
             options_array[0], "all", options_array[2], options_array[3]
         )
@@ -470,19 +478,29 @@ def extract_one_dimension(options_array):
             for metric_name in scalar_data["RESULTS"][options_array[0]].keys()
             if options_array[1] in metric_name
         ]
-        scalar_data["RESULTS"] = {options_array[0]: {}}
+        # scalar_data["RESULTS"] = {options_array[0]: {}}
+        temp = {options_array[0]: {}}
         for metric in metrics:
-            scalar_data["RESULTS"][options_array[0]][metric] = {}
+            # scalar_data["RESULTS"][options_array[0]][metric] = {}
+            temp[options_array[0]][metric] = {}
             for key in keys:
-                scalar_data["RESULTS"][options_array[0]][metric][key] = extract_scalar(
+                # scalar_data["RESULTS"][options_array[0]][metric][key] = extract_scalar(
+                #     [
+                #         options_array[0],
+                #         options_array[1],
+                #         key,
+                #         options_array[3],
+                #     ]  # TODO: might have to change options_array[1] to metric because of loop
+                # )
+                temp[options_array[0]][metric][key] = extract_scalar(
                     [
                         options_array[0],
-                        options_array[1],
+                        metric,
                         key,
                         options_array[3],
                     ]  # TODO: might have to change options_array[1] to metric because of loop
                 )
-
+        scalar_data["RESULTS"] = temp
         file_name = "{}_{}_{}_{}_scalar.json".format(
             options_array[0], options_array[1], "all", options_array[3]
         )
@@ -501,10 +519,10 @@ def extract_one_dimension(options_array):
                 ].keys()
             except KeyError:
                 keys = []
-            print("keys:", keys)
-            temp[options_array[0]][metric] = {}
+            # print("keys:", keys)
+            temp[options_array[0]][metric] = {options_array[2]: {}}
             for key in keys:
-                temp[options_array[0]][metric][key] = extract_scalar(
+                temp[options_array[0]][metric][options_array[2]][key] = extract_scalar(
                     [options_array[0], metric, options_array[2], key]
                 ).get(key)
         scalar_data["RESULTS"] = temp
@@ -514,8 +532,71 @@ def extract_one_dimension(options_array):
     # if options_array[1] == ":":
     #     options_array[1] = scalar_data["RESULTS"][options_array[0]].keys()
 
-    with open(file_name, "w") as write_file:
-        json.dump(scalar_data, write_file, sort_keys=True)
+    if output_file:
+        with open(file_name, "w") as write_file:
+            json.dump(scalar_data, write_file, sort_keys=True)
+
+    return temp
+
+
+def extract_two_dimension(options_array, output_file=False):
+    with open("paul_format.json") as scalar_json:
+        scalar_data = json.load(scalar_json)
+
+    json_structure = scalar_data["DIMENSIONS"]["json_structure"]
+
+    if options_array[0] == ":":
+        keys = scalar_data["RESULTS"].keys()
+        for key in keys:
+            key_output = extract_one_dimension(
+                [key, options_array[1], options_array[2], options_array[3]]
+            )
+            scalar_data["RESULTS"][key] = key_output[key]
+
+        file_name = "{}_{}_{}_{}_scalar.json".format(
+            "all", options_array[1], options_array[2], options_array[3]
+        )
+    elif options_array[1] == ":":
+        keys = scalar_data["RESULTS"][options_array[0]].keys()
+        temp = {options_array[0]: {}}
+        for key in keys:
+            key_output = extract_one_dimension(
+                [options_array[0], key, options_array[2], options_array[3]]
+            )
+            temp[options_array[0]][key] = key_output[options_array[0]][key]
+
+        scalar_data["RESULTS"] = temp
+        file_name = "{}_{}_{}_{}_scalar.json".format(
+            options_array[0], "all", options_array[2], options_array[3]
+        )
+    elif options_array[2] == ":":
+        temp = {options_array[0]: {}}
+        metrics = [
+            metric_name
+            for metric_name in scalar_data["RESULTS"][options_array[0]].keys()
+            if options_array[1] in metric_name
+        ]
+        for metric in metrics:
+            print("metric:", metric)
+            temp[options_array[0]][metric] = {}
+            keys = scalar_data["RESULTS"][options_array[0]][metric].keys()
+            for key in keys:
+                print("key:", key)
+                key_output = extract_one_dimension(
+                    [options_array[0], metric, key, options_array[3]]
+                )
+                print("key_output:", key_output)
+                temp[options_array[0]][metric][key] = key_output[options_array[0]][
+                    metric
+                ][key]
+
+        scalar_data["RESULTS"] = temp
+        file_name = "{}_{}_{}_{}_scalar.json".format(
+            options_array[0], options_array[1], "all", options_array[3]
+        )
+    if output_file:
+        with open(file_name, "w") as write_file:
+            json.dump(scalar_data, write_file, sort_keys=True)
 
 
 if __name__ == "__main__":
@@ -549,7 +630,17 @@ if __name__ == "__main__":
     # extract_one_dimension(
     #     [":", "Ecosystem and Carbon Cycle", "Bias Score", "BCC-CSM2-MR"]
     # )
-    # extract_one_dimension(["global", ":", "Bias Score", "BCC-CSM2-MR"])
-    # extract_one_dimension(["global", "Ecosystem and Carbon Cycle", ":", "BCC-CSM2-MR"])
-    extract_one_dimension(["global", "Ecosystem and Carbon Cycle", "Bias Score", ":"])
+    # output = extract_one_dimension(
+    #     ["global", ":", "Bias Score", "BCC-CSM2-MR"], output_file=True
+    # )
+    # print("output:", output)
+    # extract_one_dimension(
+    #     ["global", "Ecosystem and Carbon Cycle", ":", "BCC-CSM2-MR"], output_file=True
+    # )
+    # extract_one_dimension(["global", "Ecosystem and Carbon Cycle", "Bias Score", ":"], output_file=True)
+    # extract_two_dimension([":", ":", "Bias Score", "BCC-CSM2-MR"], output_file=True)
+    # extract_two_dimension(["global", ":", ":", "BCC-CSM2-MR"], output_file=True)
+    extract_two_dimension(
+        ["global", "Ecosystem and Carbon Cycle", ":", ":"], output_file=True
+    )
 

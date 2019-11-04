@@ -158,7 +158,6 @@ setGlobal({
 
 function findHierarchyLevel(rowName) {
   var count = (rowName.match(/::/g) || []).length;
-  console.log("Number of double colons:", count);
   let hierarchyLevel;
   if (count === 0) {
     hierarchyLevel = "parent";
@@ -171,16 +170,13 @@ function findHierarchyLevel(rowName) {
 }
 
 function formatRowLabel(rowLevel, row) {
-  console.log("rowLevel:", rowLevel);
   let rowLabel;
   let parent = "";
   if (rowLevel > 0) {
     let label = row.split("::");
-    console.log("label:", label);
     let tabs = "\t".repeat(rowLevel);
     rowLabel = tabs + label.slice(-1)[0];
     parent = label.slice(-2)[0];
-    console.log("parent:", parent);
   } else {
     rowLabel = row;
   }
@@ -212,10 +208,8 @@ function App() {
         data = response.data[selectedRegion];
         rows = Object.keys(responseRegion);
       }
-      console.log("rows:", rows);
 
       let tableRows = rows.map((row, i) => {
-        console.log("row:", row);
         let [rowLevel, hierarchyLevel] = findHierarchyLevel(row);
         let [rowLabel, parent] = formatRowLabel(rowLevel, row);
         let columns = data[row][scalar];

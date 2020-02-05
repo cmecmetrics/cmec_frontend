@@ -209,25 +209,18 @@ function App() {
     if (selectedHyperslab.includes("region")) {
       parameters["region"] = selectedRegion;
     } else {
-      // parameters["region"] = "*";
       parameters["region"] = "";
     }
 
     if (selectedHyperslab.includes("metric")) {
-      // let formattedMetric = metric.replace(" ", "+");
-      // parameters["metric"] = formattedMetric;
       parameters["metric"] = metric;
     } else {
-      // parameters["metric"] = "*";
       parameters["metric"] = "";
     }
 
     if (selectedHyperslab.includes("scalar")) {
-      // let formattedScalar = scalar.replace(" ", "+");
-      // parameters["scalar"] = formattedScalar;
       parameters["scalar"] = scalar;
     } else {
-      // parameters["scalar"] = "*";
       parameters["scalar"] = "";
     }
 
@@ -235,22 +228,13 @@ function App() {
       parameters["model"] = model;
       setTableHeaderValues([model]);
     } else {
-      // parameters["model"] = "*";
       parameters["model"] = "";
       setTableHeaderValues(modelNames);
     }
 
     setApiParameters(parameters);
     axios
-      .post(
-        `${CMEC_API_URL}/hyperslab`,
-        // "https://u28f7v55jh.execute-api.us-west-2.amazonaws.com/api/hyperslab",
-        // "http://cmec-backend-stage.herokuapp.com/hyperslab",
-        // `https://cmec-data.s3-us-west-1.amazonaws.com/${parameters["region"]}_${parameters["metric"]}_${parameters["scalar"]}_${parameters["model"]}_scalar.json`
-        // "https://cmec-data.s3-us-west-1.amazonaws.com/global_all_Spatial+Distribution+Score_inmcm4_scalar.json",
-        // parameters
-        parameters
-      )
+      .post(`${CMEC_API_URL}/hyperslab`, parameters)
       .then(function(response) {
         console.log(response);
       })
@@ -265,6 +249,10 @@ function App() {
       let rows;
       let responseRegion;
       let data;
+      if (!selectedRegion) {
+        console.log("all regions selected");
+      }
+      console.log("selectedRegion:", selectedRegion);
       if (filter === "ALL_SCORES") {
         rows = Object.keys(response.data["RESULTS"][selectedRegion]);
         data = response.data["RESULTS"][selectedRegion];

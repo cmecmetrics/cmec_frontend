@@ -14,8 +14,8 @@ import Hyperslabs from "./Hyperslabs.js";
 import Models from "./Models.js";
 import Metrics from "./Metrics.js";
 
-// const CMEC_API_URL = "https://cmec-backend.herokuapp.com/api";
-const CMEC_API_URL = "http://localhost:5000/api";
+const CMEC_API_URL = "https://cmec-backend.herokuapp.com/api";
+// const CMEC_API_URL = "http://localhost:5000/api";
 
 const width = 1000;
 const height = 600;

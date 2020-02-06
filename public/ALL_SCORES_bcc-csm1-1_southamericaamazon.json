@@ -1,0 +1,708 @@
+{
+  "Ecosystem and Carbon Cycle": {
+    "scores": {
+      "Spatial Distribution Score": {
+        "bcc-csm1-1": -999
+      },
+      "Bias Score": {
+        "bcc-csm1-1": -999
+      },
+      "Overall Score": {
+        "bcc-csm1-1": -999
+      }
+    },
+    "metrics": {
+      "Biomass": {
+        "scores": {
+          "Spatial Distribution Score": {
+            "bcc-csm1-1": -0.8289916400366663
+          },
+          "Bias Score": {
+            "bcc-csm1-1": -0.26534736042217033
+          },
+          "Overall Score": {
+            "bcc-csm1-1": -0.6682911371164145
+          }
+        }
+      },
+      "Burned Area": {
+        "scores": {
+          "Spatial Distribution Score": {
+            "bcc-csm1-1": -999
+          },
+          "Seasonal Cycle Score": {
+            "bcc-csm1-1": -999
+          },
+          "Interannual Variability Score": {
+            "bcc-csm1-1": -999
+          },
+          "Bias Score": {
+            "bcc-csm1-1": -999
+          },
+          "RMSE Score": {
+            "bcc-csm1-1": -999
+          },
+          "Overall Score": {
+            "bcc-csm1-1": -999
+          }
+        }
+      },
+      "Carbon Dioxide": {
+        "scores": {}
+      },
+      "Gross Primary Productivity": {
+        "scores": {
+          "Bias Score": {
+            "bcc-csm1-1": -0.8039027524387491
+          },
+          "Seasonal Cycle Score": {
+            "bcc-csm1-1": -0.7540915916451164
+          },
+          "RMSE Score": {
+            "bcc-csm1-1": -0.7258486877409951
+          },
+          "Interannual Variability Score": {
+            "bcc-csm1-1": -0.8757755361737968
+          },
+          "Overall Score": {
+            "bcc-csm1-1": -0.9525621533949599
+          }
+        }
+      },
+      "Leaf Area Index": {
+        "scores": {
+          "Spatial Distribution Score": {
+            "bcc-csm1-1": 0.674198736300515
+          },
+          "Seasonal Cycle Score": {
+            "bcc-csm1-1": -1.331277611745408
+          },
+          "Interannual Variability Score": {
+            "bcc-csm1-1": 0.9789748846556803
+          },
+          "Bias Score": {
+            "bcc-csm1-1": -0.05472613653716022
+          },
+          "RMSE Score": {
+            "bcc-csm1-1": -1.4572334121498212
+          },
+          "Overall Score": {
+            "bcc-csm1-1": -0.6498500596428968
+          }
+        }
+      },
+      "Global Net Ecosystem Carbon Balance": {
+        "scores": {}
+      },
+      "Net Ecosystem Exchange": {
+        "scores": {
+          "Bias Score": {
+            "bcc-csm1-1": -1.1431768363769192
+          },
+          "Seasonal Cycle Score": {
+            "bcc-csm1-1": 1.6796411770767719
+          },
+          "RMSE Score": {
+            "bcc-csm1-1": -0.6527368902856385
+          },
+          "Interannual Variability Score": {
+            "bcc-csm1-1": -0.8079263900919053
+          },
+          "Overall Score": {
+            "bcc-csm1-1": -0.37549897068082894
+          }
+        }
+      },
+      "Ecosystem Respiration": {
+        "scores": {
+          "Bias Score": {
+            "bcc-csm1-1": 1.16862676662721
+          },
+          "Seasonal Cycle Score": {
+            "bcc-csm1-1": -0.9404461268644564
+          },
+          "RMSE Score": {
+            "bcc-csm1-1": 0.4043696090931114
+          },
+          "Interannual Variability Score": {
+            "bcc-csm1-1": -0.5623671754791297
+          },
+          "Overall Score": {
+            "bcc-csm1-1": 0.22606811241604016
+          }
+        }
+      },
+      "Soil Carbon": {
+        "scores": {
+          "Spatial Distribution Score": {
+            "bcc-csm1-1": -0.11431676722464468
+          },
+          "Bias Score": {
+            "bcc-csm1-1": 0.07046400910359513
+          },
+          "Overall Score": {
+            "bcc-csm1-1": -0.09645820453134153
+          }
+        }
+      }
+    }
+  },
+  "Hydrology Cycle": {
+    "scores": {
+      "Spatial Distribution Score": {
+        "bcc-csm1-1": -0.40273337945692134
+      },
+      "Seasonal Cycle Score": {
+        "bcc-csm1-1": -0.0026163047731254945
+      },
+      "Interannual Variability Score": {
+        "bcc-csm1-1": -1.5586018794011935
+      },
+      "Bias Score": {
+        "bcc-csm1-1": -1.6244082240993265
+      },
+      "RMSE Score": {
+        "bcc-csm1-1": -1.186648819800177
+      },
+      "Overall Score": {
+        "bcc-csm1-1": -1.1375887381255203
+      }
+    },
+    "metrics": {
+      "Evapotranspiration": {
+        "scores": {
+          "Spatial Distribution Score": {
+            "bcc-csm1-1": 0.69907910703429
+          },
+          "Seasonal Cycle Score": {
+            "bcc-csm1-1": 0.3400067784891225
+          },
+          "Interannual Variability Score": {
+            "bcc-csm1-1": -1.6074978354971232
+          },
+          "Bias Score": {
+            "bcc-csm1-1": -1.8071133793294822
+          },
+          "RMSE Score": {
+            "bcc-csm1-1": -1.0332496615968836
+          },
+          "Overall Score": {
+            "bcc-csm1-1": -1.1299969523708586
+          }
+        }
+      },
+      "Evaporative Fraction": {
+        "scores": {
+          "Spatial Distribution Score": {
+            "bcc-csm1-1": -0.9864238561561415
+          },
+          "Seasonal Cycle Score": {
+            "bcc-csm1-1": -0.8578196444365731
+          },
+          "Bias Score": {
+            "bcc-csm1-1": -1.2240067238272354
+          },
+          "Overall Score": {
+            "bcc-csm1-1": -1.220129009712759
+          }
+        }
+      },
+      "Latent Heat": {
+        "scores": {
+          "Bias Score": {
+            "bcc-csm1-1": -1.0011407815139406
+          },
+          "Seasonal Cycle Score": {
+            "bcc-csm1-1": 0.5101576242867731
+          },
+          "RMSE Score": {
+            "bcc-csm1-1": -1.1749207290116022
+          },
+          "Interannual Variability Score": {
+            "bcc-csm1-1": -1.2527745799883656
+          },
+          "Overall Score": {
+            "bcc-csm1-1": -0.6132303313169045
+          }
+        }
+      },
+      "Runoff": {
+        "scores": {}
+      },
+      "Sensible Heat": {
+        "scores": {
+          "Bias Score": {
+            "bcc-csm1-1": -1.000541562787087
+          },
+          "Seasonal Cycle Score": {
+            "bcc-csm1-1": -0.4592564840936414
+          },
+          "RMSE Score": {
+            "bcc-csm1-1": -1.3383335637662548
+          },
+          "Interannual Variability Score": {
+            "bcc-csm1-1": -0.8468513333201602
+          },
+          "Overall Score": {
+            "bcc-csm1-1": -1.2860235347378866
+          }
+        }
+      },
+      "Terrestrial Water Storage Anomaly": {
+        "scores": {}
+      }
+    }
+  },
+  "Radiation and Energy Cycle": {
+    "scores": {
+      "Spatial Distribution Score": {
+        "bcc-csm1-1": 0.6191436024410947
+      },
+      "Seasonal Cycle Score": {
+        "bcc-csm1-1": -0.5512493406856025
+      },
+      "Interannual Variability Score": {
+        "bcc-csm1-1": -0.21257880442689917
+      },
+      "Bias Score": {
+        "bcc-csm1-1": 0.33535216339759333
+      },
+      "RMSE Score": {
+        "bcc-csm1-1": -0.9216047119570949
+      },
+      "Overall Score": {
+        "bcc-csm1-1": -0.1992159096473703
+      }
+    },
+    "metrics": {
+      "Albedo": {
+        "scores": {
+          "Spatial Distribution Score": {
+            "bcc-csm1-1": 0.5912953207406795
+          },
+          "Seasonal Cycle Score": {
+            "bcc-csm1-1": -1.4727263327554438
+          },
+          "Interannual Variability Score": {
+            "bcc-csm1-1": 1.122067413940778
+          },
+          "Bias Score": {
+            "bcc-csm1-1": 0.33394930934686495
+          },
+          "RMSE Score": {
+            "bcc-csm1-1": -0.6588411884744544
+          },
+          "Overall Score": {
+            "bcc-csm1-1": 0.04703800538512391
+          }
+        }
+      },
+      "Surface Upward SW Radiation": {
+        "scores": {
+          "Spatial Distribution Score": {
+            "bcc-csm1-1": 0.24154162584532463
+          },
+          "Seasonal Cycle Score": {
+            "bcc-csm1-1": -1.075514891023368
+          },
+          "Interannual Variability Score": {
+            "bcc-csm1-1": 0.24468667513255662
+          },
+          "Bias Score": {
+            "bcc-csm1-1": -0.05061941837269898
+          },
+          "RMSE Score": {
+            "bcc-csm1-1": -0.855984437880816
+          },
+          "Overall Score": {
+            "bcc-csm1-1": -0.21981761201279762
+          }
+        }
+      },
+      "Surface Net SW Radiation": {
+        "scores": {
+          "Spatial Distribution Score": {
+            "bcc-csm1-1": -0.44006631536651486
+          },
+          "Seasonal Cycle Score": {
+            "bcc-csm1-1": -0.4576725729043769
+          },
+          "Interannual Variability Score": {
+            "bcc-csm1-1": -0.7802768564561621
+          },
+          "Bias Score": {
+            "bcc-csm1-1": 0.4440729493836525
+          },
+          "RMSE Score": {
+            "bcc-csm1-1": -0.6182111838727093
+          },
+          "Overall Score": {
+            "bcc-csm1-1": -0.5027280228194894
+          }
+        }
+      },
+      "Surface Upward LW Radiation": {
+        "scores": {
+          "Spatial Distribution Score": {
+            "bcc-csm1-1": 0.4551920443271368
+          },
+          "Seasonal Cycle Score": {
+            "bcc-csm1-1": -1.5054149632997884
+          },
+          "Interannual Variability Score": {
+            "bcc-csm1-1": -0.5823720083342097
+          },
+          "Bias Score": {
+            "bcc-csm1-1": -0.7661399568228231
+          },
+          "RMSE Score": {
+            "bcc-csm1-1": -1.0799055928159715
+          },
+          "Overall Score": {
+            "bcc-csm1-1": -1.2100103096150623
+          }
+        }
+      },
+      "Surface Net LW Radiation": {
+        "scores": {
+          "Spatial Distribution Score": {
+            "bcc-csm1-1": 0.06296869959797137
+          },
+          "Seasonal Cycle Score": {
+            "bcc-csm1-1": -1.7030388664065237
+          },
+          "Interannual Variability Score": {
+            "bcc-csm1-1": -0.7633614891357299
+          },
+          "Bias Score": {
+            "bcc-csm1-1": -1.0002002372024776
+          },
+          "RMSE Score": {
+            "bcc-csm1-1": -1.3268400978456263
+          },
+          "Overall Score": {
+            "bcc-csm1-1": -1.8103760109373819
+          }
+        }
+      },
+      "Surface Net Radiation": {
+        "scores": {
+          "Spatial Distribution Score": {
+            "bcc-csm1-1": 0.7145289732554826
+          },
+          "Seasonal Cycle Score": {
+            "bcc-csm1-1": 0.47222629069665223
+          },
+          "Interannual Variability Score": {
+            "bcc-csm1-1": 0.12794381781151656
+          },
+          "Bias Score": {
+            "bcc-csm1-1": 1.085602035123606
+          },
+          "RMSE Score": {
+            "bcc-csm1-1": -0.030960955376371443
+          },
+          "Overall Score": {
+            "bcc-csm1-1": 0.8667901498604537
+          }
+        }
+      }
+    }
+  },
+  "Forcings": {
+    "scores": {
+      "Spatial Distribution Score": {
+        "bcc-csm1-1": -0.7840507956317274
+      },
+      "Seasonal Cycle Score": {
+        "bcc-csm1-1": -1.4616310347644124
+      },
+      "Interannual Variability Score": {
+        "bcc-csm1-1": -1.7775370084111588
+      },
+      "Bias Score": {
+        "bcc-csm1-1": -0.2329047462384712
+      },
+      "RMSE Score": {
+        "bcc-csm1-1": -1.0478005382288935
+      },
+      "Overall Score": {
+        "bcc-csm1-1": -1.3871338332477183
+      }
+    },
+    "metrics": {
+      "Surface Air Temperature": {
+        "scores": {
+          "Spatial Distribution Score": {
+            "bcc-csm1-1": 0.6657519406438162
+          },
+          "Seasonal Cycle Score": {
+            "bcc-csm1-1": -1.1092155678077396
+          },
+          "Interannual Variability Score": {
+            "bcc-csm1-1": -0.911678083222374
+          },
+          "Bias Score": {
+            "bcc-csm1-1": -0.5365592683926146
+          },
+          "RMSE Score": {
+            "bcc-csm1-1": -0.6969081910757208
+          },
+          "Overall Score": {
+            "bcc-csm1-1": -0.9388476891676648
+          }
+        }
+      },
+      "Diurnal Max Temperature": {
+        "scores": {
+          "Spatial Distribution Score": {
+            "bcc-csm1-1": -0.338488172756449
+          },
+          "Seasonal Cycle Score": {
+            "bcc-csm1-1": -1.2351471611918314
+          },
+          "Interannual Variability Score": {
+            "bcc-csm1-1": -1.5328206738795995
+          },
+          "Bias Score": {
+            "bcc-csm1-1": 0.12178024208869266
+          },
+          "RMSE Score": {
+            "bcc-csm1-1": -0.8549213184867868
+          },
+          "Overall Score": {
+            "bcc-csm1-1": -1.1024595317817343
+          }
+        }
+      },
+      "Diurnal Min Temperature": {
+        "scores": {
+          "Spatial Distribution Score": {
+            "bcc-csm1-1": -0.2495406960173585
+          },
+          "Seasonal Cycle Score": {
+            "bcc-csm1-1": 0.760373658581847
+          },
+          "Interannual Variability Score": {
+            "bcc-csm1-1": -0.11849522657325987
+          },
+          "Bias Score": {
+            "bcc-csm1-1": 0.6391775200850375
+          },
+          "RMSE Score": {
+            "bcc-csm1-1": 0.2982339030585079
+          },
+          "Overall Score": {
+            "bcc-csm1-1": 0.5067837905073806
+          }
+        }
+      },
+      "Diurnal Temperature Range": {
+        "scores": {
+          "Spatial Distribution Score": {
+            "bcc-csm1-1": -0.7010867736054605
+          },
+          "Seasonal Cycle Score": {
+            "bcc-csm1-1": 0.24658664915440753
+          },
+          "Interannual Variability Score": {
+            "bcc-csm1-1": -1.9815519890496445
+          },
+          "Bias Score": {
+            "bcc-csm1-1": 0.9278130591747203
+          },
+          "RMSE Score": {
+            "bcc-csm1-1": -0.7642170355833049
+          },
+          "Overall Score": {
+            "bcc-csm1-1": -0.5749328750873591
+          }
+        }
+      },
+      "Precipitation": {
+        "scores": {
+          "Spatial Distribution Score": {
+            "bcc-csm1-1": -0.8403091899683793
+          },
+          "Seasonal Cycle Score": {
+            "bcc-csm1-1": -2.360998453467972
+          },
+          "Interannual Variability Score": {
+            "bcc-csm1-1": -0.10911263457630918
+          },
+          "Bias Score": {
+            "bcc-csm1-1": -0.5371234001229209
+          },
+          "RMSE Score": {
+            "bcc-csm1-1": -1.150726535616648
+          },
+          "Overall Score": {
+            "bcc-csm1-1": -1.7979074630804293
+          }
+        }
+      },
+      "Surface Relative Humidity": {
+        "scores": {
+          "Spatial Distribution Score": {
+            "bcc-csm1-1": -0.520668899916622
+          },
+          "Seasonal Cycle Score": {
+            "bcc-csm1-1": -0.39214296851537234
+          },
+          "Interannual Variability Score": {
+            "bcc-csm1-1": -2.694508399184259
+          },
+          "Bias Score": {
+            "bcc-csm1-1": -1.4042341673076848
+          },
+          "RMSE Score": {
+            "bcc-csm1-1": -1.3619647790546134
+          },
+          "Overall Score": {
+            "bcc-csm1-1": -1.8473735130066877
+          }
+        }
+      },
+      "Surface Downward SW Radiation": {
+        "scores": {
+          "Spatial Distribution Score": {
+            "bcc-csm1-1": -0.9604196795377121
+          },
+          "Seasonal Cycle Score": {
+            "bcc-csm1-1": -0.27169583508519024
+          },
+          "Interannual Variability Score": {
+            "bcc-csm1-1": -1.978600728188708
+          },
+          "Bias Score": {
+            "bcc-csm1-1": 0.01208282678259502
+          },
+          "RMSE Score": {
+            "bcc-csm1-1": -0.5366296553786521
+          },
+          "Overall Score": {
+            "bcc-csm1-1": -0.9598098284007807
+          }
+        }
+      },
+      "Surface Downward LW Radiation": {
+        "scores": {
+          "Spatial Distribution Score": {
+            "bcc-csm1-1": 0.3164168119948685
+          },
+          "Seasonal Cycle Score": {
+            "bcc-csm1-1": -0.3780665747694555
+          },
+          "Interannual Variability Score": {
+            "bcc-csm1-1": 0.8334143825959531
+          },
+          "Bias Score": {
+            "bcc-csm1-1": 0.5450791596987523
+          },
+          "RMSE Score": {
+            "bcc-csm1-1": 0.6056509011373542
+          },
+          "Overall Score": {
+            "bcc-csm1-1": 0.8138098882601597
+          }
+        }
+      }
+    }
+  },
+  "Relationships": {
+    "scores": {
+      "Precipitation RMSE Score": {
+        "bcc-csm1-1": -999
+      },
+      "SurfaceAirTemperature RMSE Score": {
+        "bcc-csm1-1": -999
+      },
+      "Overall Score": {
+        "bcc-csm1-1": -999
+      }
+    },
+    "metrics": {
+      "BurnedArea/GFED4S": {
+        "scores": {
+          "Precipitation RMSE Score": {
+            "bcc-csm1-1": -999
+          },
+          "SurfaceAirTemperature RMSE Score": {
+            "bcc-csm1-1": -999
+          },
+          "Overall Score": {
+            "bcc-csm1-1": -999
+          }
+        }
+      },
+      "GrossPrimaryProductivity/GBAF": {
+        "scores": {
+          "Evapotranspiration RMSE Score": {
+            "bcc-csm1-1": 0.8477254160608291
+          },
+          "Precipitation RMSE Score": {
+            "bcc-csm1-1": 0.29628857831354966
+          },
+          "SurfaceDownwardSWRadiation RMSE Score": {
+            "bcc-csm1-1": -0.9392430551070734
+          },
+          "SurfaceNetSWRadiation RMSE Score": {
+            "bcc-csm1-1": -1.015174243759256
+          },
+          "SurfaceAirTemperature RMSE Score": {
+            "bcc-csm1-1": 0.39965609271448116
+          },
+          "Overall Score": {
+            "bcc-csm1-1": -0.24206561144166847
+          }
+        }
+      },
+      "LeafAreaIndex/AVHRR": {
+        "scores": {
+          "Precipitation RMSE Score": {
+            "bcc-csm1-1": -0.9020690924803778
+          },
+          "Overall Score": {
+            "bcc-csm1-1": -0.9020690924803778
+          }
+        }
+      },
+      "LeafAreaIndex/MODIS": {
+        "scores": {
+          "Precipitation RMSE Score": {
+            "bcc-csm1-1": -0.7434350040884151
+          },
+          "Overall Score": {
+            "bcc-csm1-1": -0.7434350040884151
+          }
+        }
+      },
+      "Evapotranspiration/GLEAM": {
+        "scores": {
+          "Precipitation RMSE Score": {
+            "bcc-csm1-1": 0.8615556898448959
+          },
+          "SurfaceAirTemperature RMSE Score": {
+            "bcc-csm1-1": 0.041000833168696696
+          },
+          "Overall Score": {
+            "bcc-csm1-1": 0.40753027709146294
+          }
+        }
+      },
+      "Evapotranspiration/MODIS": {
+        "scores": {
+          "Precipitation RMSE Score": {
+            "bcc-csm1-1": -1.7558242046834138
+          },
+          "SurfaceAirTemperature RMSE Score": {
+            "bcc-csm1-1": -1.2659580614761945
+          },
+          "Overall Score": {
+            "bcc-csm1-1": -1.805262703982895
+          }
+        }
+      }
+    }
+  }
+}

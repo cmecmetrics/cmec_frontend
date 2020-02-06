@@ -96,8 +96,6 @@ function TableRow(props) {
           display: props.level.includes("childDataset") ? "none" : "table-row"
         }}
         onClick={toggleChildrenRow}
-        onMouseEnter={toggleHover}
-        onMouseLeave={toggleHover}
       >
         <td className="row-label">{props.row}</td>
         {Object.keys(columns).map((column, i) => {

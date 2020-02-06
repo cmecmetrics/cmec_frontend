@@ -46,16 +46,12 @@ function mapToColor(value, cmap) {
 
 function toggleChildrenRow(e) {
   const category = e.currentTarget.dataset.category;
-  let childLevel = e.currentTarget.classList.contains("parent")
+  let childLevel = e.currentTarget.className.includes("parent")
     ? "childVariable"
     : "childDataset";
-
-  let childRows;
-  if (childLevel === "childVariable") {
-    childRows = document.getElementsByClassName(`${category}`);
-  } else {
-    childRows = document.getElementsByClassName(`${childLevel} ${category}`);
-  }
+  const childRows = document.getElementsByClassName(
+    `${childLevel} ${category}`
+  );
   for (var dataset of childRows) {
     if (dataset.style.display === "none") {
       dataset.style.display = "table-row";
@@ -69,24 +65,32 @@ function toggleChildrenRow(e) {
  * Create an array of the length of the number of models that fills each value with -999, the established placeholder
  * for a missing value in the dataset
  */
-function handleMissingData(models) {
-  return new Array(models.length).fill(-999);
+function handleMissingData(models, filter = undefined) {
+  let model_object = {};
+  for (let model of models) {
+    model_object[model] = -999;
+  }
+  return model_object;
 }
 
 function TableRow(props) {
-  let columns = props.data[props.row][props.scalar];
+  let columns = props.columns;
+  const [hovered, setHovered] = useState(false);
+  const toggleHover = () => setHovered(!hovered);
 
   if (typeof columns === "undefined") {
     console.log("found missing data");
     columns = handleMissingData(props.models);
   }
-  let children = props.data[props.row].children;
+
   return (
     <Fragment>
       <tr
-        className={`${props.level} row_header`}
+        className={`${props.level} ${props.parent} ${
+          hovered ? "hover" : ""
+        }`.trim()}
         key={props.index}
-        data-category={props.row}
+        data-category={props.row.trim()}
         style={{
           backgroundColor: props.bgColor,
           display: props.level.includes("childDataset") ? "none" : "table-row"
@@ -94,38 +98,20 @@ function TableRow(props) {
         onClick={toggleChildrenRow}
       >
         <td className="row-label">{props.row}</td>
-        {columns.map((column, i) => {
+        {Object.keys(columns).map((column, i) => {
           return (
             <td
               key={i}
               id={`${props.row.split(" ").join("_")}_${props.models[i]}`}
               data-score={column}
               style={{
-                backgroundColor: mapToColor(column, cmap)
+                backgroundColor: mapToColor(columns[column], cmap)
               }}
-              title={column}
+              title={columns[column]}
             />
           );
         })}
       </tr>
-
-      {Object.keys(children).map((child, j) => {
-        let childLevel =
-          props.level === "parent" ? "childVariable" : "childDataset";
-        return (
-          <TableRow
-            key={props.row + " " + child}
-            level={`${childLevel} ${props.row}`}
-            bgColor={props.bgColor}
-            data={props.data[props.row].children}
-            row={child}
-            columns={columns}
-            index={j}
-            scalar={props.scalar}
-            models={props.models}
-          />
-        );
-      })}
     </Fragment>
   );
 }

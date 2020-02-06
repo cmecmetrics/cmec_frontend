@@ -26,44 +26,45 @@ var GnRd = [
 var cmap = PuOr;
 // if (document.getElementById("colorblind").checked) cmap = PuOr;
 
-
-  function ColorLegend(){
-
-    return(
-        <Fragment>
-            <table id="colorLegendTable">
-                {cmap.map((color, i) => {
-                return (
-                    <tr>
-                        <td
-                        key={i}
-                        style={{
-                            backgroundColor: color
-                        }}
-                        />
-                        { i == 0
-                            ? <p class="colorLegendLabel">Worse Value</p>
-                            : null
-                        }
-                        { i == cmap.length - 1
-                            ? <p class="colorLegendLabel">Better Value</p>
-                            : null
-                        }
-                    </tr>
-                );
-                })}
-            </table>
-            <table class="missingLegend">
-                <tr>
-                    <td style={{
-                            backgroundColor: "#808080"
-                        }}></td>
-                    <p class="colorLegendLabel">Missing Data</p>
-                </tr>
-            </table>
+function ColorLegend() {
+  return (
+    <Fragment>
+      <table id="colorLegendTable">
+        <tbody>
+          {cmap.map((color, i) => {
+            return (
+              <tr>
+                <td
+                  key={i}
+                  style={{
+                    backgroundColor: color
+                  }}
+                />
+                {i === 0 ? (
+                  <span className="colorLegendLabel">Worse Value</span>
+                ) : null}
+                {i === cmap.length - 1 ? (
+                  <span className="colorLegendLabel">Better Value</span>
+                ) : null}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      <table className="missingLegend">
+        <tbody>
+          <tr>
+            <td
+              style={{
+                backgroundColor: "#808080"
+              }}
+            ></td>
+            <span className="colorLegendLabel">Missing Data</span>
+          </tr>
+        </tbody>
+      </table>
     </Fragment>
-    )
+  );
+}
 
-  }
-
-  export default ColorLegend;
+export default ColorLegend;

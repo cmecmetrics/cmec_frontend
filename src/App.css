@@ -74,11 +74,15 @@
   border: 2px solid;
 }
 
-.row-label:hover {
-  border-width: 1.5px;
-  font-weight: bold;
+td {
+  font-size: 0.85em;
+  white-space: pre;
 }
 
+.label_checkbox {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

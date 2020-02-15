@@ -1,6 +1,7 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import { useGlobal } from "reactn";
 import * as bulmaToast from "bulma-toast";
+import hyperslabContext from "./context/hyperslabContext";
 
 function showCheckboxErrorMessage() {
   bulmaToast.toast({
@@ -15,13 +16,15 @@ function showCheckboxErrorMessage() {
 }
 
 function Hyperslabs(props) {
+  const context = useContext(hyperslabContext);
+  console.log("context.hyperslabs:", context.hyperslabs);
   const [selectedHyperslab, setselectedHyperslab] = useGlobal("hyperslabs");
-  let selectedCheckboxes = document.querySelectorAll(
-    "input[type=checkbox]:checked"
-  );
+  console.log("selectedHyperslab:", selectedHyperslab);
 
   function updateHyperslab(changeEvent) {
     let targetID = changeEvent.target.id;
+    console.log("targetID:", targetID);
+    console.log("context.hyperslabs[targetID]:", context.hyperslabs[targetID]);
     if (selectedHyperslab.includes(targetID)) {
       setselectedHyperslab(
         selectedHyperslab.filter(
@@ -45,10 +48,12 @@ function Hyperslabs(props) {
   }
   return (
     <Fragment>
-      <h2>Hyperslabs</h2>
+      <h2>{props.title}</h2>
       <div className="radio">
-        {props.hyperslabOptions.map((hyperslab, i) => {
-          let checked = selectedHyperslab.includes(hyperslab);
+        {Object.keys(context.hyperslabs).map((hyperslab, i) => {
+          console.log("hyperslab in map:", hyperslab);
+          // let checked = selectedHyperslab.includes(hyperslab);
+          let checked = context.hyperslabs[hyperslab];
           return (
             <Fragment>
               <input

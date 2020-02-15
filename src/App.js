@@ -1,18 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useReducer } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import axios from "axios";
 import Header from "./Header.js";
 import TableRow from "./TableRow.js";
-import Scalars from "./Scalars.js";
-import Regions from "./Regions.js";
 import Table from "./Table.js";
 import ColorLegend from "./ColorLegend.js";
 import "./App.css";
 import "./animate.css";
 import { setGlobal, useGlobal } from "reactn";
 import Hyperslabs from "./Hyperslabs.js";
-import Models from "./Models.js";
-import Metrics from "./Metrics.js";
+import HyperslabSelector from "./HyperslabSelector.js";
 import {
   modelNames,
   regionOptions,
@@ -20,6 +17,10 @@ import {
   hyperslabOptions,
   scalarOptions
 } from "./constants.js";
+
+import hyperslabContext from "./context/hyperslabContext";
+import hyperslabReducer from "./context/hyperslabReducer";
+import { UPDATE_HYPERSLAB } from "./context/types";
 
 // const CMEC_API_URL = "https://cmec-backend.herokuapp.com/api";
 const CMEC_API_URL = "http://localhost:5000/api";
@@ -147,6 +148,23 @@ function App() {
     "tableHeaderValues"
   );
 
+  const initialState = {
+    hyperslabs: {
+      region: "global",
+      metric: "",
+      scalar: "Overall Score",
+      model: ""
+    }
+  };
+  const [state, dispatch] = useReducer(hyperslabReducer, initialState);
+
+  const updateHyperslabs = hyperslabs => {
+    dispatch({
+      type: UPDATE_HYPERSLAB,
+      payload: hyperslabs
+    });
+  };
+
   function handleSubmit(event) {
     let parameters = {};
     if (selectedHyperslab.includes("region")) {
@@ -217,78 +235,48 @@ function App() {
   }, [apiParameters]);
 
   return (
-    <div className="App">
-      <GlobalStyle />
-      <Header />
-      <form onSubmit={handleSubmit}>
-        <div className="columns is-centered is-vcentered">
-          <div className="column">
-            <Hyperslabs
-              hyperslabOptions={hyperslabOptions}
-              selectedHyperslab={selectedHyperslab}
-              title="X Axis Hyperslabs"
-            />
-          </div>
-        </div>
-        <div className="columns is-centered is-vcentered">
-          <div className="column">
-            <Hyperslabs
-              hyperslabOptions={hyperslabOptions}
-              selectedHyperslab={selectedHyperslab}
-              title="Y Axis Hyperslabs"
-            />
-          </div>
-        </div>
-        <div className="columns controlColumn is-vcentered">
-          {selectedHyperslab.includes("model") ? (
+    <hyperslabContext.Provider
+      value={{ hyperslabs: state.hyperslabs, updateHyperslabs }}
+    >
+      <div className="App">
+        <GlobalStyle />
+        <Header />
+        <form onSubmit={handleSubmit}>
+          <div className="columns is-centered is-vcentered">
             <div className="column">
-              <Models models={modelNames} scores={model} />
-            </div>
-          ) : null}
-
-          {selectedHyperslab.includes("scalar") ? (
-            <div className="column">
-              <Scalars scalars={scalarOptions} scores={scalar} />
-            </div>
-          ) : null}
-
-          {selectedHyperslab.includes("region") ? (
-            <div className="column">
-              <Regions
-                regionOptions={regionOptions}
-                selectedRegion={selectedRegion}
+              <Hyperslabs
+                hyperslabOptions={hyperslabOptions}
+                selectedHyperslab={selectedHyperslab}
+                title="X Axis Hyperslabs"
               />
             </div>
-          ) : null}
-
-          {selectedHyperslab.includes("metric") ? (
+          </div>
+          <div className="columns is-centered is-vcentered">
             <div className="column">
-              <Metrics metrics={metricOptions} selectedMetric={metric} />
+              <Hyperslabs
+                hyperslabOptions={hyperslabOptions}
+                selectedHyperslab={selectedHyperslab}
+                title="Y Axis Hyperslabs"
+              />
             </div>
-          ) : null}
-          <div className="column has-text-centered">
-            <input
-              class="button is-primary"
-              type="submit"
-              value="Update Plot"
+          </div>
+          <HyperslabSelector />
+        </form>
+        <div className="columns is-mobile is-centered is-vcentered tableColumn">
+          <div className="column is-four-fifths">
+            <Table
+              title={title}
+              tableHeaderValues={tableHeaderValues}
+              rows={rows}
             />
           </div>
-        </div>
-      </form>
-      <div className="columns is-mobile is-centered is-vcentered tableColumn">
-        <div className="column is-four-fifths">
-          <Table
-            title={title}
-            tableHeaderValues={tableHeaderValues}
-            rows={rows}
-          />
-        </div>
-        <div className="column is-2-widescreen has-text-centered">
-          <p>Relative Scale</p>
-          <ColorLegend />
+          <div className="column is-2-widescreen has-text-centered">
+            <p>Relative Scale</p>
+            <ColorLegend />
+          </div>
         </div>
       </div>
-    </div>
+    </hyperslabContext.Provider>
   );
 }
 

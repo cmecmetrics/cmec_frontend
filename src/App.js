@@ -14,8 +14,8 @@ import Hyperslabs from "./Hyperslabs.js";
 import Models from "./Models.js";
 import Metrics from "./Metrics.js";
 
-const CMEC_API_URL = "https://cmec-backend.herokuapp.com/api";
-// const CMEC_API_URL = "http://localhost:5000/api";
+// const CMEC_API_URL = "https://cmec-backend.herokuapp.com/api";
+const CMEC_API_URL = "http://localhost:5000/api";
 
 const width = 1000;
 const height = 600;
@@ -205,7 +205,6 @@ function App() {
     model: ""
   });
   const [filter, setFilter] = useState("ALL_SCORES");
-  const [hyperslabData, setHyperslabData] = useGlobal("hyperslabData");
   const [tableHeaderValues, setTableHeaderValues] = useGlobal(
     "tableHeaderValues"
   );
@@ -239,14 +238,6 @@ function App() {
     }
 
     setApiParameters(parameters);
-    axios
-      .post(`${CMEC_API_URL}/hyperslab`, parameters)
-      .then(function(response) {
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
     event.preventDefault();
   }
 

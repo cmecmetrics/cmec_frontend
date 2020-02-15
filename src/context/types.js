@@ -1,0 +1,1 @@
+export const UPDATE_HYPERSLAB = "UPDATE_HYPERSLAB";

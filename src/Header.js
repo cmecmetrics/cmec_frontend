@@ -2,15 +2,15 @@ import React from "react";
 
 function Header() {
   return (
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="https://cmec.llnl.gov/">
+    <nav className="navbar" role="navigation" aria-label="main navigation">
+      <div className="navbar-brand">
+        <a className="navbar-item" href="https://cmec.llnl.gov/">
           <img src="cmec_logo.png" alt="CMEC Logo" width="100" height="28" />{" "}
           <span>CMEC</span>
         </a>
         <a
           role="button"
-          class="navbar-burger"
+          className="navbar-burger"
           aria-label="menu"
           aria-expanded="false"
         >

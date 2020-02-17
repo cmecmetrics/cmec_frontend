@@ -1,12 +1,8 @@
-import React, { Fragment, useContext } from "react";
-import { useGlobal } from "reactn";
-import * as bulmaToast from "bulma-toast";
-import hyperslabContext from "./context/hyperslabContext";
+import React from "react";
 import {
   modelNames,
   regionOptions,
   metricOptions,
-  hyperslabOptions,
   scalarOptions
 } from "./constants.js";
 import Models from "./Models.js";
@@ -15,10 +11,6 @@ import Regions from "./Regions.js";
 import Metrics from "./Metrics.js";
 
 function HyperslabSelector(props) {
-  console.log("HyperslabSelector props:", props);
-  //   const context = useContext(hyperslabContext);
-  //   console.log("context.hyperslabs for HyperslabSelector:", context);
-
   return (
     <div className="columns controlColumn is-vcentered">
       {props.selectedHyperslab === "model" ? (

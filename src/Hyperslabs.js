@@ -1,8 +1,6 @@
 import React, { Fragment, useContext, useState } from "react";
 import { useGlobal, setGlobal } from "reactn";
 import * as bulmaToast from "bulma-toast";
-import hyperslabContext from "./context/hyperslabContext";
-import HyperslabSelector from "./HyperslabSelector.js";
 
 function showCheckboxErrorMessage() {
   bulmaToast.toast({
@@ -18,11 +16,6 @@ function showCheckboxErrorMessage() {
 
 function Hyperslabs(props) {
   const [hyperslabOptions] = useGlobal("hyperslabs");
-  const [selectedHyperslab] = useGlobal(props.hyperslabName);
-  // console.log("props:", props);
-  // const context = useContext(hyperslabContext);
-  // console.log("context.hyperslabs:", context);
-  console.log("selectedHyperslab:", selectedHyperslab);
 
   function updateHyperslab(changeEvent) {
     let targetID = changeEvent.target.id.split("_")[1];

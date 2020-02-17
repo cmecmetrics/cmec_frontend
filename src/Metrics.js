@@ -1,16 +1,13 @@
 import React, { Fragment, useContext } from "react";
-import hyperslabContext from "./context/hyperslabContext";
 import { useGlobal } from "reactn";
 import Select from "react-select";
 
 function Metrics(props) {
-  const context = useContext(hyperslabContext);
   const [metric, setMetric] = useGlobal("metric");
   let metrics = [];
 
   function updateMetric(metric) {
-    context.updateMetric(metric.label);
-    // setMetric(metric.label);
+    setMetric(metric.label);
   }
 
   for (let metric of props.metrics) {

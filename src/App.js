@@ -10,13 +10,7 @@ import "./animate.css";
 import { setGlobal, useGlobal, getGlobal } from "reactn";
 import Hyperslabs from "./Hyperslabs.js";
 import HyperslabSelector from "./HyperslabSelector.js";
-import {
-  modelNames,
-  regionOptions,
-  metricOptions,
-  hyperslabOptions,
-  scalarOptions
-} from "./constants.js";
+import { modelNames } from "./constants.js";
 
 import hyperslabContext from "./context/hyperslabContext";
 import hyperslabReducer from "./context/hyperslabReducer";
@@ -131,7 +125,6 @@ function App() {
   const [model] = useGlobal("model");
   const [metric] = useGlobal("metric");
   const [region] = useGlobal("region");
-  // const [selectedHyperslab, setselectedHyperslab] = useGlobal("hyperslabs");
   const [hyperslab1] = useGlobal("hyperslab1");
   const [hyperslab2] = useGlobal("hyperslab2");
   const [rows, setRows] = useState("");
@@ -179,35 +172,17 @@ function App() {
   function handleSubmit(event) {
     let parameters = { ...initialState };
     const activeHyperslabs = [hyperslab1, hyperslab2];
-    console.log("x hyperslab:", initialState.xAxisHyperslab);
-    parameters[initialState.xAxisHyperslab] =
-      initialState[initialState.xAxisHyperslab];
-    console.log("parameters:", parameters);
-    console.log("getGlobal:", getGlobal());
-    // let hyperslab1 = initialState.xAxisHyperslab;
-    // let hyperslab2 = initialState.yAxisHyperslab;
-    // const picked = (({ hyperslab1, hyperslab2 }) => ({
-    //   hyperslab1,
-    //   hyperslab2
-    // }))(initialState);
 
-    // console.log("picked:", picked);
     if (activeHyperslabs.includes("region")) {
       parameters["region"] = region;
-    } else {
-      parameters["region"] = "";
     }
 
     if (activeHyperslabs.includes("metric")) {
       parameters["metric"] = metric;
-    } else {
-      parameters["metric"] = "";
     }
 
     if (activeHyperslabs.includes("scalar")) {
       parameters["scalar"] = selectedScalar;
-    } else {
-      parameters["scalar"] = "";
     }
 
     if (activeHyperslabs.includes("model")) {

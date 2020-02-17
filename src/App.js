@@ -130,7 +130,6 @@ function App() {
           </div>
           <div className="column">
             <HyperslabSelector
-              hyperslabName="xAxisHyperslab"
               selectedHyperslab={hyperslab1}
               hyperslabOptions={initialState.xAxisHyperslab}
             />
@@ -146,7 +145,6 @@ function App() {
           </div>
           <div className="column">
             <HyperslabSelector
-              hyperslabName="yAxisHyperslab"
               selectedHyperslab={hyperslab2}
               hyperslabOptions={initialState.yAxisHyperslab}
             />

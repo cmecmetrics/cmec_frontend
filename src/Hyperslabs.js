@@ -16,7 +16,14 @@ function showCheckboxErrorMessage() {
 
 function Hyperslabs(props) {
   const [hyperslabOptions] = useGlobal("hyperslabs");
+  let oppositeHyperslab;
+  if (props.hyperslabName === "hyperslab1") {
+    oppositeHyperslab = "hyperslab2";
+  } else {
+    oppositeHyperslab = "hyperslab1";
+  }
 
+  const [oppositeHyperslabValue] = useGlobal(oppositeHyperslab);
   function updateHyperslab(changeEvent) {
     let targetID = changeEvent.target.id.split("_")[1];
     setGlobal({ [props["hyperslabName"]]: targetID });
@@ -34,6 +41,7 @@ function Hyperslabs(props) {
                 type="radio"
                 name={`${props.hyperslabName}${hyperslab}Checkbox`}
                 checked={props.selectedHyperslab === hyperslab}
+                disabled={oppositeHyperslabValue === hyperslab}
                 onChange={updateHyperslab}
               />
               <label

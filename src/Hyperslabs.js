@@ -1,7 +1,8 @@
-import React, { Fragment, useContext } from "react";
-import { useGlobal } from "reactn";
+import React, { Fragment, useContext, useState } from "react";
+import { useGlobal, setGlobal } from "reactn";
 import * as bulmaToast from "bulma-toast";
 import hyperslabContext from "./context/hyperslabContext";
+import HyperslabSelector from "./HyperslabSelector.js";
 
 function showCheckboxErrorMessage() {
   bulmaToast.toast({
@@ -16,55 +17,37 @@ function showCheckboxErrorMessage() {
 }
 
 function Hyperslabs(props) {
-  const context = useContext(hyperslabContext);
-  console.log("context.hyperslabs:", context.hyperslabs);
-  const [selectedHyperslab, setselectedHyperslab] = useGlobal("hyperslabs");
+  const [hyperslabOptions] = useGlobal("hyperslabs");
+  const [selectedHyperslab] = useGlobal(props.hyperslabName);
+  // console.log("props:", props);
+  // const context = useContext(hyperslabContext);
+  // console.log("context.hyperslabs:", context);
   console.log("selectedHyperslab:", selectedHyperslab);
 
   function updateHyperslab(changeEvent) {
-    let targetID = changeEvent.target.id;
-    console.log("targetID:", targetID);
-    console.log("context.hyperslabs[targetID]:", context.hyperslabs[targetID]);
-    if (selectedHyperslab.includes(targetID)) {
-      setselectedHyperslab(
-        selectedHyperslab.filter(
-          arrayItem => arrayItem !== changeEvent.target.id
-        )
-      );
-      return;
-    }
-    let selectedCheckboxes = document.querySelectorAll(
-      "input[type=checkbox]:checked"
-    );
-    let queue = Array.from(selectedCheckboxes);
-    if (queue.length > 2) {
-      showCheckboxErrorMessage();
-      return;
-    } else {
-      let tempArr = [...selectedHyperslab];
-      tempArr.push(targetID);
-      setselectedHyperslab(tempArr);
-    }
+    let targetID = changeEvent.target.id.split("_")[1];
+    setGlobal({ [props["hyperslabName"]]: targetID });
   }
   return (
     <Fragment>
       <h2>{props.title}</h2>
       <div className="radio">
-        {Object.keys(context.hyperslabs).map((hyperslab, i) => {
-          console.log("hyperslab in map:", hyperslab);
-          // let checked = selectedHyperslab.includes(hyperslab);
-          let checked = context.hyperslabs[hyperslab];
+        {hyperslabOptions.map((hyperslab, i) => {
           return (
             <Fragment>
               <input
                 className="is-checkradio"
-                id={hyperslab}
-                type="checkbox"
-                name={`${hyperslab}Checkbox`}
-                checked={checked}
+                id={`${props.hyperslabName}_${hyperslab}`}
+                type="radio"
+                name={`${props.hyperslabName}${hyperslab}Checkbox`}
+                checked={props.selectedHyperslab === hyperslab}
                 onChange={updateHyperslab}
               />
-              <label key={hyperslab} for={hyperslab} className="label_checkbox">
+              <label
+                key={hyperslab}
+                for={`${props.hyperslabName}_${hyperslab}`}
+                className="label_checkbox"
+              >
                 {hyperslab}
               </label>
             </Fragment>

@@ -15,46 +15,44 @@ import Regions from "./Regions.js";
 import Metrics from "./Metrics.js";
 
 function HyperslabSelector(props) {
-  const context = useContext(hyperslabContext);
-  console.log("context.hyperslabs:", context.hyperslabs);
+  console.log("HyperslabSelector props:", props);
+  //   const context = useContext(hyperslabContext);
+  //   console.log("context.hyperslabs for HyperslabSelector:", context);
 
   return (
     <div className="columns controlColumn is-vcentered">
-      {context.hyperslabs["model"] ? (
+      {props.selectedHyperslab === "model" ? (
         <div className="column">
           <Models models={modelNames} />
         </div>
       ) : null}
 
-      {context.hyperslabs["scalar"] ? (
+      {props.selectedHyperslab === "scalar" ? (
         <div className="column">
           <Scalars
             scalars={scalarOptions}
-            scores={context.hyperslabs["scalar"]}
+            scores={props.hyperslabOptions["scalar"]}
           />
         </div>
       ) : null}
 
-      {context.hyperslabs["region"] ? (
+      {props.selectedHyperslab === "region" ? (
         <div className="column">
           <Regions
             regionOptions={regionOptions}
-            selectedRegion={context.hyperslabs["region"]}
+            selectedRegion={props.hyperslabOptions["region"]}
           />
         </div>
       ) : null}
 
-      {context.hyperslabs["metric"] ? (
+      {props.selectedHyperslab === "metric" ? (
         <div className="column">
           <Metrics
             metrics={metricOptions}
-            selectedMetric={context.hyperslabs["metric"]}
+            selectedMetric={props.hyperslabOptions["metric"]}
           />
         </div>
       ) : null}
-      <div className="column has-text-centered">
-        <input class="button is-primary" type="submit" value="Update Plot" />
-      </div>
     </div>
   );
 }

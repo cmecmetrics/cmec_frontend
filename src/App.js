@@ -7,7 +7,7 @@ import Table from "./Table.js";
 import ColorLegend from "./ColorLegend.js";
 import "./App.css";
 import "./animate.css";
-import { setGlobal, useGlobal } from "reactn";
+import { setGlobal, useGlobal, getGlobal } from "reactn";
 import Hyperslabs from "./Hyperslabs.js";
 import HyperslabSelector from "./HyperslabSelector.js";
 import {
@@ -20,7 +20,11 @@ import {
 
 import hyperslabContext from "./context/hyperslabContext";
 import hyperslabReducer from "./context/hyperslabReducer";
-import { UPDATE_HYPERSLAB } from "./context/types";
+import {
+  UPDATE_X_HYPERSLAB,
+  UPDATE_Y_HYPERSLAB,
+  UPDATE_METRIC
+} from "./context/types";
 
 // const CMEC_API_URL = "https://cmec-backend.herokuapp.com/api";
 const CMEC_API_URL = "http://localhost:5000/api";
@@ -95,15 +99,6 @@ export const Visualization = styled.div`
   height: ${height}px;
 `;
 
-setGlobal({
-  scalar: "Overall Score",
-  region: "global",
-  hyperslabs: ["region", "scalar"],
-  model: "bcc-csm1-1",
-  metric: "Ecosystem and Carbon Cycle",
-  tableHeaderValues: modelNames
-});
-
 function findHierarchyLevel(rowName) {
   var count = (rowName.match(/::/g) || []).length;
   let hierarchyLevel;
@@ -132,11 +127,13 @@ function formatRowLabel(rowLevel, row) {
 }
 
 function App() {
-  const [scalar, setScalar] = useGlobal("scalar");
-  const [model, setModel] = useGlobal("model");
-  const [metric, setMetric] = useGlobal("metric");
-  const [selectedRegion, setSelectedRegion] = useGlobal("region");
-  const [selectedHyperslab, setselectedHyperslab] = useGlobal("hyperslabs");
+  const [selectedScalar] = useGlobal("scalar");
+  const [model] = useGlobal("model");
+  const [metric] = useGlobal("metric");
+  const [region] = useGlobal("region");
+  // const [selectedHyperslab, setselectedHyperslab] = useGlobal("hyperslabs");
+  const [hyperslab1] = useGlobal("hyperslab1");
+  const [hyperslab2] = useGlobal("hyperslab2");
   const [rows, setRows] = useState("");
   const [apiParameters, setApiParameters] = useState({
     region: "global",
@@ -149,43 +146,71 @@ function App() {
   );
 
   const initialState = {
-    hyperslabs: {
-      region: "global",
-      metric: "",
-      scalar: "Overall Score",
-      model: ""
-    }
+    region: "",
+    metric: "",
+    scalar: "",
+    model: "",
+    xAxisHyperslab: "scalar",
+    yAxisHyperslab: "region"
   };
   const [state, dispatch] = useReducer(hyperslabReducer, initialState);
 
-  const updateHyperslabs = hyperslabs => {
+  const updateHyperslabX = hyperslabs => {
     dispatch({
-      type: UPDATE_HYPERSLAB,
+      type: UPDATE_X_HYPERSLAB,
       payload: hyperslabs
     });
   };
 
+  const updateHyperslabY = hyperslabs => {
+    dispatch({
+      type: UPDATE_Y_HYPERSLAB,
+      payload: hyperslabs
+    });
+  };
+
+  const updateMetric = metric => {
+    dispatch({
+      type: UPDATE_METRIC,
+      payload: metric
+    });
+  };
+
   function handleSubmit(event) {
-    let parameters = {};
-    if (selectedHyperslab.includes("region")) {
-      parameters["region"] = selectedRegion;
+    let parameters = { ...initialState };
+    const activeHyperslabs = [hyperslab1, hyperslab2];
+    console.log("x hyperslab:", initialState.xAxisHyperslab);
+    parameters[initialState.xAxisHyperslab] =
+      initialState[initialState.xAxisHyperslab];
+    console.log("parameters:", parameters);
+    console.log("getGlobal:", getGlobal());
+    // let hyperslab1 = initialState.xAxisHyperslab;
+    // let hyperslab2 = initialState.yAxisHyperslab;
+    // const picked = (({ hyperslab1, hyperslab2 }) => ({
+    //   hyperslab1,
+    //   hyperslab2
+    // }))(initialState);
+
+    // console.log("picked:", picked);
+    if (activeHyperslabs.includes("region")) {
+      parameters["region"] = region;
     } else {
       parameters["region"] = "";
     }
 
-    if (selectedHyperslab.includes("metric")) {
+    if (activeHyperslabs.includes("metric")) {
       parameters["metric"] = metric;
     } else {
       parameters["metric"] = "";
     }
 
-    if (selectedHyperslab.includes("scalar")) {
-      parameters["scalar"] = scalar;
+    if (activeHyperslabs.includes("scalar")) {
+      parameters["scalar"] = selectedScalar;
     } else {
       parameters["scalar"] = "";
     }
 
-    if (selectedHyperslab.includes("model")) {
+    if (activeHyperslabs.includes("model")) {
       parameters["model"] = model;
       setTableHeaderValues([model]);
     } else {
@@ -201,19 +226,19 @@ function App() {
     axios.post(`${CMEC_API_URL}/hyperslab`, apiParameters).then(response => {
       let rows;
       let data;
-      if (!selectedRegion) {
-        console.log("all regions selected");
+      if (!region) {
+        // console.log("all regions selected");
       }
-      console.log("selectedRegion:", selectedRegion);
-      rows = Object.keys(response.data["RESULTS"][selectedRegion]);
-      data = response.data["RESULTS"][selectedRegion];
+      console.log("region:", region);
+      rows = Object.keys(response.data["RESULTS"][region]);
+      data = response.data["RESULTS"][region];
 
       let tableRows = rows.map((row, i) => {
-        console.log("row:", row);
+        // console.log("row:", row);
         let [rowLevel, hierarchyLevel] = findHierarchyLevel(row);
         let [rowLabel, parent] = formatRowLabel(rowLevel, row);
-        let columns = data[row][scalar];
-        console.log("columns:", columns);
+        let columns = data[row][selectedScalar];
+        // console.log("columns:", columns);
 
         return (
           <TableRow
@@ -225,7 +250,7 @@ function App() {
             row={rowLabel}
             columns={columns}
             index={i}
-            scalar={scalar}
+            scalar={selectedScalar}
             models={modelNames}
           />
         );
@@ -236,7 +261,14 @@ function App() {
 
   return (
     <hyperslabContext.Provider
-      value={{ hyperslabs: state.hyperslabs, updateHyperslabs }}
+      value={{
+        xAxisHyperslab: state.xAxisHyperslab,
+        yAxisHyperslab: state.yAxisHyperslab,
+        hyperslabs: apiParameters,
+        updateHyperslabX,
+        updateHyperslabY,
+        updateMetric
+      }}
     >
       <div className="App">
         <GlobalStyle />
@@ -245,22 +277,42 @@ function App() {
           <div className="columns is-centered is-vcentered">
             <div className="column">
               <Hyperslabs
-                hyperslabOptions={hyperslabOptions}
-                selectedHyperslab={selectedHyperslab}
+                hyperslabName="hyperslab1"
+                selectedHyperslab={hyperslab1}
                 title="X Axis Hyperslabs"
+              />
+            </div>
+            <div className="column">
+              <HyperslabSelector
+                hyperslabName="xAxisHyperslab"
+                selectedHyperslab={hyperslab1}
+                hyperslabOptions={initialState.xAxisHyperslab}
               />
             </div>
           </div>
           <div className="columns is-centered is-vcentered">
             <div className="column">
               <Hyperslabs
-                hyperslabOptions={hyperslabOptions}
-                selectedHyperslab={selectedHyperslab}
+                hyperslabName="hyperslab2"
+                selectedHyperslab={hyperslab2}
                 title="Y Axis Hyperslabs"
               />
             </div>
+            <div className="column">
+              <HyperslabSelector
+                hyperslabName="yAxisHyperslab"
+                selectedHyperslab={hyperslab2}
+                hyperslabOptions={initialState.yAxisHyperslab}
+              />
+            </div>
+            <div className="column has-text-centered">
+              <input
+                class="button is-primary"
+                type="submit"
+                value="Update Plot"
+              />
+            </div>
           </div>
-          <HyperslabSelector />
         </form>
         <div className="columns is-mobile is-centered is-vcentered tableColumn">
           <div className="column is-four-fifths">

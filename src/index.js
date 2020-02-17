@@ -1,9 +1,21 @@
-import React from "react";
+import React, { setGlobal } from "reactn";
 import ReactDOM from "react-dom";
 import "./index.scss";
 import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as serviceWorker from "./serviceWorker";
+import { modelNames } from "./constants.js";
+
+setGlobal({
+  scalar: "Overall Score",
+  region: "global",
+  hyperslabs: ["region", "metric", "scalar", "model"],
+  hyperslab1: "scalar",
+  hyperslab2: "region",
+  model: "bcc-csm1-1",
+  metric: "Ecosystem and Carbon Cycle",
+  tableHeaderValues: modelNames
+});
 
 ReactDOM.render(<App />, document.getElementById("root"));
 

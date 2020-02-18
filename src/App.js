@@ -18,8 +18,8 @@ import {
   GlobalStyle
 } from "./utils.js";
 
-// const CMEC_API_URL = "https://cmec-backend.herokuapp.com/api";
-const CMEC_API_URL = "http://localhost:5000/api";
+const CMEC_API_URL = "https://cmec-backend.herokuapp.com/api";
+// const CMEC_API_URL = "http://localhost:5000/api";
 
 const title = "CMEC Data Heatmap";
 
@@ -121,33 +121,35 @@ function App() {
       <Header />
       <form onSubmit={handleSubmit}>
         <div className="columns is-centered is-vcentered">
-          <div className="column">
-            <Hyperslabs
-              hyperslabName="hyperslab1"
-              selectedHyperslab={hyperslab1}
-              title="X Axis Hyperslabs"
-            />
-          </div>
-          <div className="column">
-            <HyperslabSelector
-              selectedHyperslab={hyperslab1}
-              hyperslabOptions={initialState.xAxisHyperslab}
-            />
-          </div>
-        </div>
-        <div className="columns is-centered is-vcentered">
-          <div className="column">
-            <Hyperslabs
-              hyperslabName="hyperslab2"
-              selectedHyperslab={hyperslab2}
-              title="Y Axis Hyperslabs"
-            />
-          </div>
-          <div className="column">
-            <HyperslabSelector
-              selectedHyperslab={hyperslab2}
-              hyperslabOptions={initialState.yAxisHyperslab}
-            />
+          <div className="column is-10">
+            <div className="columns is-multiline">
+              <div className="column is-5">
+                <Hyperslabs
+                  hyperslabName="hyperslab1"
+                  selectedHyperslab={hyperslab1}
+                  title="Hyperslab 1"
+                />
+              </div>
+              <div className="column is-5">
+                <HyperslabSelector
+                  selectedHyperslab={hyperslab1}
+                  hyperslabOptions={initialState.xAxisHyperslab}
+                />
+              </div>
+              <div className="column is-5">
+                <Hyperslabs
+                  hyperslabName="hyperslab2"
+                  selectedHyperslab={hyperslab2}
+                  title="Hyperslab 2"
+                />
+              </div>
+              <div className="column is-5">
+                <HyperslabSelector
+                  selectedHyperslab={hyperslab2}
+                  hyperslabOptions={initialState.yAxisHyperslab}
+                />
+              </div>
+            </div>
           </div>
           <div className="column has-text-centered">
             <input

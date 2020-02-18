@@ -1,5 +1,5 @@
-import React, { Fragment } from "react";
-import { useGlobal } from "reactn";
+import React, { Fragment, useContext, useState } from "react";
+import { useGlobal, setGlobal } from "reactn";
 import * as bulmaToast from "bulma-toast";
 
 function showCheckboxErrorMessage() {
@@ -15,51 +15,40 @@ function showCheckboxErrorMessage() {
 }
 
 function Hyperslabs(props) {
-  const [selectedHyperslab, setselectedHyperslab] = useGlobal("hyperslabs");
-  let selectedCheckboxes = document.querySelectorAll(
-    "input[type=checkbox]:checked"
-  );
+  const [hyperslabOptions] = useGlobal("hyperslabs");
+  let oppositeHyperslab;
+  if (props.hyperslabName === "hyperslab1") {
+    oppositeHyperslab = "hyperslab2";
+  } else {
+    oppositeHyperslab = "hyperslab1";
+  }
 
+  const [oppositeHyperslabValue] = useGlobal(oppositeHyperslab);
   function updateHyperslab(changeEvent) {
-    let targetID = changeEvent.target.id;
-    if (selectedHyperslab.includes(targetID)) {
-      setselectedHyperslab(
-        selectedHyperslab.filter(
-          arrayItem => arrayItem !== changeEvent.target.id
-        )
-      );
-      return;
-    }
-    let selectedCheckboxes = document.querySelectorAll(
-      "input[type=checkbox]:checked"
-    );
-    let queue = Array.from(selectedCheckboxes);
-    if (queue.length > 2) {
-      showCheckboxErrorMessage();
-      return;
-    } else {
-      let tempArr = [...selectedHyperslab];
-      tempArr.push(targetID);
-      setselectedHyperslab(tempArr);
-    }
+    let targetID = changeEvent.target.id.split("_")[1];
+    setGlobal({ [props["hyperslabName"]]: targetID });
   }
   return (
     <Fragment>
-      <h2>Hyperslabs</h2>
+      <h2>{props.title}</h2>
       <div className="radio">
-        {props.hyperslabOptions.map((hyperslab, i) => {
-          let checked = selectedHyperslab.includes(hyperslab);
+        {hyperslabOptions.map((hyperslab, i) => {
           return (
             <Fragment>
               <input
                 className="is-checkradio"
-                id={hyperslab}
-                type="checkbox"
-                name={`${hyperslab}Checkbox`}
-                checked={checked}
+                id={`${props.hyperslabName}_${hyperslab}`}
+                type="radio"
+                name={`${props.hyperslabName}${hyperslab}Checkbox`}
+                checked={props.selectedHyperslab === hyperslab}
+                disabled={oppositeHyperslabValue === hyperslab}
                 onChange={updateHyperslab}
               />
-              <label key={hyperslab} for={hyperslab} className="label_checkbox">
+              <label
+                key={hyperslab}
+                for={`${props.hyperslabName}_${hyperslab}`}
+                className="label_checkbox"
+              >
                 {hyperslab}
               </label>
             </Fragment>

@@ -3,200 +3,33 @@ import styled, { createGlobalStyle } from "styled-components";
 import axios from "axios";
 import Header from "./Header.js";
 import TableRow from "./TableRow.js";
-import Scalars from "./Scalars.js";
-import Regions from "./Regions.js";
 import Table from "./Table.js";
 import ColorLegend from "./ColorLegend.js";
 import "./App.css";
 import "./animate.css";
-import { setGlobal, useGlobal } from "reactn";
+import { useGlobal } from "reactn";
 import Hyperslabs from "./Hyperslabs.js";
-import Models from "./Models.js";
-import Metrics from "./Metrics.js";
+import HyperslabSelector from "./HyperslabSelector.js";
+import { modelNames } from "./constants.js";
+import {
+  formatRowLabel,
+  findHierarchyLevel,
+  getBackgroundColor,
+  GlobalStyle
+} from "./utils.js";
 
 const CMEC_API_URL = "https://cmec-backend.herokuapp.com/api";
 // const CMEC_API_URL = "http://localhost:5000/api";
 
-const width = 1000;
-const height = 600;
-const black = "#333333";
-const title = "My Data Visualization";
-const scalarColorScale = {
-  "Ecosystem and Carbon Cycle": "#ECFFE6",
-  "Hydrology Cycle": "#E6F9FF",
-  "Radiation and Energy Cycle": "#FFECE6",
-  Forcings: "#EDEDED",
-  Relationships: "#fff2e5"
-};
-
-function getBackgroundColor(rowName) {
-  if (rowName.includes("Ecosystem and Carbon Cycle")) {
-    return "#ECFFE6";
-  }
-  if (rowName.includes("Hydrology Cycle")) {
-    return "#E6F9FF";
-  }
-  if (rowName.includes("Radiation and Energy Cycle")) {
-    return "#FFECE6";
-  }
-  if (rowName.includes("Forcings")) {
-    return "#EDEDED";
-  }
-  if (rowName.includes("Relationships")) {
-    return "#fff2e5";
-  }
-}
-
-export const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Raleway:400,600&display=swap');
-
-body {
-  font-family: 'Raleway', Arial, Helvetica, sans-serif;
-  color: ${black};
-  padding: 0;
-  margin: 0;
-}
-
-table.table-header-rotated {
-  border-collapse: collapse;
-}
-
-th.rotate {
-  height: 62px;
-  white-space: nowrap;
-  font-weight: normal;
-}
-th.rotate > div {
-  transform: translate(10px, 36px) rotate(-45deg);
-  width: 0px;
-}
-th.rotate > div > span {
-}
-td {
-  height: 25px;
-  width: 25px;
-  border: 1px solid;
-}
-@media all and (min-width: 1216px) {
-  td.row-label {
-    width: 20%;
-  }
- }
-
-td.row-label {
-  width: 30%;
-}
-`;
-
-export const Visualization = styled.div`
-  justify-self: center;
-  width: ${width}px;
-  height: ${height}px;
-`;
-
-let metricOptions = [
-  "Ecosystem and Carbon Cycle",
-  "Hydrology Cycle",
-  "Radiation and Energy Cycle",
-  "Forcings",
-  "Relationships"
-];
-
-let modelNames = [
-  "bcc-csm1-1",
-  "bcc-csm1-1-m",
-  "CESM1-BGC",
-  "GFDL-ESM2G",
-  "inmcm4",
-  "IPSL-CM5A-LR",
-  "MIROC-ESM",
-  "MPI-ESM-LR",
-  "NorESM1-ME",
-  "MeanCMIP5",
-  "BCC-CSM2-MR",
-  "BCC-ESM1",
-  "CESM2",
-  "CESM2-WACCM",
-  "CNRM-CM6-1",
-  "CNRM-ESM2-1",
-  "E3SMv1-CTC",
-  "GISS-E2-1-G",
-  "GISS-E2-1-H",
-  "IPSL-CM6A-LR",
-  "MIROC6",
-  "MRI-ESM2-0",
-  "MeanCMIP6"
-];
-
-const scalarOptions = [
-  "Spatial Distribution Score",
-  "Bias Score",
-  "Overall Score",
-  "Seasonal Cycle Score",
-  "Interannual Variability Score",
-  "RMSE Score",
-  "Amplitude Score",
-  "Max Phase Score",
-  "Min Phase Score",
-  "Difference Score",
-  "Temporal Distribution Score",
-  "Precipitation RMSE Score",
-  "SurfaceAirTemperature RMSE Score",
-  "Evapotranspiration RMSE Score",
-  "SurfaceDownwardSWRadiation RMSE Score",
-  "SurfaceNetSWRadiation RMSE Score"
-];
-
-const regionOptions = {
-  "Global - Land": "global",
-  "Global - All": "globe",
-  "South America - Amazon": "southamericaamazon"
-};
-
-const hyperslabOptions = ["region", "metric", "scalar", "model"];
-
-setGlobal({
-  scalar: "Overall Score",
-  region: "global",
-  hyperslabs: ["region", "scalar"],
-  model: "bcc-csm1-1",
-  metric: "Ecosystem and Carbon Cycle",
-  tableHeaderValues: modelNames
-});
-
-function findHierarchyLevel(rowName) {
-  var count = (rowName.match(/::/g) || []).length;
-  let hierarchyLevel;
-  if (count === 0) {
-    hierarchyLevel = "parent";
-  } else if (count === 1) {
-    hierarchyLevel = "childVariable";
-  } else if (count === 2) {
-    hierarchyLevel = "childDataset";
-  }
-  return [count, hierarchyLevel];
-}
-
-function formatRowLabel(rowLevel, row) {
-  let rowLabel;
-  let parent = "";
-  if (rowLevel > 0) {
-    let label = row.split("::");
-    let tabs = "\t".repeat(rowLevel);
-    rowLabel = tabs + label.slice(-1)[0];
-    parent = label.slice(-2)[0];
-  } else {
-    rowLabel = row;
-  }
-  return [rowLabel, parent];
-}
+const title = "CMEC Data Heatmap";
 
 function App() {
-  const [scalar, setScalar] = useGlobal("scalar");
-  const [model, setModel] = useGlobal("model");
-  const [metric, setMetric] = useGlobal("metric");
-  const [selectedRegion, setSelectedRegion] = useGlobal("region");
-  const [selectedHyperslab, setselectedHyperslab] = useGlobal("hyperslabs");
+  const [selectedScalar] = useGlobal("scalar");
+  const [model] = useGlobal("model");
+  const [metric] = useGlobal("metric");
+  const [region] = useGlobal("region");
+  const [hyperslab1] = useGlobal("hyperslab1");
+  const [hyperslab2] = useGlobal("hyperslab2");
   const [rows, setRows] = useState("");
   const [apiParameters, setApiParameters] = useState({
     region: "global",
@@ -204,33 +37,36 @@ function App() {
     scalar: "Overall Score",
     model: ""
   });
-  const [filter, setFilter] = useState("ALL_SCORES");
-  const [hyperslabData, setHyperslabData] = useGlobal("hyperslabData");
   const [tableHeaderValues, setTableHeaderValues] = useGlobal(
     "tableHeaderValues"
   );
 
+  const initialState = {
+    region: "",
+    metric: "",
+    scalar: "",
+    model: "",
+    xAxisHyperslab: "scalar",
+    yAxisHyperslab: "region"
+  };
+
   function handleSubmit(event) {
-    let parameters = {};
-    if (selectedHyperslab.includes("region")) {
-      parameters["region"] = selectedRegion;
-    } else {
-      parameters["region"] = "";
+    let parameters = { ...initialState };
+    const activeHyperslabs = [hyperslab1, hyperslab2];
+
+    if (activeHyperslabs.includes("region")) {
+      parameters["region"] = region;
     }
 
-    if (selectedHyperslab.includes("metric")) {
+    if (activeHyperslabs.includes("metric")) {
       parameters["metric"] = metric;
-    } else {
-      parameters["metric"] = "";
     }
 
-    if (selectedHyperslab.includes("scalar")) {
-      parameters["scalar"] = scalar;
-    } else {
-      parameters["scalar"] = "";
+    if (activeHyperslabs.includes("scalar")) {
+      parameters["scalar"] = selectedScalar;
     }
 
-    if (selectedHyperslab.includes("model")) {
+    if (activeHyperslabs.includes("model")) {
       parameters["model"] = model;
       setTableHeaderValues([model]);
     } else {
@@ -239,38 +75,26 @@ function App() {
     }
 
     setApiParameters(parameters);
-    axios
-      .post(`${CMEC_API_URL}/hyperslab`, parameters)
-      .then(function(response) {
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
     event.preventDefault();
   }
 
   useEffect(() => {
     axios.post(`${CMEC_API_URL}/hyperslab`, apiParameters).then(response => {
       let rows;
-      let responseRegion;
       let data;
-      if (!selectedRegion) {
-        console.log("all regions selected");
+      if (!region) {
+        // console.log("all regions selected");
       }
-      console.log("selectedRegion:", selectedRegion);
-      if (filter === "ALL_SCORES") {
-        rows = Object.keys(response.data["RESULTS"][selectedRegion]);
-        data = response.data["RESULTS"][selectedRegion];
-      } else {
-        data = response.data[selectedRegion];
-        rows = Object.keys(responseRegion);
-      }
+      console.log("region:", region);
+      rows = Object.keys(response.data["RESULTS"][region]);
+      data = response.data["RESULTS"][region];
 
       let tableRows = rows.map((row, i) => {
+        // console.log("row:", row);
         let [rowLevel, hierarchyLevel] = findHierarchyLevel(row);
         let [rowLabel, parent] = formatRowLabel(rowLevel, row);
-        let columns = data[row][scalar];
+        let columns = data[row][selectedScalar];
+        // console.log("columns:", columns);
 
         return (
           <TableRow
@@ -282,9 +106,8 @@ function App() {
             row={rowLabel}
             columns={columns}
             index={i}
-            scalar={scalar}
+            scalar={selectedScalar}
             models={modelNames}
-            filter={filter}
           />
         );
       });
@@ -298,40 +121,36 @@ function App() {
       <Header />
       <form onSubmit={handleSubmit}>
         <div className="columns is-centered is-vcentered">
-          <div className="column">
-            <Hyperslabs
-              hyperslabOptions={hyperslabOptions}
-              selectedHyperslab={selectedHyperslab}
-            />
+          <div className="column is-10">
+            <div className="columns is-multiline">
+              <div className="column is-5">
+                <Hyperslabs
+                  hyperslabName="hyperslab1"
+                  selectedHyperslab={hyperslab1}
+                  title="Hyperslab 1"
+                />
+              </div>
+              <div className="column is-5">
+                <HyperslabSelector
+                  selectedHyperslab={hyperslab1}
+                  hyperslabOptions={initialState.xAxisHyperslab}
+                />
+              </div>
+              <div className="column is-5">
+                <Hyperslabs
+                  hyperslabName="hyperslab2"
+                  selectedHyperslab={hyperslab2}
+                  title="Hyperslab 2"
+                />
+              </div>
+              <div className="column is-5">
+                <HyperslabSelector
+                  selectedHyperslab={hyperslab2}
+                  hyperslabOptions={initialState.yAxisHyperslab}
+                />
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="columns controlColumn is-vcentered">
-          {selectedHyperslab.includes("model") ? (
-            <div className="column">
-              <Models models={modelNames} scores={model} />
-            </div>
-          ) : null}
-
-          {selectedHyperslab.includes("scalar") ? (
-            <div className="column">
-              <Scalars scalars={scalarOptions} scores={scalar} />
-            </div>
-          ) : null}
-
-          {selectedHyperslab.includes("region") ? (
-            <div className="column">
-              <Regions
-                regionOptions={regionOptions}
-                selectedRegion={selectedRegion}
-              />
-            </div>
-          ) : null}
-
-          {selectedHyperslab.includes("metric") ? (
-            <div className="column">
-              <Metrics metrics={metricOptions} selectedMetric={metric} />
-            </div>
-          ) : null}
           <div className="column has-text-centered">
             <input
               class="button is-primary"

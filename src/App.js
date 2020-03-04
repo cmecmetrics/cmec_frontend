@@ -28,8 +28,10 @@ function App() {
   const [model] = useGlobal("model");
   const [metric] = useGlobal("metric");
   const [region] = useGlobal("region");
-  const [hyperslab1] = useGlobal("hyperslab1");
-  const [hyperslab2] = useGlobal("hyperslab2");
+  const [rowsHyperslab] = useGlobal("rowsHyperslab");
+  const [rowHyperslabDropdown] = useGlobal("rowHyperslabDropdown");
+  const [columnHyperslabDropdown] = useGlobal("columnHyperslabDropdown");
+  const [columnsHyperslab] = useGlobal("columnsHyperslab");
   const [rows, setRows] = useState("");
   const [apiParameters, setApiParameters] = useState({
     region: "global",
@@ -45,14 +47,12 @@ function App() {
     region: "",
     metric: "",
     scalar: "",
-    model: "",
-    xAxisHyperslab: "scalar",
-    yAxisHyperslab: "region"
+    model: ""
   };
 
   function handleSubmit(event) {
     let parameters = { ...initialState };
-    const activeHyperslabs = [hyperslab1, hyperslab2];
+    const activeHyperslabs = [rowsHyperslab, columnsHyperslab];
 
     if (activeHyperslabs.includes("region")) {
       parameters["region"] = region;
@@ -86,8 +86,8 @@ function App() {
         // console.log("all regions selected");
       }
       console.log("region:", region);
-      rows = Object.keys(response.data["RESULTS"][region]);
-      data = response.data["RESULTS"][region];
+      rows = Object.keys(response.data["RESULTS"][region.value]);
+      data = response.data["RESULTS"][region.value];
 
       let tableRows = rows.map((row, i) => {
         // console.log("row:", row);
@@ -125,28 +125,24 @@ function App() {
             <div className="columns is-multiline">
               <div className="column is-5">
                 <Hyperslabs
-                  hyperslabName="hyperslab1"
-                  selectedHyperslab={hyperslab1}
-                  title="Hyperslab 1"
+                  hyperslabName="rowsHyperslab"
+                  selectedHyperslab={rowsHyperslab}
+                  title="Rows"
                 />
               </div>
               <div className="column is-5">
-                <HyperslabSelector
-                  selectedHyperslab={hyperslab1}
-                  hyperslabOptions={initialState.xAxisHyperslab}
-                />
+                <HyperslabSelector selectedHyperslab={rowHyperslabDropdown} />
               </div>
               <div className="column is-5">
                 <Hyperslabs
-                  hyperslabName="hyperslab2"
-                  selectedHyperslab={hyperslab2}
-                  title="Hyperslab 2"
+                  hyperslabName="columnsHyperslab"
+                  selectedHyperslab={columnsHyperslab}
+                  title="Columns"
                 />
               </div>
               <div className="column is-5">
                 <HyperslabSelector
-                  selectedHyperslab={hyperslab2}
-                  hyperslabOptions={initialState.yAxisHyperslab}
+                  selectedHyperslab={columnHyperslabDropdown}
                 />
               </div>
             </div>

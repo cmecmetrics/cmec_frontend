@@ -17,10 +17,10 @@ function showCheckboxErrorMessage() {
 function Hyperslabs(props) {
   const [hyperslabOptions] = useGlobal("hyperslabs");
   let oppositeHyperslab;
-  if (props.hyperslabName === "hyperslab1") {
-    oppositeHyperslab = "hyperslab2";
+  if (props.hyperslabName === "rowsHyperslab") {
+    oppositeHyperslab = "columnsHyperslab";
   } else {
-    oppositeHyperslab = "hyperslab1";
+    oppositeHyperslab = "rowsHyperslab";
   }
 
   const [oppositeHyperslabValue] = useGlobal(oppositeHyperslab);

@@ -12,7 +12,6 @@ import Regions from "./Regions.js";
 import Metrics from "./Metrics.js";
 
 function HyperslabSelector(props) {
-  console.log("HyperslabSelector props:", props);
   const [selectedRegion] = useGlobal("region");
   return (
     <div className="columns controlColumn is-vcentered">
@@ -36,10 +35,7 @@ function HyperslabSelector(props) {
 
       {props.selectedHyperslab === "metric" ? (
         <div className="column">
-          <Metrics
-            metrics={metricOptions}
-            selectedMetric={props.hyperslabOptions["metric"]}
-          />
+          <Metrics metrics={metricOptions} />
         </div>
       ) : null}
     </div>

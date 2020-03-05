@@ -1,4 +1,4 @@
-import React, { setGlobal } from "reactn";
+import React, { global, setGlobal } from "reactn";
 import ReactDOM from "react-dom";
 import "./index.scss";
 import App from "./App";
@@ -16,8 +16,11 @@ setGlobal({
   columnHyperslabDropdown: "region",
   model: "bcc-csm1-1",
   metric: "Ecosystem and Carbon Cycle",
-  tableHeaderValues: modelNames
+  tableHeaderValues: modelNames,
+  availableHyperslabs: ["scalar", "region"]
 });
+
+setGlobal({});
 
 ReactDOM.render(<App />, document.getElementById("root"));
 

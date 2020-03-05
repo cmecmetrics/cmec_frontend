@@ -8,7 +8,7 @@ import ColorLegend from "./ColorLegend.js";
 import "./App.css";
 import "./animate.css";
 import { useGlobal } from "reactn";
-import Hyperslabs from "./Hyperslabs.js";
+import HyperslabAxisRadioSelector from "./Hyperslabs.js";
 import HyperslabSelector from "./HyperslabSelector.js";
 import { modelNames } from "./constants.js";
 import {
@@ -28,6 +28,8 @@ function App() {
   const [model] = useGlobal("model");
   const [metric] = useGlobal("metric");
   const [region] = useGlobal("region");
+  const [hyperslabs] = useGlobal("hyperslabs");
+  const [availableHyperslabs] = useGlobal("availableHyperslabs");
   const [rowsHyperslab] = useGlobal("rowsHyperslab");
   const [rowHyperslabDropdown] = useGlobal("rowHyperslabDropdown");
   const [columnHyperslabDropdown] = useGlobal("columnHyperslabDropdown");
@@ -124,25 +126,31 @@ function App() {
           <div className="column is-10">
             <div className="columns is-multiline">
               <div className="column is-5">
-                <Hyperslabs
+                <HyperslabAxisRadioSelector
                   hyperslabName="rowsHyperslab"
                   selectedHyperslab={rowsHyperslab}
+                  hyperslabDropdown={"rowHyperslabDropdown"}
                   title="Rows"
                 />
               </div>
               <div className="column is-5">
-                <HyperslabSelector selectedHyperslab={rowHyperslabDropdown} />
+                <HyperslabSelector
+                  selectedHyperslab={availableHyperslabs[0]}
+                  hyperslabAxis={"rowHyperslabDropdown"}
+                />
               </div>
               <div className="column is-5">
-                <Hyperslabs
+                <HyperslabAxisRadioSelector
                   hyperslabName="columnsHyperslab"
                   selectedHyperslab={columnsHyperslab}
+                  hyperslabDropdown={"columnHyperslabDropdown"}
                   title="Columns"
                 />
               </div>
               <div className="column is-5">
                 <HyperslabSelector
-                  selectedHyperslab={columnHyperslabDropdown}
+                  selectedHyperslab={availableHyperslabs[1]}
+                  hyperslabAxis={"columnHyperslabDropdown"}
                 />
               </div>
             </div>

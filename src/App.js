@@ -55,20 +55,22 @@ function App() {
   function handleSubmit(event) {
     let parameters = { ...initialState };
     const activeHyperslabs = [rowsHyperslab, columnsHyperslab];
+    console.log("activeHyperslabs:", activeHyperslabs);
+    console.log("availableHyperslabs:", availableHyperslabs);
 
-    if (activeHyperslabs.includes("region")) {
+    if (availableHyperslabs.includes("region")) {
       parameters["region"] = region;
     }
 
-    if (activeHyperslabs.includes("metric")) {
+    if (availableHyperslabs.includes("metric")) {
       parameters["metric"] = metric;
     }
 
-    if (activeHyperslabs.includes("scalar")) {
+    if (availableHyperslabs.includes("scalar")) {
       parameters["scalar"] = selectedScalar;
     }
 
-    if (activeHyperslabs.includes("model")) {
+    if (availableHyperslabs.includes("model")) {
       parameters["model"] = model;
       setTableHeaderValues([model]);
     } else {
@@ -87,6 +89,7 @@ function App() {
       if (!region) {
         // console.log("all regions selected");
       }
+      console.log("response:", response);
       console.log("region:", region);
       rows = Object.keys(response.data["RESULTS"][region.value]);
       data = response.data["RESULTS"][region.value];

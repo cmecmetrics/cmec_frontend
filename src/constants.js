@@ -26,10 +26,10 @@ export let modelNames = [
 
 export const regionOptions = [
   {
-    "Global - Land": "global"
+    global: "Global - Land"
   },
-  { "Global - All": "globe" },
-  { "South America - Amazon": "southamericaamazon" }
+  { globe: "Global - All" },
+  { southamericaamazon: "South America - Amazon" }
 ];
 
 export const scalarColorScale = {

@@ -3,27 +3,29 @@ import { useGlobal } from "reactn";
 import Select from "react-select";
 
 function Regions(props) {
+  console.log("props:", props);
   const [selectedRegion, setselectedRegion] = useGlobal("region");
-  let regions = [];
+  let regionsList = [];
 
   function updateRegion(region) {
     console.log("region select:", region);
     setselectedRegion(region);
   }
   for (let region of props.regions) {
-    regions.push({
-      label: Object.keys(region)[0],
-      value: Object.values(region)[0]
+    regionsList.push({
+      label: Object.values(region)[0],
+      value: Object.keys(region)[0]
     });
   }
+  console.log("regionsList array:", regionsList);
   return (
     <Fragment>
       <h2>Regions</h2>
       <div className="text-center">
         <Select
           onChange={updateRegion}
-          options={regions}
-          value={{ label: selectedRegion.label, value: selectedRegion.value }}
+          options={regionsList}
+          value={{ label: selectedRegion.label, value: selectedRegion }}
         />
       </div>
     </Fragment>

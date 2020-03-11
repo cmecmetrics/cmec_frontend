@@ -90,13 +90,19 @@ function App() {
     event.preventDefault();
   }
 
-  function createTableRows(data, rows) {
+  function createTableRows(data, rows, allRegions = false) {
+    console.log("data:", data);
     let tableRows = rows.map((row, i) => {
-      // console.log("row:", row);
+      console.log("row:", row);
       let [rowLevel, hierarchyLevel] = findHierarchyLevel(row);
       let [rowLabel, parent] = formatRowLabel(rowLevel, row);
-      let columns = data[row][selectedScalar];
-      // console.log("columns:", columns);
+      let columns;
+      if (allRegions) {
+        columns = data[row][selectedScalar][model];
+      } else {
+        columns = data[row][selectedScalar];
+      }
+      console.log("columns:", columns);
 
       return (
         <TableRow
@@ -124,28 +130,38 @@ function App() {
       let responseRegion;
       let dataByRegion = {};
       console.log("apiParameters in response:", apiParameters);
-      if (!apiParameters["region"]) {
+      console.log("rowsHyperslab:", rowsHyperslab);
+      console.log("response:", response);
+      if (rowsHyperslab === "region") {
         console.log("all regions selected");
         responseRegion = Object.keys(response.data["RESULTS"]);
         console.log("responseRegion:", responseRegion);
+        console.log("response:", response);
         for (const regionName of responseRegion) {
-          // console.log("regionName:", regionName);
           data = response.data["RESULTS"][regionName];
           responseRows = Object.keys(response.data["RESULTS"][regionName]);
           dataByRegion[regionName] = createTableRows(data, responseRows);
-          // console.log("dataByRegion:", dataByRegion);
-
-          // setRows(newMessageObj);
-          // console.log("rows:", rows);
         }
         setRows(dataByRegion);
+      } else if (columnsHyperslab === "region") {
+        data = response.data["RESULTS"];
+        responseRows = Object.keys(response.data["RESULTS"]);
+
+        const newMessageObj = {
+          test: createTableRows(data, responseRows, true)
+        };
+        console.log("newMessageObj:", newMessageObj);
+        setRows(newMessageObj);
+        let regionList = regionOptions.map(function(el) {
+          return Object.keys(el)[0];
+        });
+        console.log("regionList:", regionList);
+        setTableHeaderValues(regionList);
       } else {
         console.log("response:", response);
         console.log("region:", region);
         responseRegion = Object.keys(response.data["RESULTS"])[0];
-        // console.log("responseRegion:", responseRegion);
         responseRows = Object.keys(response.data["RESULTS"][responseRegion]);
-        // console.log("responseRows:", responseRows);
         data = response.data["RESULTS"][responseRegion];
 
         const newMessageObj = {
@@ -153,7 +169,6 @@ function App() {
         };
         console.log("newMessageObj:", newMessageObj);
         setRows(newMessageObj);
-        // console.log("rows:", rows);
       }
     });
   }, [apiParameters]);
@@ -208,11 +223,9 @@ function App() {
       <div className="columns is-mobile is-centered is-vcentered tableColumn">
         <div className="column is-four-fifths">
           {Object.keys(rows).map((hyperslabRegion, i) => {
-            console.log("hyperslabRegion:", hyperslabRegion);
-            console.log("rows[hyperslabRegion]:", rows[hyperslabRegion]);
             return (
               <Table
-                title={title}
+                title={rowsHyperslab === "region" ? hyperslabRegion : null}
                 tableHeaderValues={tableHeaderValues}
                 rows={rows[hyperslabRegion]}
               />
